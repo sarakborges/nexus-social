@@ -1,0 +1,52 @@
+.suggestion {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-lmd);
+
+  > header {
+    display: flex;
+    place-content: space-between;
+    place-items: center;
+  }
+
+  > ul {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-lmd);
+
+    > li {
+      display: flex;
+      place-items: center;
+      gap: var(--size-md);
+
+      > section {
+        flex: 1;
+        overflow: hidden;
+
+        > a {
+          display: flex;
+          flex-flow: column;
+          place-items: flex-start;
+          gap: var(--size-xs);
+
+          > p {
+            max-width: 100%;
+            height: calc(var(--size-xs) + var(--size-md));
+            overflow: hidden;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+
+      > a {
+        > picture {
+          > img {
+            max-width: var(--size-xl);
+          }
+        }
+      }
+    }
+  }
+}

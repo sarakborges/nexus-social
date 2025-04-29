@@ -1,0 +1,10 @@
+.card {
+  padding: var(--size-md);
+
+  background-color: var(--card-background);
+  border-radius: var(--size-sm);
+
+  .field {
+    background-color: var(--card-field-background);
+  }
+}

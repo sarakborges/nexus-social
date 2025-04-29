@@ -1,0 +1,15 @@
+.typography {
+  color: var(--color-text);
+
+  &:is(p, span, h3) {
+    font-size: var(--size-md);
+  }
+
+  &:is(h1) {
+    font-size: var(--size-lg);
+  }
+
+  &:is(h2) {
+    font-size: var(--size-lmd);
+  }
+}

@@ -1,0 +1,12 @@
+.login-form {
+  > .card {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-lmd);
+
+    > .login-navigation {
+      display: flex;
+      place-content: center;
+    }
+  }
+}

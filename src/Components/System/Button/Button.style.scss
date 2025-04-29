@@ -1,0 +1,42 @@
+.button {
+  display: flex;
+  place-items: center;
+  place-content: center;
+  gap: var(--size-md);
+
+  position: relative;
+
+  padding: var(--size-sm);
+
+  font-size: var(--size-md);
+
+  border: 0;
+  border-radius: var(--size-sm);
+
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &.square {
+    aspect-ratio: 1/1;
+  }
+
+  &.primary {
+    color: var(--button-text-color);
+
+    background-color: var(--button-primary);
+
+    &:hover {
+      background-color: var(--button-primary-hover);
+    }
+  }
+
+  &.transparent {
+    color: var(--color-text);
+
+    background-color: transparent;
+
+    &:hover {
+      background-color: var(--color-background-hover);
+    }
+  }
+}

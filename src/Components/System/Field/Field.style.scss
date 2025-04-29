@@ -1,0 +1,38 @@
+.field {
+  display: flex;
+
+  max-width: 100%;
+  padding: var(--size-sm);
+
+  font-size: var(--size-md);
+  color: var(--field-text);
+
+  border: var(--size-xxs) solid transparent;
+  border-radius: var(--size-sm);
+  background-color: var(--field-background);
+
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: var(--field-focus-border);
+  }
+
+  &:is(input, select) {
+    height: var(--size-xl);
+  }
+
+  &:is(textarea) {
+    min-height: var(--size-xl);
+    height: var(--size-xl);
+    max-height: calc(var(--size-xl) * 5);
+
+    resize: vertical;
+
+    line-height: var(--line-height-md);
+  }
+
+  > option {
+    font-size: var(--size-md);
+    font-family: var(--font-family);
+  }
+}

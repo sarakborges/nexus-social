@@ -1,0 +1,40 @@
+.navbar {
+  display: flex;
+  flex-flow: column;
+  place-items: center;
+  gap: var(--size-smd);
+
+  width: var(--size-navbar);
+  height: 100vh;
+  padding: var(--size-md) 0;
+
+  border-right: 1px solid var(--color-border);
+
+  > picture {
+    > img {
+      max-height: var(--size-logo);
+    }
+  }
+
+  > ul {
+    width: 100%;
+
+    > li {
+      > .link {
+        width: 100%;
+        padding: var(--size-smd) var(--size-lmd);
+
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+          background-color: var(--color-background-hover);
+        }
+
+        > svg {
+          width: var(--size-lmd);
+          height: var(--size-lmd);
+        }
+      }
+    }
+  }
+}

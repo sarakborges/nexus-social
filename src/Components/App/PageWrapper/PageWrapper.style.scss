@@ -1,0 +1,9 @@
+.page-wrapper {
+  display: flex;
+
+  background-color: var(--color-background);
+
+  > .page-content {
+    flex: 1;
+  }
+}

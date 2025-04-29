@@ -1,0 +1,10 @@
+.login-route {
+  display: flex;
+  place-content: center;
+  place-items: center;
+
+  min-height: 100vh;
+  padding: var(--size-lmd);
+
+  background-color: var(--color-background);
+}

@@ -1,0 +1,14 @@
+.home-route {
+  display: flex;
+  gap: var(--size-lmd);
+
+  padding: var(--size-smd) var(--size-lmd);
+
+  > .feed {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-lmd);
+
+    flex: 1;
+  }
+}

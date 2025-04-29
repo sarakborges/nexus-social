@@ -1,0 +1,54 @@
+:root {
+  --color-primary: #5182df;
+  --color-primary-active: #154bae;
+
+  --color-cancel: #fd4964;
+
+  --color-text: #e0e0e0;
+  --color-border: #161625;
+
+  --color-background: #000006;
+  --color-background-hover: #060617;
+
+  --button-text-color: #e4e1e8;
+  --button-primary: #5182df;
+  --button-primary-hover: #154bae;
+  --button-primary-disabled: #84a4de;
+  --button-cancel-disabled: #cd99b2;
+
+  --field-background: #060617;
+  --field-text: #e0e0e0;
+  --field-focus-border: #154bae;
+
+  --card-background: #060617;
+  --card-field-background: #12122c;
+
+  --size-xxs: 2px;
+  --size-xs: 4px;
+  --size-sm: 8px;
+  --size-smd: 12px;
+  --size-md: 16px;
+  --size-lmd: 24px;
+  --size-lg: 36px;
+  --size-xl: 48px;
+
+  --size-navbar: 320px;
+  --size-home-suggestions: 360px;
+  --size-topbar-search: 480px;
+  --size-new-post: 640px;
+  --size-logo: 96px;
+
+  --body-wrapper: clamp(320px, 1160px, 100%);
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --font-family: 'Winky Rough', sans-serif;
+
+  --line-height-single: 1;
+  --line-height-sm: 1.2;
+  --line-height-md: 1.5;
+  --line-height-lg: 1.8;
+  --line-height-double: 2;
+}

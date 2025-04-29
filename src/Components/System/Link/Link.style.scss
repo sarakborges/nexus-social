@@ -1,0 +1,31 @@
+.link {
+  display: flex;
+  place-items: center;
+  gap: var(--size-md);
+
+  font-size: var(--size-md);
+  text-decoration: none;
+
+  transition: background-color 0.3s, color 0.3s;
+
+  &:not(.link-button) {
+    color: var(--color-primary);
+
+    &:is(.active, :hover) {
+      color: var(--color-primary-active);
+    }
+  }
+
+  &.link-button {
+    padding: var(--size-sm);
+
+    color: var(--button-text-color);
+
+    border-radius: var(--size-sm);
+    background-color: var(--button-primary);
+
+    &:hover {
+      background-color: var(--button-primary-hover);
+    }
+  }
+}

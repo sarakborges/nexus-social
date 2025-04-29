@@ -1,5 +1,8 @@
-import { ButtonComponent } from '@/Components/System/Button'
+import { ROUTES } from '@/Consts/Routes.const'
+
+import { DropdownComponent } from '@/Components/System/Dropdown/Dropdown.component'
 import { ImageComponent } from '@/Components/System/Image'
+import { LinkComponent } from '@/Components/System/Link'
 
 import { TopbarNotificationsComponent } from '@/Components/App/TopbarNotifications'
 
@@ -9,8 +12,17 @@ export const TopbarActionsComponent = () => (
   <section className="topbar-actions">
     <TopbarNotificationsComponent />
 
-    <ButtonComponent square transparent>
-      <ImageComponent src="/avatar-placeholder.png" alt="User" rounded square />
-    </ButtonComponent>
+    <DropdownComponent
+      dropdownTrigger={
+        <ImageComponent
+          src="/avatar-placeholder.png"
+          alt="User"
+          rounded
+          square
+        />
+      }
+    >
+      <LinkComponent to={ROUTES.LOGIN.path}>Logout</LinkComponent>
+    </DropdownComponent>
   </section>
 )

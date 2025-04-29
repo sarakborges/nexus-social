@@ -1,4 +1,5 @@
 import { ROUTES } from '@/Consts/Routes.const'
+import { TOPBAR_LOGOUT } from '@/Consts/Topbar.const'
 
 import { DropdownComponent } from '@/Components/System/Dropdown/Dropdown.component'
 import { ImageComponent } from '@/Components/System/Image'
@@ -22,7 +23,7 @@ export const TopbarActionsComponent = () => (
         />
       }
     >
-      <LinkComponent to={ROUTES.LOGIN.path}>Logout</LinkComponent>
+      <LinkComponent to={ROUTES.LOGIN.path}>{TOPBAR_LOGOUT}</LinkComponent>
     </DropdownComponent>
   </section>
 )

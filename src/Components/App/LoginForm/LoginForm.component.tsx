@@ -1,5 +1,13 @@
 import { useNavigate } from 'react-router'
 
+import {
+  LOGIN_BUTTON,
+  LOGIN_NO_ACCOUNT,
+  LOGIN_PASSWORD_PLACEHOLDER,
+  LOGIN_TITLE,
+  LOGIN_USERNAME_PLACEHOLDER
+} from '@/Consts/Login.const'
+
 import { ROUTES } from '@/Consts/Routes.const'
 
 import { FormComponent } from '@/Components/System/Form'
@@ -30,19 +38,24 @@ export const LoginFormComponent = () => {
   return (
     <section className="login-form">
       <CardComponent>
-        <TypographyComponent renderAs="h1">
-          Welcome to the Nexus!
-        </TypographyComponent>
+        <TypographyComponent renderAs="h1">{LOGIN_TITLE}</TypographyComponent>
 
         <FormComponent onSubmit={doLogin}>
-          <FieldComponent name="username" />
-          <FieldComponent name="password" type="password" />
-          <ButtonComponent type="submit">Login</ButtonComponent>
+          <FieldComponent
+            name="username"
+            placeholder={LOGIN_USERNAME_PLACEHOLDER}
+          />
+          <FieldComponent
+            name="password"
+            type="password"
+            placeholder={LOGIN_PASSWORD_PLACEHOLDER}
+          />
+          <ButtonComponent type="submit">{LOGIN_BUTTON}</ButtonComponent>
         </FormComponent>
 
         <section className="login-navigation">
           <LinkComponent to={ROUTES.LOGIN.path}>
-            No account? Create one now!
+            {LOGIN_NO_ACCOUNT}
           </LinkComponent>
         </section>
       </CardComponent>

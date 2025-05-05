@@ -1,5 +1,3 @@
-import { PropsWithChildren, ReactNode } from 'react'
+import { PropsWithChildren } from 'react'
 
-export type DropdownComponentType = {
-  dropdownTrigger: ReactNode
-} & PropsWithChildren
+export type DropdownComponentType = {} & PropsWithChildren

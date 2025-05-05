@@ -8,9 +8,7 @@ export const CardComponent = ({
   className?: string
   children: ReactNode
 }) => (
-  <div
-    className={['card', className].filter((classItem) => !!classItem).join(' ')}
-  >
+  <div className={['card', className].filter(Boolean).join(' ')}>
     {children}
   </div>
 )

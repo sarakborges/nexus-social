@@ -9,7 +9,7 @@ export const ImageComponent = ({
   square
 }: ImageComponentType) => {
   const classList = ['image', rounded ? 'rounded' : '', square ? 'square' : '']
-    .filter((classItem) => !!classItem)
+    .filter(Boolean)
     .join(' ')
 
   return (

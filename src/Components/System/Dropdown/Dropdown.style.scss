@@ -1,20 +1,16 @@
-.dropdown-wrapper {
-  position: relative;
+.dropdown {
+  position: absolute;
+  top: calc(100% + var(--size-sm));
+  right: 0;
+  z-index: 99;
 
-  > .dropdown {
-    position: absolute;
-    top: calc(100% + var(--size-sm));
-    right: 0;
-    z-index: 99;
+  box-shadow: 0 0 var(--size-sm) var(--size-xs) var(--color-background);
 
-    box-shadow: 0 0 var(--size-sm) var(--size-xs) var(--color-background);
+  &.open {
+    display: flex;
+  }
 
-    &.open {
-      display: flex;
-    }
-
-    &:not(.open) {
-      display: none;
-    }
+  &:not(.open) {
+    display: none;
   }
 }

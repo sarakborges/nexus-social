@@ -8,7 +8,7 @@ export const LinkComponent = ({
 }: { asButton?: boolean } & NavLinkProps) => (
   <NavLink
     className={['link', asButton ? 'link-button' : '']
-      .filter((classItem) => !!classItem)
+      .filter(Boolean)
       .join(' ')}
     {...rest}
   >

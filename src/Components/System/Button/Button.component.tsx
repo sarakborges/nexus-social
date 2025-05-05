@@ -15,7 +15,7 @@ export const ButtonComponent = ({
     transparent && !primary ? 'transparent' : '',
     square ? 'square' : square
   ]
-    .filter((classItem) => !!classItem)
+    .filter(Boolean)
     .join(' ')
 
   return (

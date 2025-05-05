@@ -28,12 +28,14 @@ export const LOGIN_FORM: FormComponentType = {
   fields: [
     {
       name: 'username',
+      label: LOGIN_USERNAME_PLACEHOLDER,
       placeholder: LOGIN_USERNAME_PLACEHOLDER,
       type: FIELD_TYPE_TEXT
     },
 
     {
       name: 'password',
+      label: LOGIN_PASSWORD_PLACEHOLDER,
       placeholder: LOGIN_PASSWORD_PLACEHOLDER,
       type: FIELD_TYPE_PASSWORD
     }

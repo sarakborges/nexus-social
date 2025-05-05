@@ -11,6 +11,7 @@ import {
 } from '@/Consts/FieldTypes.const'
 
 export type FieldComponentType = {
+  label?: string
   renderAs?:
     | typeof FIELD_TYPE_TEXT
     | typeof FIELD_TYPE_SELECT

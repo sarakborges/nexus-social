@@ -19,15 +19,23 @@ const Textarea = ({ ...rest }: FieldComponentType) => {
 }
 
 export const FieldComponent = ({
+  label,
   options,
   renderAs,
   ...rest
 }: FieldComponentType) => {
   const components = {
-    [FIELD_TYPE_TEXT]: <Input {...rest} />,
-    [FIELD_TYPE_SELECT]: <SelectComponent options={options} {...rest} />,
-    [FIELD_TYPE_TEXTAREA]: <Textarea {...rest} />
+    [FIELD_TYPE_TEXT]: <Input id={rest.name} {...rest} />,
+    [FIELD_TYPE_SELECT]: (
+      <SelectComponent id={rest.name} options={options} {...rest} />
+    ),
+    [FIELD_TYPE_TEXTAREA]: <Textarea id={rest.name} {...rest} />
   }
 
-  return components[renderAs || FIELD_TYPE_TEXT]
+  return (
+    <div className="field-wrapper">
+      {!!label && <label htmlFor={rest.name}>{label}</label>}
+      {components[renderAs || FIELD_TYPE_TEXT]}
+    </div>
+  )
 }

@@ -15,6 +15,7 @@ export type FormComponentType = {
 
   fields: {
     name: string
+    label: string
     placeholder: string
     type:
       | typeof FIELD_TYPE_TEXT

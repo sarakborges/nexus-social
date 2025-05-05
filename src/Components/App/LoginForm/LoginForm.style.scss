@@ -4,6 +4,8 @@
     flex-flow: column;
     gap: var(--size-lmd);
 
+    padding: var(--size-xl);
+
     > .login-navigation {
       display: flex;
       place-content: center;

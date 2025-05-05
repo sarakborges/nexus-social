@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router'
-
 import { FormComponentType } from '@/Components/System/Form/Form.type'
 
 import { FIELD_TYPE_PASSWORD, FIELD_TYPE_TEXT } from '@/Consts/FieldTypes.const'
@@ -10,10 +8,9 @@ import {
 } from '@/Consts/Login.const'
 import { ROUTES } from '@/Consts/Routes.const'
 
-const navigate = useNavigate()
-
 export const LOGIN_FORM: FormComponentType = {
   submitText: LOGIN_BUTTON,
+  redirectUri: ROUTES.HOME.path,
 
   onSubmit: (e) => {
     const formData = new FormData(e.target as HTMLFormElement)
@@ -23,9 +20,9 @@ export const LOGIN_FORM: FormComponentType = {
     if (!!username && !!password) {
       localStorage.setItem('nexus-token', 'nice')
       localStorage.setItem('userId', '1')
-
-      navigate(ROUTES.HOME.path)
     }
+
+    return true
   },
 
   fields: [

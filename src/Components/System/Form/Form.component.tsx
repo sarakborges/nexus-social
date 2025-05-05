@@ -1,9 +1,12 @@
+import { FieldComponent } from '@/Components/System/Field'
+import { ButtonComponent } from '@/Components/System/Button'
+
 import { FormComponentType } from './Form.type'
 
 import './Form.style.scss'
 
 export const FormComponent = ({ children, ...rest }: FormComponentType) => {
-  const { onSubmit } = rest
+  const { submitText, fields, onSubmit } = rest
 
   const doSubmit = (e) => {
     e.preventDefault()
@@ -12,7 +15,11 @@ export const FormComponent = ({ children, ...rest }: FormComponentType) => {
 
   return (
     <form className="form" {...rest} onSubmit={doSubmit}>
-      {children}
+      {fields.map((fieldItem) => (
+        <FieldComponent {...fieldItem} />
+      ))}
+
+      <ButtonComponent type="submit">{submitText}</ButtonComponent>
     </form>
   )
 }

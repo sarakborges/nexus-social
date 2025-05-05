@@ -1,5 +1,5 @@
 import {
-  FIELD_TYPE_INPUT,
+  FIELD_TYPE_TEXT,
   FIELD_TYPE_SELECT,
   FIELD_TYPE_TEXTAREA
 } from '@/Consts/FieldTypes.const'
@@ -24,10 +24,10 @@ export const FieldComponent = ({
   ...rest
 }: FieldComponentType) => {
   const components = {
-    [FIELD_TYPE_INPUT]: <Input {...rest} />,
+    [FIELD_TYPE_TEXT]: <Input {...rest} />,
     [FIELD_TYPE_SELECT]: <SelectComponent options={options} {...rest} />,
     [FIELD_TYPE_TEXTAREA]: <Textarea {...rest} />
   }
 
-  return components[renderAs || FIELD_TYPE_INPUT]
+  return components[renderAs || FIELD_TYPE_TEXT]
 }

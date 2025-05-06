@@ -1,13 +1,17 @@
+import { FormHTMLAttributes } from 'react'
 import { useNavigate } from 'react-router'
 
 import { FieldComponent } from '@/Components/System/Field'
 import { ButtonComponent } from '@/Components/System/Button'
 
-import { FormComponentType } from './Form.type'
+import { FormType } from '@/Types/Form.type'
 
 import './Form.style.scss'
 
-export const FormComponent = ({ children, ...rest }: FormComponentType) => {
+export const FormComponent = ({
+  children,
+  ...rest
+}: FormType & FormHTMLAttributes<HTMLFormElement>) => {
   const navigate = useNavigate()
 
   const { submitText, fields, onSubmit, redirectUri, ...formProps } = rest

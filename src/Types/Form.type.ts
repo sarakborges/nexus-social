@@ -1,5 +1,3 @@
-import { FormHTMLAttributes } from 'react'
-
 import { ROUTES } from '@/Consts/Routes.const'
 import {
   FIELD_TYPE_CHECKBOX,
@@ -10,7 +8,7 @@ import {
   FIELD_TYPE_TEXTAREA
 } from '@/Consts/FieldTypes.const'
 
-export type FormComponentType = {
+export type FormType = {
   submitText: string
 
   fields: {
@@ -34,4 +32,4 @@ export type FormComponentType = {
     | typeof ROUTES.PROFILE.path
     | typeof ROUTES.PROFILE_CONNECTIONS.path
     | typeof ROUTES.PROFILE_GROUPS.path
-} & FormHTMLAttributes<HTMLFormElement>
+}

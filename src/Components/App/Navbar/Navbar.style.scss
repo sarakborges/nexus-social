@@ -4,6 +4,11 @@
   place-items: center;
   gap: var(--size-smd);
 
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 99;
+
   width: var(--size-navbar);
   height: 100vh;
   padding: var(--size-md) 0;

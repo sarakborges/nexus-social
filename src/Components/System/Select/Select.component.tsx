@@ -1,4 +1,4 @@
-import { SelectComponentType } from './Select.type'
+import { SelectComponentType } from '@/Types/Components/SelectComponent.type'
 
 import './Select.style.scss'
 

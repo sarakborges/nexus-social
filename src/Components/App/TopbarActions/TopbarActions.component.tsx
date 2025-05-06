@@ -32,8 +32,8 @@ export const TopbarActionsComponent = () => {
       <div className="actions-dropdown-wrapper">
         <ButtonComponent square transparent onClick={toggleDropdown}>
           <ImageComponent
-            src="/avatar-placeholder.png"
-            alt="User"
+            src={`https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/doomyum6816297e9e8ce.png`}
+            alt="doom."
             rounded
             square
           />

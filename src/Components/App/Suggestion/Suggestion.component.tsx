@@ -1,5 +1,7 @@
 import { ROUTES } from '@/Consts/Routes.const'
 
+import { ProfileType } from '@/Types/Profile.type'
+
 import { CardComponent } from '@/Components/System/Card'
 import { TypographyComponent } from '@/Components/System/Typography'
 import { LinkComponent } from '@/Components/System/Link'
@@ -14,10 +16,7 @@ export const SuggestionComponent = ({
 }: {
   title: string
   to: string
-  options: {
-    name: string
-    url: string
-  }[]
+  options: ProfileType[]
 }) => (
   <CardComponent className="suggestion">
     <header>
@@ -27,11 +26,11 @@ export const SuggestionComponent = ({
 
     <ul>
       {options.map((optionItem) => (
-        <li key={optionItem.url}>
+        <li key={optionItem.uri}>
           <LinkComponent to={ROUTES.PROFILE.path}>
             <ImageComponent
-              src="/avatar-placeholder.png"
-              alt="User"
+              src={optionItem.picture || '/avatar-placeholder.png'}
+              alt={optionItem.name}
               rounded
               square
             />
@@ -40,7 +39,7 @@ export const SuggestionComponent = ({
           <section>
             <LinkComponent to={to}>
               <TypographyComponent>{optionItem.name}</TypographyComponent>
-              <TypographyComponent>@{optionItem.url}</TypographyComponent>
+              <TypographyComponent>@{optionItem.uri}</TypographyComponent>
             </LinkComponent>
           </section>
 

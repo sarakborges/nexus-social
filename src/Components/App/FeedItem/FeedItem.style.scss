@@ -1,0 +1,40 @@
+.feed-item {
+  display: flex;
+
+  > .card {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-lmd);
+
+    width: 100%;
+
+    .feed-item-header {
+      display: flex;
+      place-items: center;
+      gap: var(--size-md);
+
+      > a > .image > img {
+        max-width: var(--size-xl);
+      }
+
+      > .feed-item-header-user-id {
+        display: flex;
+        flex-flow: column;
+        gap: var(--size-xs);
+
+        > p > a {
+          display: inline;
+
+          color: var(--color-text);
+        }
+      }
+    }
+
+    > main {
+      display: flex;
+      flex-flow: column;
+      place-items: flex-start;
+      gap: var(--size-lmd);
+    }
+  }
+}

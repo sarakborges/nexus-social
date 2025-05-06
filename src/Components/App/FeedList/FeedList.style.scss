@@ -1,0 +1,7 @@
+.feed-list {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-lmd);
+
+  flex: 1;
+}

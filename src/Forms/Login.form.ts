@@ -1,4 +1,5 @@
-import { FormComponentType } from '@/Components/System/Form/Form.type'
+import { FormHTMLAttributes } from 'react'
+import { FormType } from '@/Types/Form.type'
 
 import { FIELD_TYPE_PASSWORD, FIELD_TYPE_TEXT } from '@/Consts/FieldTypes.const'
 import {
@@ -8,7 +9,7 @@ import {
 } from '@/Consts/Login.const'
 import { ROUTES } from '@/Consts/Routes.const'
 
-export const LOGIN_FORM: FormComponentType = {
+export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   submitText: LOGIN_BUTTON,
   redirectUri: ROUTES.HOME.path,
 

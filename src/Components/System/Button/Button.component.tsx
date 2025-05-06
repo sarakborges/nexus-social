@@ -1,4 +1,4 @@
-import { ButtonComponentType } from './Button.type'
+import { ButtonComponentType } from '@/Types/Components/ButtonComponent.type'
 
 import './Button.style.scss'
 

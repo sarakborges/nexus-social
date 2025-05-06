@@ -6,7 +6,7 @@ import {
 
 import { SelectComponent } from '@/Components/System/Select'
 
-import { FieldComponentType } from './Field.type'
+import { FieldComponentType } from '@/Types/Components/FieldComponent.type'
 
 import './Field.style.scss'
 

@@ -1,4 +1,4 @@
-import { ImageComponentType } from './Image.type'
+import { ImageComponentType } from '@/Types/Components/ImageComponent.type'
 
 import './Image.style.scss'
 

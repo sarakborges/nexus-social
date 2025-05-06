@@ -1,5 +1,7 @@
+import { SuggestionsProvider } from '@/Contexts/SuggestionsContext'
+
 import { PageWrapperComponent } from '@/Components/App/PageWrapper'
-import { NewPostComponent } from '@/Components/App/NewPost'
+import { FeedComponent } from '@/Components/App/Feed'
 
 import { HomeSuggestionsComponent } from '@/Components/App/HomeSuggestions'
 
@@ -8,11 +10,11 @@ import './Home.style.scss'
 export const HomeRoute = () => (
   <PageWrapperComponent>
     <main className="home-route">
-      <section className="feed">
-        <NewPostComponent />
-      </section>
+      <FeedComponent />
 
-      <HomeSuggestionsComponent />
+      <SuggestionsProvider>
+        <HomeSuggestionsComponent />
+      </SuggestionsProvider>
     </main>
   </PageWrapperComponent>
 )

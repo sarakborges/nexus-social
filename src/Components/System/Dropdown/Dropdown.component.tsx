@@ -1,6 +1,6 @@
 import { forwardRef, useImperativeHandle, useState } from 'react'
 
-import { DropdownComponentType } from './Dropdown.type'
+import { DropdownComponentType } from '@/Types/Components/DropdownComponent.type'
 
 import { CardComponent } from '@/Components/System/Card'
 

@@ -20,23 +20,22 @@
       gap: var(--size-md);
 
       > section {
-        flex: 1;
+        display: flex;
+        flex-flow: column;
+        gap: var(--size-xs);
+
         overflow: hidden;
+        flex: 1;
 
         > a {
-          display: flex;
-          flex-flow: column;
-          place-items: flex-start;
-          gap: var(--size-xs);
+          display: inline-block;
 
-          > p {
-            max-width: 100%;
-            height: calc(var(--size-xs) + var(--size-md));
-            overflow: hidden;
+          max-width: 100%;
+          overflow: hidden;
+          height: calc(var(--size-xs) + var(--size-md));
 
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          }
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
 

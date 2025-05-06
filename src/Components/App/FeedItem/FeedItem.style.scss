@@ -4,7 +4,7 @@
   > .card {
     display: flex;
     flex-flow: column;
-    gap: var(--size-lmd);
+    gap: var(--size-md);
 
     width: 100%;
 
@@ -20,12 +20,10 @@
       > .feed-item-header-user-id {
         display: flex;
         flex-flow: column;
-        gap: var(--size-xs);
+        gap: var(--size-sm);
 
         > p > a {
           display: inline;
-
-          color: var(--color-text);
         }
       }
     }
@@ -34,7 +32,7 @@
       display: flex;
       flex-flow: column;
       place-items: flex-start;
-      gap: var(--size-lmd);
+      gap: var(--size-md);
     }
   }
 }

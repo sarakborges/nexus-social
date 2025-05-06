@@ -3,4 +3,5 @@ export type GroupType = {
   name: string
   uri: string
   picture?: string
+  connectionsAsMembers?: number
 }

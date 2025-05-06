@@ -12,4 +12,9 @@
   &:is(h2) {
     font-size: var(--size-lmd);
   }
+
+  &:is(.small) {
+    font-size: var(--size-smd);
+    font-weight: 300;
+  }
 }

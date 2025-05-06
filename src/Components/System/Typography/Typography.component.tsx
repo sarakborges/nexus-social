@@ -4,12 +4,16 @@ import './Typography.style.scss'
 
 export const TypographyComponent = ({
   renderAs,
+  smallText,
   children
 }: {
   renderAs?: 'p' | 'span' | 'h1' | 'h2' | 'h3'
+  smallText?: boolean
   children: ReactNode
 }) => {
-  const className = 'typography'
+  const className = ['typography', smallText ? 'small' : '']
+    .filter(Boolean)
+    .join(' ')
 
   const components = {
     p: <p className={className}>{children}</p>,

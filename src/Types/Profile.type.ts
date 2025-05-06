@@ -3,4 +3,5 @@ export type ProfileType = {
   name: string
   uri: string
   picture?: string
+  connectionsInCommon?: number
 }

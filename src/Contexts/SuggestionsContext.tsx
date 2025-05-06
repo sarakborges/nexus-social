@@ -9,14 +9,16 @@ const INITIAL_PROFILE_SUGGESTIONS: ProfileType[] = [
     id: '1',
     name: 'hope.',
     uri: 'hopyumm',
-    picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/first-blood67e450dcccc7c.png`
+    picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/first-blood67e450dcccc7c.png`,
+    connectionsInCommon: 3
   },
 
   {
     id: '2',
     name: 'doom.',
     uri: 'doomyumm',
-    picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/doomyum6816297e9e8ce.png`
+    picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/doomyum6816297e9e8ce.png`,
+    connectionsInCommon: 7
   }
 ]
 
@@ -25,14 +27,16 @@ const INITIAL_GROUP_SUGGESTIONS: GroupType[] = [
     id: '1',
     name: 'add condomínio de piranhas',
     uri: 'condominio-piranhas',
-    picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/community/281766/photo/add-condominio-de-piranhas6801da3a12299.png`
+    picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/community/281766/photo/add-condominio-de-piranhas6801da3a12299.png`,
+    connectionsAsMembers: 5
   },
 
   {
     id: '2',
     name: 'buscas interpretativas',
     uri: 'buscas-interpretativas',
-    picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/community/281769/photo/buscas-interpretativas638f631017376.png`
+    picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/community/281769/photo/buscas-interpretativas638f631017376.png`,
+    connectionsAsMembers: 4
   }
 ]
 

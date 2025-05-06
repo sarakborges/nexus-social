@@ -34,12 +34,8 @@ export const FeedItemComponent = ({ feedData }: { feedData: FeedType }) => {
               </LinkComponent>
             </TypographyComponent>
 
-            <TypographyComponent>
-              <LinkComponent
-                to={ROUTES.PROFILE.path.replace(':id', profile.uri)}
-              >
-                {`@${profile.uri}`}
-              </LinkComponent>
+            <TypographyComponent smallText>
+              Publicado em 05/11/2024, às 15:03
             </TypographyComponent>
           </div>
         </section>
@@ -48,10 +44,6 @@ export const FeedItemComponent = ({ feedData }: { feedData: FeedType }) => {
           {picture && <ImageComponent alt="Picture" src={picture} square />}
           {content && <TypographyComponent>{content}</TypographyComponent>}
         </main>
-
-        <footer>
-          <TypographyComponent>05/11/2024 - 15:03</TypographyComponent>
-        </footer>
       </CardComponent>
     </li>
   )

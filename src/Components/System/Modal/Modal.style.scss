@@ -14,27 +14,33 @@
   background-color: var(--modal-background);
 
   > .card {
-    display: flex;
-    flex-flow: column;
-    gap: var(--size-md);
+    padding: 0;
 
     box-shadow: 0 0 var(--size-sm) var(--size-xs) var(--color-background);
 
-    > header {
+    > div {
       display: flex;
-      place-items: center;
+      flex-flow: column;
       gap: var(--size-md);
 
-      > :not(.button) {
-        flex: 1;
-      }
+      padding: var(--size-md);
 
-      > .button {
-        height: auto;
+      > header {
+        display: flex;
+        place-items: center;
+        gap: var(--size-md);
 
-        > svg {
-          width: var(--size-md);
-          height: var(--size-md);
+        > :not(.button) {
+          flex: 1;
+        }
+
+        > .button {
+          height: auto;
+
+          > svg {
+            width: var(--size-md);
+            height: var(--size-md);
+          }
         }
       }
     }

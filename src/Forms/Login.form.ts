@@ -19,7 +19,12 @@ export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
     if (!username || !password) {
       const response = {
-        error: `Usuário e senha não podem ser vazios`
+        errorMessage: `Usuário e senha são obrigatórios`,
+
+        errors: {
+          username: !username ? `Campo obrigatório` : ``,
+          password: !password ? `Campo obrigatório` : ``
+        }
       }
 
       return response

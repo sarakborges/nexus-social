@@ -31,17 +31,23 @@ export const ModalComponent = forwardRef(
         className={['modal', isOpen ? 'open' : ''].filter(Boolean).join(' ')}
       >
         <CardComponent>
-          <header>
-            <TypographyComponent renderAs="h2">
-              {title || ''}
-            </TypographyComponent>
+          <div
+            onClick={(e) => {
+              e.stopPropagation()
+            }}
+          >
+            <header>
+              <TypographyComponent renderAs="h2">
+                {title || ''}
+              </TypographyComponent>
 
-            <ButtonComponent onClick={toggleModal}>
-              <FaTimes />
-            </ButtonComponent>
-          </header>
+              <ButtonComponent onClick={toggleModal}>
+                <FaTimes />
+              </ButtonComponent>
+            </header>
 
-          <main>{children}</main>
+            <main>{children}</main>
+          </div>
         </CardComponent>
       </div>
     )

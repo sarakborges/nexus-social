@@ -20,10 +20,15 @@ const Textarea = ({ ...rest }: FieldComponentType) => {
 
 export const FieldComponent = ({
   label,
+  error,
   options,
   renderAs,
   ...rest
 }: FieldComponentType) => {
+  const wrapperClasses = ['field-wrapper', error ? 'field-error' : '']
+    .filter(Boolean)
+    .join(' ')
+
   const components = {
     [FIELD_TYPE_TEXT]: <Input id={rest.name} {...rest} />,
     [FIELD_TYPE_SELECT]: (
@@ -33,9 +38,22 @@ export const FieldComponent = ({
   }
 
   return (
-    <div className="field-wrapper">
-      {!!label && <label htmlFor={rest.name}>{label}</label>}
-      {components[renderAs || FIELD_TYPE_TEXT]}
+    <div className="field-component">
+      {!!label && (
+        <label className="label" htmlFor={rest.name}>
+          {label}
+        </label>
+      )}
+
+      <div className={wrapperClasses}>
+        {components[renderAs || FIELD_TYPE_TEXT]}
+      </div>
+
+      {!!error && (
+        <label className="error" htmlFor={rest.name}>
+          {error}
+        </label>
+      )}
     </div>
   )
 }

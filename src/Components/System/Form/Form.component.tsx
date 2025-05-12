@@ -6,6 +6,8 @@ import { ButtonComponent } from '@/Components/System/Button'
 import { ModalComponent } from '@/Components/System/Modal'
 import { TypographyComponent } from '@/Components/System/Typography'
 
+import { FORM_ERROR_BUTTON, FORM_ERROR_TITLE } from '@/Consts/Form.const'
+
 import { FormType } from '@/Types/Form.type'
 
 import './Form.style.scss'
@@ -15,7 +17,8 @@ export const FormComponent = ({
   ...rest
 }: FormType & FormHTMLAttributes<HTMLFormElement>) => {
   const navigate = useNavigate()
-  const [errorMessage, setErrorMessage] = useState('')
+  const [modalErrorMessage, setModalErrorMessage] = useState('')
+  const [errors, setErrors] = useState({})
 
   const { submitText, fields, onSubmit, ...formProps } = rest
 
@@ -33,12 +36,21 @@ export const FormComponent = ({
     errorModalRef?.current?.toggleModal(e)
   }
 
-  const handleError = ({ error, e }: { error: string; e: eventType }) => {
-    if (!error) {
+  const handleError = ({
+    errorMessage,
+    errors,
+    e
+  }: {
+    errorMessage: string
+    errors: Array<string>
+    e: eventType
+  }) => {
+    if (!errorMessage) {
       return
     }
 
-    setErrorMessage(error)
+    setModalErrorMessage(errorMessage)
+    setErrors(errors)
     toggleErrorModal(e)
   }
 
@@ -50,8 +62,15 @@ export const FormComponent = ({
     navigate(redirectUri)
   }
 
+  const clearError = (fieldName) => {
+    const { [fieldName]: field, ...otherErrors } = errors
+    setErrors(otherErrors)
+  }
+
   const doSubmit = async (e) => {
     e.preventDefault()
+
+    setErrors({})
 
     const submitResponse = await onSubmit?.(e)
 
@@ -59,9 +78,9 @@ export const FormComponent = ({
       return
     }
 
-    const { redirectUri, error } = submitResponse
+    const { redirectUri, errorMessage, errors } = submitResponse
 
-    handleError({ error, e })
+    handleError({ errorMessage, e, errors })
     handleRedirect(redirectUri)
   }
 
@@ -69,16 +88,25 @@ export const FormComponent = ({
     <>
       <form className="form" {...formProps} onSubmit={doSubmit}>
         {fields.map((fieldItem) => (
-          <FieldComponent key={fieldItem.name} {...fieldItem} />
+          <FieldComponent
+            key={fieldItem.name}
+            error={errors[fieldItem.name] || ''}
+            onChange={() => {
+              clearError(fieldItem.name)
+            }}
+            {...fieldItem}
+          />
         ))}
 
         <ButtonComponent type="submit">{submitText}</ButtonComponent>
       </form>
 
-      <ModalComponent ref={errorModalRef} title="Erro">
+      <ModalComponent ref={errorModalRef} title={FORM_ERROR_TITLE}>
         <div className="error-modal">
-          <TypographyComponent>{errorMessage}</TypographyComponent>
-          <ButtonComponent onClick={toggleErrorModal}>Ok</ButtonComponent>
+          <TypographyComponent>{modalErrorMessage}</TypographyComponent>
+          <ButtonComponent onClick={toggleErrorModal}>
+            {FORM_ERROR_BUTTON}
+          </ButtonComponent>
         </div>
       </ModalComponent>
     </>

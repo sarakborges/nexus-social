@@ -1,0 +1,50 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+
+  display: flex;
+  place-content: center;
+  place-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--modal-background);
+
+  > .card {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-md);
+
+    box-shadow: 0 0 var(--size-sm) var(--size-xs) var(--color-background);
+
+    > header {
+      display: flex;
+      place-items: center;
+      gap: var(--size-md);
+
+      > :not(.button) {
+        flex: 1;
+      }
+
+      > .button {
+        height: auto;
+
+        > svg {
+          width: var(--size-md);
+          height: var(--size-md);
+        }
+      }
+    }
+  }
+
+  &.open {
+    display: flex;
+  }
+
+  &:not(.open) {
+    display: none;
+  }
+}

@@ -3,3 +3,9 @@
   flex-flow: column;
   gap: var(--size-lmd);
 }
+
+.error-modal {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-md);
+}

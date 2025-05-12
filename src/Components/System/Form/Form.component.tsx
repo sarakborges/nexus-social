@@ -14,15 +14,21 @@ export const FormComponent = ({
 }: FormType & FormHTMLAttributes<HTMLFormElement>) => {
   const navigate = useNavigate()
 
-  const { submitText, fields, onSubmit, redirectUri, ...formProps } = rest
+  const { submitText, fields, onSubmit, ...formProps } = rest
 
-  const doSubmit = (e) => {
+  const doSubmit = async (e) => {
     e.preventDefault()
 
-    const isSubmitSuccessful = onSubmit?.(e)
+    const submitResponse = await onSubmit?.(e)
 
-    if (!isSubmitSuccessful) {
+    if (!submitResponse) {
       return
+    }
+
+    const { redirectUri, error } = submitResponse
+
+    if (!!error) {
+      alert(error)
     }
 
     if (!redirectUri) {

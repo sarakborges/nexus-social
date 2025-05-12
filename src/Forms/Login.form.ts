@@ -11,19 +11,28 @@ import { ROUTES } from '@/Consts/Routes.const'
 
 export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   submitText: LOGIN_BUTTON,
-  redirectUri: ROUTES.HOME.path,
 
-  onSubmit: (e) => {
+  onSubmit: async (e) => {
     const formData = new FormData(e.target as HTMLFormElement)
 
     const { username, password } = Object.fromEntries(formData)
 
-    if (!!username && !!password) {
-      localStorage.setItem('nexus-token', 'nice')
-      localStorage.setItem('userId', '1')
+    if (!username || !password) {
+      const response = {
+        error: `Usuário e senha não podem ser vazios`
+      }
+
+      return response
     }
 
-    return true
+    localStorage.setItem('nexus-token', 'nice')
+    localStorage.setItem('userId', '1')
+
+    const response = {
+      redirectUri: ROUTES.HOME.path
+    }
+
+    return response
   },
 
   fields: [

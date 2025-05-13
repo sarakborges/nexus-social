@@ -31,6 +31,16 @@
     }
   }
 
+  &.cancel {
+    color: var(--button-text-color);
+
+    background-color: var(--button-cancel);
+
+    &:hover {
+      background-color: var(--button-cancel-hover);
+    }
+  }
+
   &.transparent {
     color: var(--color-text);
 

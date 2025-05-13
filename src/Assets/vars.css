@@ -2,7 +2,7 @@
   --color-primary: #5182df;
   --color-primary-active: #154bae;
 
-  --color-error: #fd4964;
+  --color-error: #ff637b;
 
   --color-text: #e0e0e0;
   --color-border: #161625;
@@ -14,7 +14,9 @@
   --button-primary: #5182df;
   --button-primary-hover: #154bae;
   --button-primary-disabled: #84a4de;
-  --button-cancel-disabled: #cd99b2;
+  --button-cancel: #ff637b;
+  --button-cancel-hover: #ff2244;
+  --button-cancel-disabled: #ffa4b1;
 
   --field-background: #060617;
   --field-text: #e0e0e0;
@@ -36,6 +38,7 @@
 
   --size-navbar: 240px;
   --size-home-suggestions: 360px;
+  --size-topbar-notifications: 360px;
   --size-topbar-search: 480px;
   --size-new-post: 640px;
   --size-logo: 96px;

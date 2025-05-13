@@ -4,6 +4,7 @@ import './Button.style.scss'
 
 export const ButtonComponent = ({
   primary,
+  cancel,
   transparent,
   square,
   children,
@@ -11,8 +12,9 @@ export const ButtonComponent = ({
 }: ButtonComponentType) => {
   const classList = [
     'button',
-    primary || !transparent || (!primary && !transparent) ? 'primary' : '',
+    primary || (!transparent && !cancel) ? 'primary' : '',
     transparent && !primary ? 'transparent' : '',
+    cancel && !primary ? 'cancel' : '',
     square ? 'square' : square
   ]
     .filter(Boolean)

@@ -16,3 +16,45 @@
   background-color: var(--color-primary);
   border-radius: 100%;
 }
+
+.notifications-dropdown {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-md);
+
+  width: var(--size-topbar-notifications);
+
+  > li {
+    display: flex;
+    place-items: center;
+    gap: var(--size-md);
+
+    .image {
+      > img {
+        max-width: var(--size-xl);
+      }
+    }
+
+    > .notification-profile {
+      display: flex;
+      flex-flow: column;
+      gap: var(--size-xs);
+
+      flex: 1;
+    }
+
+    > .notification-actions {
+      display: flex;
+      gap: var(--size-smd);
+
+      > .button {
+        height: auto;
+
+        > svg {
+          width: var(--size-md);
+          height: var(--size-md);
+        }
+      }
+    }
+  }
+}

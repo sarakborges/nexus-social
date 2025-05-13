@@ -8,12 +8,14 @@
     position: relative;
   }
 
-  .button {
-    width: var(--size-xl);
+  .actions-dropdown-wrapper {
+    > .button {
+      width: var(--size-xl);
 
-    > svg {
-      width: var(--size-lmd);
-      height: var(--size-lmd);
+      > svg {
+        width: var(--size-lmd);
+        height: var(--size-lmd);
+      }
     }
   }
 }

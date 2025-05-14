@@ -49,24 +49,24 @@ export const SuggestionItemComponent = ({
       }
     }
 
-    const isSingleConnectionInCommon =
-      suggestion[suggestionTextProps[type].counter] === 1
+    const suggestionProps = suggestionTextProps[type]
+    const isSingleConnectionInCommon = suggestion[suggestionProps.counter] === 1
 
     if (isSingleConnectionInCommon) {
-      suggestionText = suggestionTextProps[type].textSingle
+      suggestionText = suggestionProps.textSingle
     }
 
     if (!isSingleConnectionInCommon) {
-      suggestionText = suggestionTextProps[type].textMultiple
+      suggestionText = suggestionProps.textMultiple
     }
 
-    suggestionText = suggestionTextProps[type].textFormat
-      .replace(':counter', suggestion[suggestionTextProps[type].counter])
+    suggestionText = suggestionProps.textFormat
+      .replace(':counter', suggestion[suggestionProps.counter])
       .replace(':text', suggestionText)
 
     return {
       suggestionText,
-      linkUri: suggestionTextProps[type].route.path.replace(':id', uri)
+      linkUri: suggestionProps.route.path.replace(':id', uri)
     }
   }
 

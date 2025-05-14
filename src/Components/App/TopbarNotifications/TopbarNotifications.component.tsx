@@ -72,14 +72,16 @@ export const TopbarNotificationsComponent = () => {
                   {NOTIFICATION_TITLES[notificationItem.type]}
                 </TypographyComponent>
 
-                <LinkComponent
-                  to={ROUTES.PROFILE.path.replace(
-                    ':id',
-                    notificationItem.profile.uri
-                  )}
-                >
-                  {notificationItem.profile.name}
-                </LinkComponent>
+                <p>
+                  <LinkComponent
+                    to={ROUTES.PROFILE.path.replace(
+                      ':id',
+                      notificationItem.profile.uri
+                    )}
+                  >
+                    {notificationItem.profile.name}
+                  </LinkComponent>
+                </p>
 
                 {notificationItem.type ===
                   NOTIFICATION_TYPES.CONNECTION_REQUEST && (

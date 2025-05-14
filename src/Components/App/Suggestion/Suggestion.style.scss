@@ -27,15 +27,18 @@
         overflow: hidden;
         flex: 1;
 
-        > a {
-          display: inline-block;
-
-          max-width: 100%;
-          overflow: hidden;
+        > p {
           height: calc(var(--size-xs) + var(--size-md));
 
-          white-space: nowrap;
-          text-overflow: ellipsis;
+          > a {
+            display: inline-block;
+
+            max-width: 100%;
+            overflow: hidden;
+
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
         }
       }
 

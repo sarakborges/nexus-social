@@ -38,7 +38,9 @@ export const SuggestionComponent = ({
           </LinkComponent>
 
           <section>
-            <LinkComponent to={to}>{optionItem.name}</LinkComponent>
+            <p>
+              <LinkComponent to={to}>{optionItem.name}</LinkComponent>
+            </p>
 
             {optionItem?.connectionsInCommon && (
               <TypographyComponent renderAs="span" smallText>

@@ -1,13 +1,6 @@
-import { GroupType } from './Group.type'
-import { ProfileType } from './Profile.type'
+import { SuggestionType } from './Suggestion.type'
 
 export type SuggestionsListType = {
-  suggestions: {
-    profiles: ProfileType[]
-    groups: GroupType[]
-  }
-  setSuggestions: (newSuggestions: {
-    profiles: ProfileType[]
-    groups: GroupType[]
-  }) => void
+  suggestions: Array<SuggestionType>
+  setSuggestions: (newSuggestions: Array<SuggestionType>) => void
 }

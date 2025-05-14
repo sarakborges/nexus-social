@@ -24,6 +24,11 @@ export const ROUTES = {
     path: '/profile/:id'
   },
 
+  GROUP: {
+    id: 'group',
+    path: '/group/:id'
+  },
+
   PROFILE_CONNECTIONS: {
     id: 'connections',
     path: '/profile/:id/connections'
@@ -32,5 +37,15 @@ export const ROUTES = {
   PROFILE_GROUPS: {
     id: 'groups',
     path: '/profile/:id/groups'
+  },
+
+  SUGGESTIONS_PROFILE: {
+    id: 'suggestions-profiles',
+    path: '/suggestions/profiles'
+  },
+
+  SUGGESTIONS_GROUPS: {
+    id: 'suggestions-groups',
+    path: '/suggestions/groups'
   }
 }

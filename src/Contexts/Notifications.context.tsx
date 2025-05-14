@@ -5,7 +5,7 @@ import { NotificationType } from '@/Types/Notification.type'
 import { NOTIFICATION_TYPES } from '@/Consts/Notifications.const'
 import { NotificationsListType } from '@/Types/NotificationsList.type'
 
-const INITIAL_FEED: NotificationType[] = [
+const INITIAL_NOTIFICATIONS: NotificationType[] = [
   {
     id: '1',
     type: NOTIFICATION_TYPES.CONNECTION_REQUEST,
@@ -22,8 +22,9 @@ const INITIAL_FEED: NotificationType[] = [
 const NotificationsContext = createContext<NotificationsListType | null>(null)
 
 const NotificationsProvider = ({ children }) => {
-  const [notifications, setNotifications] =
-    useState<NotificationType[]>(INITIAL_FEED)
+  const [notifications, setNotifications] = useState<NotificationType[]>(
+    INITIAL_NOTIFICATIONS
+  )
 
   return (
     <NotificationsContext.Provider value={{ notifications, setNotifications }}>

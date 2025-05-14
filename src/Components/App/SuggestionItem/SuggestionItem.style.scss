@@ -1,0 +1,36 @@
+.suggestion-item {
+  display: flex;
+  place-items: center;
+  gap: var(--size-md);
+
+  > section {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-xs);
+
+    overflow: hidden;
+    flex: 1;
+
+    > p {
+      height: calc(var(--size-xs) + var(--size-md));
+
+      > a {
+        display: inline-block;
+
+        max-width: 100%;
+        overflow: hidden;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  > a {
+    > picture {
+      > img {
+        max-width: var(--size-xl);
+      }
+    }
+  }
+}

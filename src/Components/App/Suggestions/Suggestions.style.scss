@@ -1,0 +1,17 @@
+.suggestions {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-lmd);
+
+  > header {
+    display: flex;
+    place-content: space-between;
+    place-items: center;
+  }
+
+  > ul {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-lmd);
+  }
+}

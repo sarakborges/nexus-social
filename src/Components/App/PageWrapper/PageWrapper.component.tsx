@@ -1,4 +1,5 @@
 import { NotificationsProvider } from '@/Contexts/Notifications.context'
+import { ActiveProfileProvider } from '@/Contexts/ActiveProfile.context'
 
 import { NavbarComponent } from '@/Components/App/Navbar'
 import { TopbarComponent } from '@/Components/App/Topbar'
@@ -9,10 +10,21 @@ type PageWrapperComponentType = {
   children: React.ReactNode
 }
 
+const PageProviders = ({ children }) => {
+  const providersList = [NotificationsProvider, ActiveProfileProvider]
+
+  return providersList.reduce(
+    (prevProvider, CurrentProvider) => (
+      <CurrentProvider>{prevProvider}</CurrentProvider>
+    ),
+    children
+  )
+}
+
 export const PageWrapperComponent = ({
   children
 }: PageWrapperComponentType) => (
-  <NotificationsProvider>
+  <PageProviders>
     <main className="page-wrapper">
       <aside>
         <NavbarComponent />
@@ -24,5 +36,5 @@ export const PageWrapperComponent = ({
         <main>{children}</main>
       </aside>
     </main>
-  </NotificationsProvider>
+  </PageProviders>
 )

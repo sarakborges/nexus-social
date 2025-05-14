@@ -1,8 +1,14 @@
 import { createContext, useState } from 'react'
 
+import {
+  SUGGESTION_TYPE_GROUP,
+  SUGGESTION_TYPE_PROFILE
+} from '@/Consts/Suggestions.const'
+
 import { ProfileType } from '@/Types/Profile.type'
 import { GroupType } from '@/Types/Group.type'
 import { SuggestionsListType } from '@/Types/SuggestionsList.type'
+import { SuggestionType } from '@/Types/Suggestion.type'
 
 const INITIAL_PROFILE_SUGGESTIONS: ProfileType[] = [
   {
@@ -43,13 +49,17 @@ const INITIAL_GROUP_SUGGESTIONS: GroupType[] = [
 const SuggestionsContext = createContext<SuggestionsListType | null>(null)
 
 const SuggestionsProvider = ({ children }) => {
-  const [suggestions, setSuggestions] = useState<{
-    profiles: ProfileType[]
-    groups: GroupType[]
-  }>({
-    profiles: INITIAL_PROFILE_SUGGESTIONS,
-    groups: INITIAL_GROUP_SUGGESTIONS
-  })
+  const [suggestions, setSuggestions] = useState<Array<SuggestionType>>([
+    {
+      list: INITIAL_PROFILE_SUGGESTIONS,
+      type: SUGGESTION_TYPE_PROFILE
+    },
+
+    {
+      list: INITIAL_GROUP_SUGGESTIONS,
+      type: SUGGESTION_TYPE_GROUP
+    }
+  ])
 
   return (
     <SuggestionsContext.Provider value={{ suggestions, setSuggestions }}>

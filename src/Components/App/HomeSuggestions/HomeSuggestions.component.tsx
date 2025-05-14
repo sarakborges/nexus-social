@@ -1,10 +1,15 @@
 import { use } from 'react'
 
+import {
+  SUGGESTION_TYPE_GROUP,
+  SUGGESTION_TYPE_PROFILE,
+  SUGGESTIONS_CONNECTIONS_TITLE,
+  SUGGESTIONS_GROUPS_TITLE
+} from '@/Consts/Suggestions.const'
+
 import { SuggestionsContext } from '@/Contexts/Suggestions.context'
 
-import { ROUTES } from '@/Consts/Routes.const'
-
-import { SuggestionComponent } from '@/Components/App/Suggestion'
+import { SuggestionsComponent } from '@/Components/App/Suggestions'
 
 import './HomeSuggestions.style.scss'
 
@@ -15,23 +20,17 @@ export const HomeSuggestionsComponent = () => {
     return <></>
   }
 
-  const {
-    suggestions: { profiles, groups }
-  } = suggestionsContext
+  const { suggestions } = suggestionsContext
 
   return (
     <section className="home-suggestions">
-      <SuggestionComponent
-        title={'Conexões sugeridas'}
-        to={ROUTES.PROFILE.path.replace(':id', 'hopyumm')}
-        options={profiles}
-      />
-
-      <SuggestionComponent
-        title={'Grupos sugeridos'}
-        to={ROUTES.PROFILE.path.replace(':id', 'hopyumm')}
-        options={groups}
-      />
+      {suggestions.map((suggestionsList) => (
+        <SuggestionsComponent
+          key={`${suggestionsList.type}-suggestions-list`}
+          suggestions={suggestionsList.list}
+          type={suggestionsList.type}
+        />
+      ))}
     </section>
   )
 }

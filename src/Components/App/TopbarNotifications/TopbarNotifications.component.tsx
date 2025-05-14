@@ -1,7 +1,14 @@
-import { useRef } from 'react'
+import { use, useRef } from 'react'
 import { FaBell, FaCheck, FaTimes } from 'react-icons/fa'
 
+import { NotificationsContext } from '@/Contexts/Notifications.context'
+
 import { ROUTES } from '@/Consts/Routes.const'
+import {
+  NOTIFICATION_CONNECTIONS_IN_COMMON,
+  NOTIFICATION_TITLES,
+  NOTIFICATION_TYPES
+} from '@/Consts/Notifications.const'
 
 import { DropdownComponent } from '@/Components/System/Dropdown'
 import { ButtonComponent } from '@/Components/System/Button'
@@ -12,6 +19,14 @@ import { TypographyComponent } from '@/Components/System/Typography'
 import './TopbarNotifications.style.scss'
 
 export const TopbarNotificationsComponent = () => {
+  const notificationsContext = use(NotificationsContext)
+
+  if (!notificationsContext?.notifications) {
+    return <></>
+  }
+
+  const { notifications } = notificationsContext
+
   const topbarNotificationsDropdownRef = useRef<{
     toggleDropdown: (e: MouseEvent | React.MouseEvent) => void
   } | null>(null)
@@ -24,20 +39,6 @@ export const TopbarNotificationsComponent = () => {
     topbarNotificationsDropdownRef?.current?.toggleDropdown(e)
   }
 
-  const notifications = [
-    {
-      id: 1,
-      user: {
-        id: 1,
-        name: 'hope.',
-        uri: 'hopyumm',
-        picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/first-blood67e450dcccc7c.png`,
-        connectionsInCommon: 3
-      },
-      type: 'connectionRequest'
-    }
-  ]
-
   return (
     <div className="actions-dropdown-wrapper">
       <ButtonComponent square transparent onClick={toggleDropdown}>
@@ -48,18 +49,19 @@ export const TopbarNotificationsComponent = () => {
       <DropdownComponent ref={topbarNotificationsDropdownRef}>
         <ul className="notifications-dropdown">
           {notifications.map((notificationItem) => (
-            <li key={notificationItem.user.uri}>
+            <li key={notificationItem.profile.uri}>
               <LinkComponent
                 to={ROUTES.PROFILE.path.replace(
                   ':id',
-                  notificationItem.user.uri
+                  notificationItem.profile.uri
                 )}
               >
                 <ImageComponent
                   src={
-                    notificationItem.user.picture || '/avatar-placeholder.png'
+                    notificationItem.profile.picture ||
+                    '/avatar-placeholder.png'
                   }
-                  alt={notificationItem.user.name}
+                  alt={notificationItem.profile.name}
                   rounded
                   square
                 />
@@ -67,21 +69,27 @@ export const TopbarNotificationsComponent = () => {
 
               <section className="notification-profile">
                 <TypographyComponent renderAs="span">
-                  Conexão solicitada
+                  {NOTIFICATION_TITLES[notificationItem.type]}
                 </TypographyComponent>
 
                 <LinkComponent
                   to={ROUTES.PROFILE.path.replace(
                     ':id',
-                    notificationItem.user.uri
+                    notificationItem.profile.uri
                   )}
                 >
-                  {notificationItem.user.name}
+                  {notificationItem.profile.name}
                 </LinkComponent>
 
-                <TypographyComponent renderAs="span" smallText>
-                  {`${notificationItem.user.connectionsInCommon} conexões em comun`}
-                </TypographyComponent>
+                {notificationItem.type ===
+                  NOTIFICATION_TYPES.CONNECTION_REQUEST && (
+                  <TypographyComponent renderAs="span" smallText>
+                    {NOTIFICATION_CONNECTIONS_IN_COMMON.replace(
+                      ':number',
+                      String(notificationItem.profile.connectionsInCommon)
+                    )}
+                  </TypographyComponent>
+                )}
               </section>
 
               <section className="notification-actions">

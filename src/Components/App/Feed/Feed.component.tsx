@@ -1,4 +1,4 @@
-import { FeedProvider } from '@/Contexts/FeedContext'
+import { FeedProvider } from '@/Contexts/Feed.context'
 
 import { NewPostComponent } from '@/Components/App/NewPost'
 import { FeedListComponent } from '@/Components/App/FeedList'

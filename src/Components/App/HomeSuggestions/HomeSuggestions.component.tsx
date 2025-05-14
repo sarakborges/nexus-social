@@ -1,6 +1,6 @@
 import { use } from 'react'
 
-import { SuggestionsContext } from '@/Contexts/SuggestionsContext'
+import { SuggestionsContext } from '@/Contexts/Suggestions.context'
 
 import { ROUTES } from '@/Consts/Routes.const'
 

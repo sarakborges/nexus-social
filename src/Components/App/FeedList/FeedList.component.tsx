@@ -1,6 +1,6 @@
 import { use } from 'react'
 
-import { FeedContext } from '@/Contexts/FeedContext'
+import { FeedContext } from '@/Contexts/Feed.context'
 
 import { FeedItemComponent } from '@/Components/App/FeedItem'
 

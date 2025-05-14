@@ -1,4 +1,4 @@
-import { SuggestionsProvider } from '@/Contexts/SuggestionsContext'
+import { SuggestionsProvider } from '@/Contexts/Suggestions.context'
 
 import { PageWrapperComponent } from '@/Components/App/PageWrapper'
 import { FeedComponent } from '@/Components/App/Feed'

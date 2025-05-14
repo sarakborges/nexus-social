@@ -1,3 +1,5 @@
+import { NotificationsProvider } from '@/Contexts/Notifications.context'
+
 import { NavbarComponent } from '@/Components/App/Navbar'
 import { TopbarComponent } from '@/Components/App/Topbar'
 
@@ -10,15 +12,17 @@ type PageWrapperComponentType = {
 export const PageWrapperComponent = ({
   children
 }: PageWrapperComponentType) => (
-  <main className="page-wrapper">
-    <aside>
-      <NavbarComponent />
-    </aside>
+  <NotificationsProvider>
+    <main className="page-wrapper">
+      <aside>
+        <NavbarComponent />
+      </aside>
 
-    <aside className="page-content">
-      <TopbarComponent />
+      <aside className="page-content">
+        <TopbarComponent />
 
-      <main>{children}</main>
-    </aside>
-  </main>
+        <main>{children}</main>
+      </aside>
+    </main>
+  </NotificationsProvider>
 )

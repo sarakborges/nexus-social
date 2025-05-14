@@ -2,15 +2,22 @@ import { ROUTES } from '@/Consts/Routes.const'
 
 import { FeedType } from '@/Types/Feed.type'
 
+import { FEED_PUBLISHED_AT } from '@/Consts/Feed.const'
+
 import { LinkComponent } from '@/Components/System/Link'
 import { CardComponent } from '@/Components/System/Card'
 import { TypographyComponent } from '@/Components/System/Typography'
-
-import './FeedItem.style.scss'
 import { ImageComponent } from '@/Components/System/Image'
 
+import './FeedItem.style.scss'
+
 export const FeedItemComponent = ({ feedData }: { feedData: FeedType }) => {
-  const { profile, content, picture } = feedData
+  const { profile, content, picture, date } = feedData
+
+  const feedItemDate = new Intl.DateTimeFormat('pt-BR', {
+    dateStyle: 'long',
+    timeStyle: 'short'
+  }).format(date)
 
   return (
     <li className="feed-item">
@@ -35,7 +42,7 @@ export const FeedItemComponent = ({ feedData }: { feedData: FeedType }) => {
             </TypographyComponent>
 
             <TypographyComponent smallText>
-              Publicado em 05/11/2024, às 15:03
+              {`${FEED_PUBLISHED_AT} ${feedItemDate}`}
             </TypographyComponent>
           </div>
         </section>

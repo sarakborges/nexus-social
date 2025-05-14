@@ -17,59 +17,10 @@
   border-radius: 100%;
 }
 
-.notifications-dropdown {
+.notifications-list {
   display: flex;
   flex-flow: column;
-  gap: var(--size-md);
+  gap: var(--size-lmd);
 
   width: var(--size-topbar-notifications);
-
-  > li {
-    display: flex;
-    place-items: center;
-    gap: var(--size-md);
-
-    .image {
-      > img {
-        max-width: var(--size-xl);
-      }
-    }
-
-    > .notification-profile {
-      display: flex;
-      flex-flow: column;
-      gap: var(--size-xs);
-
-      overflow: hidden;
-      flex: 1;
-
-      > p {
-        height: calc(var(--size-xs) + var(--size-md));
-
-        > a {
-          display: inline-block;
-
-          max-width: 100%;
-          overflow: hidden;
-
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }
-      }
-    }
-
-    > .notification-actions {
-      display: flex;
-      gap: var(--size-smd);
-
-      > .button {
-        height: auto;
-
-        > svg {
-          width: var(--size-md);
-          height: var(--size-md);
-        }
-      }
-    }
-  }
 }

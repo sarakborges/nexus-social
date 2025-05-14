@@ -28,67 +28,49 @@ export const SuggestionItemComponent = ({
 }) => {
   const { uri, picture, name } = suggestion
 
-  const getConnectionsInCommonText = () => {
-    let connectionsInCommonCountText = ``
+  const getSuggestionProps = () => {
+    let suggestionText
 
-    if (type !== SUGGESTION_TYPE_PROFILE) {
-      return connectionsInCommonCountText
+    const suggestionTextProps = {
+      [SUGGESTION_TYPE_PROFILE]: {
+        counter: 'connectionsInCommon',
+        textSingle: SUGGESTIONS_CONNECTIONS_TEXT_SINGLE,
+        textMultiple: SUGGESTIONS_CONNECTIONS_TEXT_MULTIPLE,
+        textFormat: `:counter :text ${SUGGESTIONS_CONNECTIONS_TEXT_COMMON}`,
+        route: ROUTES.PROFILE
+      },
+
+      [SUGGESTION_TYPE_GROUP]: {
+        counter: 'connectionsAsMembers',
+        textSingle: SUGGESTIONS_GROUPS_TEXT_SINGLE,
+        textMultiple: SUGGESTIONS_GROUPS_TEXT_MULTIPLE,
+        textFormat: `:counter ${SUGGESTIONS_GROUPS_TEXT_COMMON} :text`,
+        route: ROUTES.GROUP
+      }
     }
 
-    const { connectionsInCommon } = suggestion as ProfileType
-
-    const isSingleConnectionInCommon = connectionsInCommon === 1
+    const isSingleConnectionInCommon =
+      suggestion[suggestionTextProps[type].counter] === 1
 
     if (isSingleConnectionInCommon) {
-      connectionsInCommonCountText = SUGGESTIONS_CONNECTIONS_TEXT_SINGLE
+      suggestionText = suggestionTextProps[type].textSingle
     }
 
     if (!isSingleConnectionInCommon) {
-      connectionsInCommonCountText = SUGGESTIONS_CONNECTIONS_TEXT_MULTIPLE
+      suggestionText = suggestionTextProps[type].textMultiple
     }
 
-    return `${connectionsInCommon} ${connectionsInCommonCountText} ${SUGGESTIONS_CONNECTIONS_TEXT_COMMON}`
+    suggestionText = suggestionTextProps[type].textFormat
+      .replace(':counter', suggestion[suggestionTextProps[type].counter])
+      .replace(':text', suggestionText)
+
+    return {
+      suggestionText,
+      linkUri: suggestionTextProps[type].route.path.replace(':id', uri)
+    }
   }
 
-  const getConnectionsAsMembersText = () => {
-    let connectionsAsMembersCountText = ``
-
-    if (type !== SUGGESTION_TYPE_GROUP) {
-      return connectionsAsMembersCountText
-    }
-
-    const { connectionsAsMembers } = suggestion as GroupType
-
-    const isSingleConnectionAsMember = connectionsAsMembers === 1
-
-    if (isSingleConnectionAsMember) {
-      connectionsAsMembersCountText = SUGGESTIONS_GROUPS_TEXT_SINGLE
-    }
-
-    if (!isSingleConnectionAsMember) {
-      connectionsAsMembersCountText = SUGGESTIONS_GROUPS_TEXT_MULTIPLE
-    }
-
-    return `${connectionsAsMembers} ${SUGGESTIONS_GROUPS_TEXT_COMMON} ${connectionsAsMembersCountText}`
-  }
-
-  const getLinkUri = () => {
-    let linkUri = ``
-
-    if (type === SUGGESTION_TYPE_PROFILE) {
-      linkUri = ROUTES.PROFILE.path.replace(':id', uri)
-    }
-
-    if (type === SUGGESTION_TYPE_GROUP) {
-      linkUri = ROUTES.GROUP.path.replace(':id', uri)
-    }
-
-    return linkUri
-  }
-
-  const connectionsInCommonText = getConnectionsInCommonText()
-  const connectionsAsMembersText = getConnectionsAsMembersText()
-  const linkUri = getLinkUri()
+  const { suggestionText, linkUri } = getSuggestionProps()
 
   return (
     <li className="suggestion-item">
@@ -106,17 +88,9 @@ export const SuggestionItemComponent = ({
           <LinkComponent to={linkUri}>{name}</LinkComponent>
         </p>
 
-        {type === SUGGESTION_TYPE_PROFILE && (
-          <TypographyComponent renderAs="span" smallText>
-            {connectionsInCommonText}
-          </TypographyComponent>
-        )}
-
-        {type === SUGGESTION_TYPE_GROUP && (
-          <TypographyComponent renderAs="span" smallText>
-            {connectionsAsMembersText}
-          </TypographyComponent>
-        )}
+        <TypographyComponent renderAs="span" smallText>
+          {suggestionText}
+        </TypographyComponent>
       </section>
 
       <LinkComponent to={linkUri} asButton>

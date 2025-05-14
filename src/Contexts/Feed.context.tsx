@@ -7,6 +7,7 @@ const INITIAL_FEED: FeedType[] = [
   {
     id: '1',
     content: `gays`,
+    date: new Date('2025-05-01 07:15:00'),
     profile: {
       id: '1',
       name: 'doom.',
@@ -18,6 +19,7 @@ const INITIAL_FEED: FeedType[] = [
   {
     id: '2',
     picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/upload/950385/hoshimi-miyabi68196a8d86357.png`,
+    date: new Date('2025-05-01 07:15:00'),
     profile: {
       id: '1',
       name: 'doom.',
@@ -30,6 +32,7 @@ const INITIAL_FEED: FeedType[] = [
     id: '3',
     content: 'veyr',
     picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/upload/950385/hoshimi-miyabi68196a8d86357.png`,
+    date: new Date('2025-05-01 07:15:00'),
     profile: {
       id: '1',
       name: 'doom.',

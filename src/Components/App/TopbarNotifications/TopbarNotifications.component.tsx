@@ -6,8 +6,9 @@ import { NotificationsContext } from '@/Contexts/Notifications.context'
 import { DropdownComponent } from '@/Components/System/Dropdown'
 import { ButtonComponent } from '@/Components/System/Button'
 
+import { NotificationItemComponent } from '@/Components/App/NotificationItem'
+
 import './TopbarNotifications.style.scss'
-import { NotificationItemComponent } from '../NotificationItem'
 
 export const TopbarNotificationsComponent = () => {
   const notificationsContext = use(NotificationsContext)
@@ -33,7 +34,7 @@ export const TopbarNotificationsComponent = () => {
   return (
     <div className="actions-dropdown-wrapper">
       <ButtonComponent square transparent onClick={toggleDropdown}>
-        <span className="notifications-counter">3</span>
+        <span className="notifications-counter">{notifications.length}</span>
         <FaBell />
       </ButtonComponent>
 

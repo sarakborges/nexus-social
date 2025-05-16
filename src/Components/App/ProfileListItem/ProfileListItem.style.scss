@@ -1,0 +1,38 @@
+.profile-item {
+  display: flex;
+  gap: var(--size-md);
+  place-items: center;
+
+  > .image {
+    max-width: var(--size-lg);
+  }
+
+  > .profiles-list-name {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-sm);
+    flex: 1;
+
+    > p {
+      max-width: 100%;
+      overflow: hidden;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .profiles-list-actions {
+    display: flex;
+    gap: var(--size-smd);
+
+    > .button {
+      height: var(--size-lg);
+
+      > svg {
+        width: var(--size-md);
+        height: var(--size-md);
+      }
+    }
+  }
+}

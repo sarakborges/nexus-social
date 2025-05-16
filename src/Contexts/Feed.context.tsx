@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react'
 
 import { FeedType } from '@/Types/Feed.type'
-import { FeedListType } from '@/Types/FeedList.type'
+import { FeedContextType } from '@/Types/Contexts/FeedContext.type'
 
 const INITIAL_FEED: FeedType[] = [
   {
@@ -42,7 +42,7 @@ const INITIAL_FEED: FeedType[] = [
   }
 ]
 
-const FeedContext = createContext<FeedListType | null>(null)
+const FeedContext = createContext<FeedContextType | null>(null)
 
 const FeedProvider = ({ children }) => {
   const [feed, setFeed] = useState<FeedType[]>(INITIAL_FEED)

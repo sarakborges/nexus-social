@@ -45,7 +45,9 @@ export const TopbarMenuComponent = () => {
       </ButtonComponent>
 
       <DropdownComponent ref={topbarMenuDropdownRef}>
-        <LinkComponent to={ROUTES.LOGIN.path}>{TOPBAR_LOGOUT}</LinkComponent>
+        <section className="actions-menu">
+          <LinkComponent to={ROUTES.LOGIN.path}>{TOPBAR_LOGOUT}</LinkComponent>
+        </section>
       </DropdownComponent>
     </div>
   )

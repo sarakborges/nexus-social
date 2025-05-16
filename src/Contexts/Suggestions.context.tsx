@@ -7,7 +7,7 @@ import {
 
 import { ProfileType } from '@/Types/Profile.type'
 import { GroupType } from '@/Types/Group.type'
-import { SuggestionsListType } from '@/Types/SuggestionsList.type'
+import { SuggestionsContextType } from '@/Types/SuggestionsContext.type'
 import { SuggestionType } from '@/Types/Suggestion.type'
 
 const INITIAL_PROFILE_SUGGESTIONS: ProfileType[] = [
@@ -24,6 +24,14 @@ const INITIAL_PROFILE_SUGGESTIONS: ProfileType[] = [
     name: 'doom.',
     uri: 'doomyumm',
     picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/doomyum6816297e9e8ce.png`,
+    connectionsInCommon: 7
+  },
+
+  {
+    id: '4',
+    name: 'barbatos.',
+    uri: 'il-vento-dubriaco',
+    picture: `https://image.yoble.us/avatar/il-vento-dubriaco6823c2196347d.png`,
     connectionsInCommon: 7
   }
 ]
@@ -43,10 +51,18 @@ const INITIAL_GROUP_SUGGESTIONS: GroupType[] = [
     uri: 'buscas-interpretativas',
     picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/community/281769/photo/buscas-interpretativas638f631017376.png`,
     connectionsAsMembers: 4
+  },
+
+  {
+    id: '3',
+    name: '.',
+    uri: 'deposito-de-hopes',
+    picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/community/303456/photo/6807ffc6d528a.jpg`,
+    connectionsAsMembers: 14
   }
 ]
 
-const SuggestionsContext = createContext<SuggestionsListType | null>(null)
+const SuggestionsContext = createContext<SuggestionsContextType | null>(null)
 
 const SuggestionsProvider = ({ children }) => {
   const [suggestions, setSuggestions] = useState<Array<SuggestionType>>([

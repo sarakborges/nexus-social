@@ -26,6 +26,9 @@ export const DropdownComponent = forwardRef(
     return (
       <div
         className={['dropdown', isOpen ? 'open' : ''].filter(Boolean).join(' ')}
+        onClick={(e) => {
+          e.stopPropagation()
+        }}
       >
         <CardComponent>{children}</CardComponent>
       </div>

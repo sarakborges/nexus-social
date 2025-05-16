@@ -4,7 +4,6 @@ import { NotificationType } from '@/Types/Notification.type'
 
 import { ROUTES } from '@/Consts/Routes.const'
 import {
-  NOTIFICATION_CONNECTIONS_IN_COMMON,
   NOTIFICATION_TITLES,
   NOTIFICATION_TYPES
 } from '@/Consts/Notifications.const'
@@ -26,6 +25,7 @@ export const NotificationItemComponent = ({
 
     const notificationPropsTypes = {
       [NOTIFICATION_TYPES.CONNECTION_REQUEST]: 'profile',
+      [NOTIFICATION_TYPES.CONNECTION_ACCEPTED]: 'profile',
       [NOTIFICATION_TYPES.ACCEPTED_AT_GROUP]: 'group'
     }
 
@@ -33,6 +33,10 @@ export const NotificationItemComponent = ({
       notification[notificationPropsTypes[notification.type]]
 
     if (notification.type === NOTIFICATION_TYPES.CONNECTION_REQUEST) {
+      linkUri = ROUTES.PROFILE
+    }
+
+    if (notification.type === NOTIFICATION_TYPES.CONNECTION_ACCEPTED) {
       linkUri = ROUTES.PROFILE
     }
 

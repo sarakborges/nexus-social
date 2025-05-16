@@ -1,5 +1,6 @@
 import { NotificationsProvider } from '@/Contexts/Notifications.context'
 import { ActiveProfileProvider } from '@/Contexts/ActiveProfile.context'
+import { UserProvider } from '@/Contexts/User.context'
 
 import { NavbarComponent } from '@/Components/App/Navbar'
 import { TopbarComponent } from '@/Components/App/Topbar'
@@ -11,7 +12,11 @@ type PageWrapperComponentType = {
 }
 
 const PageProviders = ({ children }) => {
-  const providersList = [NotificationsProvider, ActiveProfileProvider]
+  const providersList = [
+    UserProvider,
+    ActiveProfileProvider,
+    NotificationsProvider
+  ]
 
   return providersList.reduce(
     (prevProvider, CurrentProvider) => (

@@ -24,6 +24,7 @@ import { FieldComponent } from '@/Components/System/Field'
 export const TopbarProfilesListComponent = () => {
   const userContext = use(UserContext)
   const activeProfileContext = use(ActiveProfileContext)
+  const [isProfilesListOpen, setIsProfilesListOpen] = useState(false)
 
   if (!activeProfileContext?.activeProfile) {
     return <></>
@@ -48,6 +49,7 @@ export const TopbarProfilesListComponent = () => {
       return
     }
 
+    setIsProfilesListOpen(!isProfilesListOpen)
     topbarProfilesListDropdownRef?.current?.toggleDropdown(e)
   }
 
@@ -57,7 +59,12 @@ export const TopbarProfilesListComponent = () => {
 
   return (
     <div className="actions-dropdown-wrapper">
-      <ButtonComponent square transparent onClick={toggleDropdown}>
+      <ButtonComponent
+        square
+        transparent
+        onClick={toggleDropdown}
+        active={isProfilesListOpen}
+      >
         <FaUserCircle />
       </ButtonComponent>
 

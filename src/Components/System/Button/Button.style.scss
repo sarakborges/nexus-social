@@ -26,7 +26,7 @@
 
     background-color: var(--button-primary);
 
-    &:hover {
+    &:is(:hover, .active) {
       background-color: var(--button-primary-hover);
     }
   }
@@ -36,7 +36,7 @@
 
     background-color: var(--button-cancel);
 
-    &:hover {
+    &:is(:hover, .active) {
       background-color: var(--button-cancel-hover);
     }
   }
@@ -46,7 +46,7 @@
 
     background-color: transparent;
 
-    &:hover {
+    &:is(:hover, .active) {
       background-color: var(--color-background-hover);
     }
   }

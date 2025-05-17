@@ -1,6 +1,7 @@
 import { NotificationsProvider } from '@/Contexts/Notifications.context'
 import { ActiveProfileProvider } from '@/Contexts/ActiveProfile.context'
 import { UserProvider } from '@/Contexts/User.context'
+import { TopbarSearchProvider } from '@/Contexts/TopbarSearch.context'
 
 import { NavbarComponent } from '@/Components/App/Navbar'
 import { TopbarComponent } from '@/Components/App/Topbar'
@@ -15,7 +16,8 @@ const PageProviders = ({ children }) => {
   const providersList = [
     UserProvider,
     ActiveProfileProvider,
-    NotificationsProvider
+    NotificationsProvider,
+    TopbarSearchProvider
   ]
 
   return providersList.reduce(

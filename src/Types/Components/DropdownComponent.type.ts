@@ -1,3 +1,5 @@
 import { PropsWithChildren } from 'react'
 
-export type DropdownComponentType = {} & PropsWithChildren
+export type DropdownComponentType = {
+  left?: boolean
+} & PropsWithChildren

@@ -1,4 +1,4 @@
-import { use, useRef } from 'react'
+import { use, useRef, useState } from 'react'
 import { FaBell } from 'react-icons/fa'
 
 import { NotificationsContext } from '@/Contexts/Notifications.context'
@@ -12,6 +12,7 @@ import './TopbarNotifications.style.scss'
 
 export const TopbarNotificationsComponent = () => {
   const notificationsContext = use(NotificationsContext)
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
 
   if (!notificationsContext?.notifications) {
     return <></>
@@ -28,12 +29,18 @@ export const TopbarNotificationsComponent = () => {
       return
     }
 
+    setIsNotificationsOpen(!isNotificationsOpen)
     topbarNotificationsDropdownRef?.current?.toggleDropdown(e)
   }
 
   return (
     <div className="actions-dropdown-wrapper">
-      <ButtonComponent square transparent onClick={toggleDropdown}>
+      <ButtonComponent
+        square
+        transparent
+        onClick={toggleDropdown}
+        active={isNotificationsOpen}
+      >
         <span className="notifications-counter">{notifications.length}</span>
         <FaBell />
       </ButtonComponent>

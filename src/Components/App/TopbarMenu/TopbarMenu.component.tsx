@@ -1,7 +1,6 @@
-import { use, useRef } from 'react'
+import { use, useRef, useState } from 'react'
 
-import { ROUTES } from '@/Consts/Routes.const'
-import { TOPBAR_LOGOUT } from '@/Consts/Topbar.const'
+import { TOPBAR_MENU } from '@/Consts/Topbar.const'
 
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
@@ -14,6 +13,7 @@ import './TopbarMenu.style.scss'
 
 export const TopbarMenuComponent = () => {
   const activeProfileContext = use(ActiveProfileContext)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   if (!activeProfileContext?.activeProfile) {
     return <></>
@@ -30,12 +30,18 @@ export const TopbarMenuComponent = () => {
       return
     }
 
+    setIsMenuOpen(!isMenuOpen)
     topbarMenuDropdownRef?.current?.toggleDropdown(e)
   }
 
   return (
     <div className="actions-dropdown-wrapper">
-      <ButtonComponent square transparent onClick={toggleDropdown}>
+      <ButtonComponent
+        square
+        transparent
+        onClick={toggleDropdown}
+        active={isMenuOpen}
+      >
         <ImageComponent
           src={activeProfile.picture || `/avatar-placeholder.png`}
           alt={activeProfile.name}
@@ -46,7 +52,15 @@ export const TopbarMenuComponent = () => {
 
       <DropdownComponent ref={topbarMenuDropdownRef}>
         <section className="actions-menu">
-          <LinkComponent to={ROUTES.LOGIN.path}>{TOPBAR_LOGOUT}</LinkComponent>
+          {TOPBAR_MENU.map((menuItem) => (
+            <LinkComponent
+              to={menuItem.to}
+              key={`topbar-menu-item-${menuItem.text}`}
+            >
+              {menuItem.icon}
+              {menuItem.text}
+            </LinkComponent>
+          ))}
         </section>
       </DropdownComponent>
     </div>

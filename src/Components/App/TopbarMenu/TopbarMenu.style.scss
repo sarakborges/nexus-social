@@ -1,0 +1,16 @@
+.actions-menu {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-sm);
+
+  white-space: nowrap;
+
+  > a {
+    gap: var(--size-sm);
+
+    > svg {
+      width: var(--size-lmd);
+      height: var(--size-lmd);
+    }
+  }
+}

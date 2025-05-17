@@ -1,0 +1,9 @@
+.topbar-search-results {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-sm);
+
+  > p {
+    padding: 0 var(--size-sm);
+  }
+}

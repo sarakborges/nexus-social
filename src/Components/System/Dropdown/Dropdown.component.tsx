@@ -7,28 +7,32 @@ import { CardComponent } from '@/Components/System/Card'
 import './Dropdown.style.scss'
 
 export const DropdownComponent = forwardRef(
-  ({ children }: DropdownComponentType, ref) => {
+  ({ children, left }: DropdownComponentType, ref) => {
     const [isOpen, setIsOpen] = useState(false)
 
-    const toggleDropdown = (e) => {
-      e.stopPropagation()
+    const toggleDropdown = () => {
       setIsOpen(!isOpen)
     }
 
-    useImperativeHandle(ref, () => ({
-      toggleDropdown
-    }))
+    const openDropdown = () => {
+      setIsOpen(true)
+    }
 
-    window.onclick = () => {
+    const closeDropdown = () => {
       setIsOpen(false)
     }
 
+    useImperativeHandle(ref, () => ({
+      toggleDropdown,
+      openDropdown,
+      closeDropdown
+    }))
+
     return (
       <div
-        className={['dropdown', isOpen ? 'open' : ''].filter(Boolean).join(' ')}
-        onClick={(e) => {
-          e.stopPropagation()
-        }}
+        className={['dropdown', isOpen ? 'open' : '', left ? 'left' : '']
+          .filter(Boolean)
+          .join(' ')}
       >
         <CardComponent>{children}</CardComponent>
       </div>

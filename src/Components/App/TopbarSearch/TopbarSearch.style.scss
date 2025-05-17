@@ -1,5 +1,12 @@
 .topbar-search {
+  position: relative;
+
   .field-component {
     width: var(--size-topbar-search);
+  }
+
+  > .dropdown > .card {
+    width: var(--size-topbar-search);
+    padding: var(--size-sm);
   }
 }

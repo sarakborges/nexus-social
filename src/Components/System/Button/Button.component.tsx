@@ -6,6 +6,7 @@ export const ButtonComponent = ({
   primary,
   cancel,
   transparent,
+  active,
   square,
   children,
   ...rest
@@ -15,6 +16,7 @@ export const ButtonComponent = ({
     primary || (!transparent && !cancel) ? 'primary' : '',
     transparent && !primary ? 'transparent' : '',
     cancel && !primary ? 'cancel' : '',
+    active ? 'active' : active,
     square ? 'square' : square
   ]
     .filter(Boolean)

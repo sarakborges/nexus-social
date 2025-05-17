@@ -51,3 +51,9 @@
     }
   }
 }
+
+.card {
+  .button.transparent:is(:hover, .active) {
+    background-color: var(--card-field-background);
+  }
+}

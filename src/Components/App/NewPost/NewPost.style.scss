@@ -1,7 +1,37 @@
 .new-post {
   .card {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-smd);
+
     .field {
       width: 100%;
+    }
+
+    .new-post-actions {
+      display: flex;
+      place-content: space-between;
+      place-items: center;
+
+      > button {
+        height: auto;
+      }
+
+      .new-post-actions-uploads {
+        display: flex;
+        place-items: center;
+        gap: var(--size-smd);
+
+        button {
+          height: var(--size-lg);
+          padding: var(--size-sm);
+
+          svg {
+            width: var(--size-md);
+            height: var(--size-md);
+          }
+        }
+      }
     }
   }
 }

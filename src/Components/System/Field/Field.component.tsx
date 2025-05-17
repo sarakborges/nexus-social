@@ -23,6 +23,7 @@ export const FieldComponent = ({
   error,
   options,
   renderAs,
+  initialValue,
   ...rest
 }: FieldComponentType) => {
   const wrapperClasses = ['field-wrapper', error ? 'field-error' : '']
@@ -32,7 +33,12 @@ export const FieldComponent = ({
   const components = {
     [FIELD_TYPE_TEXT]: <Input id={rest.name} {...rest} />,
     [FIELD_TYPE_SELECT]: (
-      <SelectComponent id={rest.name} options={options} {...rest} />
+      <SelectComponent
+        id={rest.name}
+        options={options!}
+        initialValue={initialValue}
+        {...rest}
+      />
     ),
     [FIELD_TYPE_TEXTAREA]: <Textarea id={rest.name} {...rest} />
   }

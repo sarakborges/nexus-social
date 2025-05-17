@@ -1,12 +1,19 @@
 .topbar-search {
+  display: flex;
+  gap: var(--size-md);
+
   position: relative;
 
-  .field-component {
+  > .field-component {
     width: var(--size-topbar-search);
   }
 
-  > .dropdown > .card {
-    width: var(--size-topbar-search);
-    padding: var(--size-sm);
+  > .dropdown {
+    width: 100%;
+
+    > .card {
+      width: 100%;
+      padding: var(--size-sm);
+    }
   }
 }

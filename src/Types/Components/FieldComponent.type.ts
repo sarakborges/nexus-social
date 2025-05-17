@@ -13,6 +13,7 @@ import {
 export type FieldComponentType = {
   label?: string
   error?: string
+  initialValue?: string
   renderAs?:
     | typeof FIELD_TYPE_TEXT
     | typeof FIELD_TYPE_SELECT

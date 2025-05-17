@@ -29,3 +29,4 @@ export const TOPBAR_SEARCH_RESULTS_TITLES = {
   profile: `Perfis encontrados`,
   group: `Grupos encontrados`
 }
+export const TOPBAR_SEARCH_NO_RESULTS = `Nenhum resultado encontrado.`

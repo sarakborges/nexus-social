@@ -1,6 +1,9 @@
 import { createContext, useState } from 'react'
 
-import { TopbarSearchContextType } from '@/Types/Contexts/TopbarSearchContext.type'
+import {
+  AllowedTypes,
+  TopbarSearchContextType
+} from '@/Types/Contexts/TopbarSearchContext.type'
 import { TopbarSearchResultsType } from '@/Types/TopbarSearchResults.type'
 
 const INITIAL_SEARCH_RESULTS: Array<TopbarSearchResultsType> = [
@@ -35,13 +38,21 @@ const TopbarSearchContext = createContext<TopbarSearchContextType | null>(null)
 
 const TopbarSearchProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('')
+  const [allowedTypes, setAllowedTypes] = useState<AllowedTypes>('all')
   const [searchResults, setSearchResults] = useState<
     Array<TopbarSearchResultsType>
   >(INITIAL_SEARCH_RESULTS)
 
   return (
     <TopbarSearchContext.Provider
-      value={{ searchResults, searchTerm, setSearchResults, setSearchTerm }}
+      value={{
+        searchResults,
+        searchTerm,
+        allowedTypes,
+        setSearchResults,
+        setSearchTerm,
+        setAllowedTypes
+      }}
     >
       {children}
     </TopbarSearchContext.Provider>

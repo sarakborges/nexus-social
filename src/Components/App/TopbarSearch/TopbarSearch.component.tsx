@@ -3,6 +3,7 @@ import { use, useRef } from 'react'
 import { TopbarSearchContext } from '@/Contexts/TopbarSearch.context'
 
 import { TOPBAR_SEARCH_PLACEHOLDER } from '@/Consts/Topbar.const'
+import { FIELD_TYPE_SELECT } from '@/Consts/FieldTypes.const'
 
 import { FieldComponent } from '@/Components/System/Field'
 import { DropdownComponent } from '@/Components/System/Dropdown'
@@ -18,7 +19,7 @@ export const TopbarSearchComponent = () => {
     return <></>
   }
 
-  const { setSearchTerm } = topbarSearchContext
+  const { setSearchTerm, setAllowedTypes } = topbarSearchContext
 
   const topbarMenuDropdownRef = useRef<{
     openDropdown: (e: MouseEvent | React.MouseEvent) => void
@@ -59,8 +60,36 @@ export const TopbarSearchComponent = () => {
     topbarMenuDropdownRef?.current?.closeDropdown(e)
   }
 
+  const updateAllowedTypes = (e) => {
+    setAllowedTypes(e.target.value)
+  }
+
   return (
     <section className="topbar-search">
+      <div>
+        <FieldComponent
+          renderAs={FIELD_TYPE_SELECT}
+          initialValue="all"
+          onChange={updateAllowedTypes}
+          options={[
+            {
+              label: 'Tudo',
+              value: 'all'
+            },
+
+            {
+              label: 'Perfis',
+              value: 'profile'
+            },
+
+            {
+              label: 'Grupos',
+              value: 'group'
+            }
+          ]}
+        />
+      </div>
+
       <FieldComponent
         placeholder={TOPBAR_SEARCH_PLACEHOLDER}
         onFocus={openDropdown}

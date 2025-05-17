@@ -6,4 +6,8 @@
   > p {
     padding: 0 var(--size-sm);
   }
+
+  > .topbar-search-no-results {
+    padding: var(--size-sm);
+  }
 }

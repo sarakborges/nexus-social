@@ -1,7 +1,8 @@
 import { SelectHTMLAttributes } from 'react'
 
 export type SelectComponentType = {
-  options?: {
+  initialValue?: string
+  options: {
     label: string
     value: string
   }[]

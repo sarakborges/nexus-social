@@ -32,7 +32,16 @@ export const ProfileListItemComponent = ({
 
   const { id, name, picture } = profile
 
-  const changeActiveProfile = (profileId: string) => {
+  const changeActiveProfile = async (profileId: string) => {
+    const updateRequest = await UsersAPI.updateActiveProfile({
+      profileId,
+      user
+    })
+
+    if (!updateRequest) {
+      return
+    }
+
     setActiveProfile(
       user.profiles?.find((profileItem) => profileItem.id === profileId)!
     )

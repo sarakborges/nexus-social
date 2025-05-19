@@ -5,7 +5,8 @@ import { ROUTES } from '@/Consts/Routes.const'
 import {
   PROFILES_LIST_FILTER,
   PROFILES_LIST_NEW_PROFILE,
-  PROFILES_LIST_TITLE
+  PROFILES_LIST_TITLE,
+  PROFILES_LIST_NO_PROFILE
 } from '@/Consts/ProfilesList.const'
 
 import { UserContext } from '@/Contexts/User.context'
@@ -15,28 +16,17 @@ import { DropdownComponent } from '@/Components/System/Dropdown'
 import { ButtonComponent } from '@/Components/System/Button'
 import { TypographyComponent } from '@/Components/System/Typography'
 import { LinkComponent } from '@/Components/System/Link'
+import { FieldComponent } from '@/Components/System/Field'
 
 import { ProfileListItemComponent } from '../ProfileListItem'
 
 import './TopbarProfilesList.style.scss'
-import { FieldComponent } from '@/Components/System/Field'
 
 export const TopbarProfilesListComponent = () => {
-  const userContext = use(UserContext)
-  const activeProfileContext = use(ActiveProfileContext)
+  const { user } = use(UserContext)
+  const { activeProfile } = use(ActiveProfileContext)
+
   const [isProfilesListOpen, setIsProfilesListOpen] = useState(false)
-
-  if (!activeProfileContext?.activeProfile) {
-    return <></>
-  }
-
-  const { activeProfile } = activeProfileContext
-
-  if (!userContext?.user) {
-    return <></>
-  }
-
-  const { user } = userContext
 
   const [profilesFilter, setProfilesFilter] = useState('')
 
@@ -83,32 +73,45 @@ export const TopbarProfilesListComponent = () => {
             </LinkComponent>
           </header>
 
-          <section>
-            <FieldComponent
-              placeholder={PROFILES_LIST_FILTER}
-              onChange={changeProfileFilter}
-            />
-          </section>
-
-          <ul>
-            <ProfileListItemComponent profile={activeProfile} noActions />
-
-            {user.profiles
-              ?.filter(
-                (profileItem) =>
-                  profileItem.id !== activeProfile.id &&
-                  (!profilesFilter ||
-                    profileItem.name
-                      .toLocaleLowerCase()
-                      .includes(profilesFilter))
-              )
-              .map((profileItem) => (
-                <ProfileListItemComponent
-                  key={`user-profiles-${profileItem.id}`}
-                  profile={profileItem}
+          {!!user.profiles?.length ? (
+            <>
+              <section>
+                <FieldComponent
+                  placeholder={PROFILES_LIST_FILTER}
+                  onChange={changeProfileFilter}
                 />
-              ))}
-          </ul>
+              </section>
+
+              <ul>
+                {!!activeProfile?.id && (
+                  <ProfileListItemComponent
+                    profile={activeProfile}
+                    isActiveProfile
+                  />
+                )}
+
+                {user.profiles
+                  ?.filter(
+                    (profileItem) =>
+                      profileItem.id !== activeProfile?.id &&
+                      (!profilesFilter ||
+                        profileItem.name
+                          .toLocaleLowerCase()
+                          .includes(profilesFilter))
+                  )
+                  .map((profileItem) => (
+                    <ProfileListItemComponent
+                      key={`user-profiles-${profileItem.id}`}
+                      profile={profileItem}
+                    />
+                  ))}
+              </ul>
+            </>
+          ) : (
+            <TypographyComponent renderAs="p">
+              {PROFILES_LIST_NO_PROFILE}
+            </TypographyComponent>
+          )}
         </section>
       </DropdownComponent>
     </div>

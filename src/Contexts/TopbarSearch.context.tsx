@@ -34,7 +34,9 @@ const INITIAL_SEARCH_RESULTS: Array<TopbarSearchResultsType> = [
   }
 ]
 
-const TopbarSearchContext = createContext<TopbarSearchContextType | null>(null)
+const TopbarSearchContext = createContext<TopbarSearchContextType>(
+  {} as TopbarSearchContextType
+)
 
 const TopbarSearchProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('')

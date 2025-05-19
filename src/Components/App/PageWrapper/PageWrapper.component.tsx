@@ -1,7 +1,10 @@
-import { NotificationsProvider } from '@/Contexts/Notifications.context'
-import { ActiveProfileProvider } from '@/Contexts/ActiveProfile.context'
-import { UserProvider } from '@/Contexts/User.context'
-import { TopbarSearchProvider } from '@/Contexts/TopbarSearch.context'
+import { use, useEffect } from 'react'
+
+import * as UsersAPI from '@/Apis/Users'
+import * as ProfilesAPI from '@/Apis/Profiles'
+
+import { UserContext } from '@/Contexts/User.context'
+import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { NavbarComponent } from '@/Components/App/Navbar'
 import { TopbarComponent } from '@/Components/App/Topbar'
@@ -12,26 +15,33 @@ type PageWrapperComponentType = {
   children: React.ReactNode
 }
 
-const PageProviders = ({ children }) => {
-  const providersList = [
-    UserProvider,
-    ActiveProfileProvider,
-    NotificationsProvider,
-    TopbarSearchProvider
-  ]
-
-  return providersList.reduce(
-    (prevProvider, CurrentProvider) => (
-      <CurrentProvider>{prevProvider}</CurrentProvider>
-    ),
-    children
-  )
-}
-
 export const PageWrapperComponent = ({
   children
-}: PageWrapperComponentType) => (
-  <PageProviders>
+}: PageWrapperComponentType) => {
+  const { setUser } = use(UserContext)
+  const { setActiveProfile } = use(ActiveProfileContext)
+
+  useEffect(() => {
+    const getUser = async () => {
+      const userRequest = await UsersAPI.getUser('1')
+
+      if (!userRequest) {
+        return
+      }
+
+      setUser(userRequest)
+
+      setActiveProfile(
+        userRequest.profiles.find(
+          (profileItem) => profileItem.id === userRequest.activeProfile
+        )
+      )
+    }
+
+    getUser()
+  }, [])
+
+  return (
     <main className="page-wrapper">
       <aside>
         <NavbarComponent />
@@ -39,9 +49,8 @@ export const PageWrapperComponent = ({
 
       <aside className="page-content">
         <TopbarComponent />
-
         <main>{children}</main>
       </aside>
     </main>
-  </PageProviders>
-)
+  )
+}

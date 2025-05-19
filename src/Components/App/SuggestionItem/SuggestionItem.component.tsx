@@ -88,9 +88,7 @@ export const SuggestionItemComponent = ({
           <LinkComponent to={linkUri}>{name}</LinkComponent>
         </p>
 
-        <TypographyComponent renderAs="span" smallText>
-          {suggestionText}
-        </TypographyComponent>
+        <TypographyComponent smallText>{suggestionText}</TypographyComponent>
       </section>
 
       <LinkComponent to={linkUri} asButton>

@@ -23,5 +23,5 @@ export const TypographyComponent = ({
     h3: <h3 className={className}>{children}</h3>
   }
 
-  return components[renderAs || 'p']
+  return components[renderAs || 'span']
 }

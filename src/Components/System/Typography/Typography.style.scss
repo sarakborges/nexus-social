@@ -17,4 +17,12 @@
     font-size: var(--size-smd);
     font-weight: 300;
   }
+
+  &:is(p) {
+    line-height: var(--line-height-md);
+  }
+}
+
+a .typography {
+  color: inherit;
 }

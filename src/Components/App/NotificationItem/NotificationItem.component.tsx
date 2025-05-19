@@ -74,7 +74,7 @@ export const NotificationItemComponent = ({
       </LinkComponent>
 
       <section className="notification-profile">
-        <TypographyComponent renderAs="span">
+        <TypographyComponent>
           {NOTIFICATION_TITLES[notification.type]}
         </TypographyComponent>
 
@@ -82,9 +82,7 @@ export const NotificationItemComponent = ({
           <LinkComponent to={linkUri!}>{name}</LinkComponent>
         </p>
 
-        <TypographyComponent renderAs="span" smallText>
-          {notificationDate}
-        </TypographyComponent>
+        <TypographyComponent smallText>{notificationDate}</TypographyComponent>
       </section>
 
       <section className="notification-actions">

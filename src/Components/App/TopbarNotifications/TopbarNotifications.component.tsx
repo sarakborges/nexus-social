@@ -11,14 +11,9 @@ import { NotificationItemComponent } from '@/Components/App/NotificationItem'
 import './TopbarNotifications.style.scss'
 
 export const TopbarNotificationsComponent = () => {
-  const notificationsContext = use(NotificationsContext)
+  const { notifications } = use(NotificationsContext)
+
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
-
-  if (!notificationsContext?.notifications) {
-    return <></>
-  }
-
-  const { notifications } = notificationsContext
 
   const topbarNotificationsDropdownRef = useRef<{
     toggleDropdown: (e: MouseEvent | React.MouseEvent) => void

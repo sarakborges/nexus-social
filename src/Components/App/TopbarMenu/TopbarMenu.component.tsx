@@ -12,14 +12,9 @@ import { ButtonComponent } from '@/Components/System/Button'
 import './TopbarMenu.style.scss'
 
 export const TopbarMenuComponent = () => {
-  const activeProfileContext = use(ActiveProfileContext)
+  const { activeProfile } = use(ActiveProfileContext)
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  if (!activeProfileContext?.activeProfile) {
-    return <></>
-  }
-
-  const { activeProfile } = activeProfileContext
 
   const topbarMenuDropdownRef = useRef<{
     toggleDropdown: (e: MouseEvent | React.MouseEvent) => void
@@ -43,8 +38,8 @@ export const TopbarMenuComponent = () => {
         active={isMenuOpen}
       >
         <ImageComponent
-          src={activeProfile.picture || `/avatar-placeholder.png`}
-          alt={activeProfile.name}
+          src={activeProfile?.picture || `/avatar-placeholder.png`}
+          alt={activeProfile?.name}
           rounded
           square
         />
@@ -52,7 +47,9 @@ export const TopbarMenuComponent = () => {
 
       <DropdownComponent ref={topbarMenuDropdownRef}>
         <section className="actions-menu">
-          {TOPBAR_MENU.map((menuItem) => (
+          {TOPBAR_MENU.filter(
+            (menuItem) => !menuItem.needsActiveProfile || activeProfile?.id
+          ).map((menuItem) => (
             <LinkComponent
               to={menuItem.to}
               key={`topbar-menu-item-${menuItem.text}`}

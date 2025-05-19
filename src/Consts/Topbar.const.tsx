@@ -8,7 +8,8 @@ export const TOPBAR_MENU = [
   {
     text: `Editar perfil`,
     icon: <MdEdit />,
-    to: ROUTES.HOME.path
+    to: ROUTES.HOME.path,
+    needsActiveProfile: true
   },
 
   {

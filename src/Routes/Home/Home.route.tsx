@@ -1,5 +1,3 @@
-import { SuggestionsProvider } from '@/Contexts/Suggestions.context'
-
 import { PageWrapperComponent } from '@/Components/App/PageWrapper'
 import { FeedComponent } from '@/Components/App/Feed'
 
@@ -11,10 +9,7 @@ export const HomeRoute = () => (
   <PageWrapperComponent>
     <main className="home-route">
       <FeedComponent />
-
-      <SuggestionsProvider>
-        <HomeSuggestionsComponent />
-      </SuggestionsProvider>
+      <HomeSuggestionsComponent />
     </main>
   </PageWrapperComponent>
 )

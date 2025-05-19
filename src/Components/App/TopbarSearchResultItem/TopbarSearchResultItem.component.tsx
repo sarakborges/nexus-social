@@ -40,7 +40,7 @@ export const TopbarSearchResultItemComponent = ({
           square
         />
 
-        <TypographyComponent renderAs="span">{name}</TypographyComponent>
+        <TypographyComponent>{name}</TypographyComponent>
       </LinkComponent>
     </li>
   )

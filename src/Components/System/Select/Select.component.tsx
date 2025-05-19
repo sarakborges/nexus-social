@@ -8,13 +8,9 @@ export const SelectComponent = ({
   ...rest
 }: SelectComponentType) => {
   return (
-    <select id={rest.name} className="field" {...rest}>
+    <select id={rest.name} className="field" value={initialValue} {...rest}>
       {options?.map((optionItem) => (
-        <option
-          key={optionItem.value}
-          value={optionItem.value}
-          selected={initialValue === optionItem.value}
-        >
+        <option key={optionItem.value} value={optionItem.value}>
           {optionItem.label}
         </option>
       ))}

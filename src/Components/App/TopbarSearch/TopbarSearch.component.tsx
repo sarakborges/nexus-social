@@ -13,13 +13,7 @@ import { TopbarSearchResultsComponent } from '@/Components/App/TopbarSearchResul
 import './TopbarSearch.style.scss'
 
 export const TopbarSearchComponent = () => {
-  const topbarSearchContext = use(TopbarSearchContext)
-
-  if (!topbarSearchContext) {
-    return <></>
-  }
-
-  const { setSearchTerm, setAllowedTypes } = topbarSearchContext
+  const { setSearchTerm, setAllowedTypes } = use(TopbarSearchContext)
 
   const topbarMenuDropdownRef = useRef<{
     openDropdown: (e: MouseEvent | React.MouseEvent) => void

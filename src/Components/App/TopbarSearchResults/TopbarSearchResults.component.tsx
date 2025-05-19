@@ -13,20 +13,14 @@ import { TypographyComponent } from '@/Components/System/Typography'
 import './TopbarSearchResults.style.scss'
 
 export const TopbarSearchResultsComponent = () => {
-  const topbarSearchContext = use(TopbarSearchContext)
-
-  if (!topbarSearchContext) {
-    return <></>
-  }
-
-  const { searchResults, allowedTypes } = topbarSearchContext
+  const { searchResults, allowedTypes } = use(TopbarSearchContext)
 
   return (
     <div className="topbar-search-results">
-      {searchResults.filter(
+      {!!searchResults.filter(
         (searchResultType) =>
           allowedTypes === 'all' || searchResultType.type === allowedTypes
-      ).length > 0 ? (
+      ).length ? (
         <>
           {searchResults
             .filter(

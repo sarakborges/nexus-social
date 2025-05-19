@@ -42,7 +42,7 @@ const INITIAL_FEED: FeedType[] = [
   }
 ]
 
-const FeedContext = createContext<FeedContextType | null>(null)
+const FeedContext = createContext<FeedContextType>({} as FeedContextType)
 
 const FeedProvider = ({ children }) => {
   const [feed, setFeed] = useState<FeedType[]>(INITIAL_FEED)

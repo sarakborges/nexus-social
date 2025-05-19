@@ -43,8 +43,8 @@ const INITIAL_NOTIFICATIONS: NotificationType[] = [
   }
 ]
 
-const NotificationsContext = createContext<NotificationsContextType | null>(
-  null
+const NotificationsContext = createContext<NotificationsContextType>(
+  {} as NotificationsContextType
 )
 
 const NotificationsProvider = ({ children }) => {

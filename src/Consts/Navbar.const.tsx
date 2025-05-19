@@ -17,27 +17,31 @@ export const NAVBAR = [
     id: ROUTES.PROFILE.id,
     to: ROUTES.PROFILE.path,
     text: `Perfil`,
-    icon: <FaUserCircle />
+    icon: <FaUserCircle />,
+    needsActiveProfile: true
   },
 
   {
     id: ROUTES.MESSAGES.id,
     to: ROUTES.MESSAGES.path,
     text: `Mensagens`,
-    icon: <BiSolidEnvelope />
+    icon: <BiSolidEnvelope />,
+    needsActiveProfile: true
   },
 
   {
     id: ROUTES.PROFILE_CONNECTIONS.id,
     to: ROUTES.PROFILE_CONNECTIONS.path,
     text: `Conexões`,
-    icon: <BsPeopleFill />
+    icon: <BsPeopleFill />,
+    needsActiveProfile: true
   },
 
   {
     id: ROUTES.PROFILE_GROUPS.id,
     to: ROUTES.PROFILE_GROUPS.path,
     text: `Grupos`,
-    icon: <FaPeopleGroup />
+    icon: <FaPeopleGroup />,
+    needsActiveProfile: true
   }
 ]

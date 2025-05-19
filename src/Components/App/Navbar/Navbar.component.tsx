@@ -6,29 +6,28 @@ import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { ImageComponent } from '@/Components/System/Image'
 import { LinkComponent } from '@/Components/System/Link'
+import { TypographyComponent } from '@/Components/System/Typography'
 
 import './Navbar.style.scss'
 
 export const NavbarComponent = () => {
-  const activeProfileContext = use(ActiveProfileContext)
-
-  if (!activeProfileContext?.activeProfile) {
-    return <></>
-  }
-
-  const { activeProfile } = activeProfileContext
+  const { activeProfile } = use(ActiveProfileContext)
 
   return (
     <nav className="navbar">
       <ImageComponent src="/logo.png" alt="Nexus" />
 
       <ul>
-        {NAVBAR.map((navbarItem) => (
+        {NAVBAR.filter(
+          (navbarItem) => !navbarItem.needsActiveProfile || !!activeProfile?.id
+        ).map((navbarItem) => (
           <li key={navbarItem.id}>
-            <LinkComponent to={navbarItem.to.replace(':id', activeProfile.uri)}>
+            <LinkComponent
+              to={navbarItem.to.replace(':id', activeProfile?.uri)}
+            >
               <>
                 {navbarItem.icon}
-                <span>{navbarItem.text}</span>
+                <TypographyComponent>{navbarItem.text}</TypographyComponent>
               </>
             </LinkComponent>
           </li>

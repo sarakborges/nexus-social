@@ -7,8 +7,8 @@
   --color-text: #e0e0e0;
   --color-border: #161625;
 
-  --color-background: #000006;
-  --color-background-hover: #060617;
+  --color-background: #00051a;
+  --color-background-hover: #061031;
 
   --button-text-color: #e4e1e8;
   --button-primary: #5182df;
@@ -18,12 +18,12 @@
   --button-cancel-hover: #ff2244;
   --button-cancel-disabled: #ffa4b1;
 
-  --field-background: #060617;
+  --field-background: #061031;
   --field-text: #e0e0e0;
   --field-focus-border: #154bae;
 
-  --card-background: #060617;
-  --card-field-background: #12122c;
+  --card-background: #061031;
+  --card-field-background: #0b1b50;
 
   --modal-background: #060617b2;
 
@@ -37,6 +37,7 @@
   --size-xl: 48px;
 
   --size-profiles-list: 360px;
+  --size-login: 400px;
   --size-navbar: 240px;
   --size-home-suggestions: 360px;
   --size-topbar-notifications: 360px;

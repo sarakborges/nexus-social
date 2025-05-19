@@ -1,17 +1,9 @@
-import { MdEdit } from 'react-icons/md'
 import { HiCog6Tooth } from 'react-icons/hi2'
 import { BiLogOut } from 'react-icons/bi'
 
 import { ROUTES } from './Routes.const'
 
 export const TOPBAR_MENU = [
-  {
-    text: `Editar perfil`,
-    icon: <MdEdit />,
-    to: ROUTES.HOME.path,
-    needsActiveProfile: true
-  },
-
   {
     text: `Configurações da conta`,
     icon: <HiCog6Tooth />,

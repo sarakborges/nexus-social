@@ -26,13 +26,13 @@
     display: flex;
     gap: var(--size-smd);
 
-    > .button {
+    > :is(.button, .link) {
       height: var(--size-lg);
+    }
 
-      > svg {
-        width: var(--size-md);
-        height: var(--size-md);
-      }
+    svg {
+      width: var(--size-md);
+      height: var(--size-md);
     }
   }
 }

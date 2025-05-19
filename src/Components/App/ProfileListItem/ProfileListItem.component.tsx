@@ -1,11 +1,13 @@
 import { use } from 'react'
 import { FaTrash } from 'react-icons/fa'
+import { FaPencil } from 'react-icons/fa6'
 
 import * as UsersAPI from '@/Apis/Users'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
+import { ROUTES } from '@/Consts/Routes.const'
 import {
   PROFILES_LIST_ACTIVATE_PROFILE,
   PROFILES_LIST_ACTIVE_PROFILE,
@@ -17,6 +19,7 @@ import { ProfileType } from '@/Types/Profile.type'
 import { ImageComponent } from '@/Components/System/Image'
 import { ButtonComponent } from '@/Components/System/Button'
 import { TypographyComponent } from '@/Components/System/Typography'
+import { LinkComponent } from '@/Components/System/Link'
 
 import './ProfileListItem.style.scss'
 
@@ -105,6 +108,12 @@ export const ProfileListItemComponent = ({
           <ButtonComponent onClick={() => changeActiveProfile(id)}>
             {PROFILES_LIST_ACTIVATE_PROFILE}
           </ButtonComponent>
+        )}
+
+        {isActiveProfile && (
+          <LinkComponent to={ROUTES.PROFILE.path} asButton square>
+            <FaPencil />
+          </LinkComponent>
         )}
 
         <ButtonComponent square cancel onClick={() => deleteProfile(id)}>

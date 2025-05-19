@@ -8,6 +8,10 @@
 
   transition: background-color 0.3s, color 0.3s;
 
+  &.square {
+    aspect-ratio: 1;
+  }
+
   &:not(.link-button) {
     color: var(--color-primary);
 
@@ -17,6 +21,7 @@
   }
 
   &.link-button {
+    place-content: center;
     padding: var(--size-sm);
 
     color: var(--button-text-color);

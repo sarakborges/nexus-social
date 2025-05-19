@@ -7,6 +7,7 @@ import { FormComponent } from '@/Components/System/Form'
 import { CardComponent } from '@/Components/System/Card'
 import { TypographyComponent } from '@/Components/System/Typography'
 import { LinkComponent } from '@/Components/System/Link'
+import { ImageComponent } from '@/Components/System/Image'
 
 import './RegisterForm.style.scss'
 
@@ -14,6 +15,8 @@ export const RegisterFormComponent = () => {
   return (
     <section className="register-form">
       <CardComponent>
+        <ImageComponent alt="Nexus" src="/logo.png" />
+
         <TypographyComponent renderAs="h1">
           {REGISTER_TITLE}
         </TypographyComponent>

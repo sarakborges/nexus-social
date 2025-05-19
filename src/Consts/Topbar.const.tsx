@@ -21,7 +21,11 @@ export const TOPBAR_MENU = [
   {
     text: `Sair`,
     icon: <BiLogOut />,
-    to: ROUTES.LOGIN.path
+    to: ROUTES.LOGIN.path,
+    onClick: () => {
+      localStorage.removeItem('userId')
+      localStorage.removeItem('nexus-token')
+    }
   }
 ]
 

@@ -2,8 +2,11 @@ import axios from 'axios'
 
 import { RequestFiltersType } from '@/Types/RequestFilters.type'
 
+const token = localStorage.getItem('nexus-token')
+
 export const request = axios.create({
-  baseURL: `http://localhost:3000`
+  baseURL: `http://localhost:3000`,
+  headers: { Authorization: `Bearer ${token}` }
 })
 
 export const setFilters = ({

@@ -63,6 +63,11 @@ export const FormComponent = ({
   }
 
   const clearError = (fieldName) => {
+    if (!errors) {
+      setErrors({})
+      return
+    }
+
     const { [fieldName]: field, ...otherErrors } = errors
     setErrors(otherErrors)
   }
@@ -90,7 +95,7 @@ export const FormComponent = ({
         {fields.map((fieldItem) => (
           <FieldComponent
             key={fieldItem.name}
-            error={errors[fieldItem.name] || ''}
+            error={errors?.[fieldItem.name] || ''}
             onChange={() => {
               clearError(fieldItem.name)
             }}

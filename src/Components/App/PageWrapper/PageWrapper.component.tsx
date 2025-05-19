@@ -21,9 +21,15 @@ export const PageWrapperComponent = ({
   const { setUser } = use(UserContext)
   const { setActiveProfile } = use(ActiveProfileContext)
 
+  const userId = localStorage.getItem('user-id')
+
+  if (!userId) {
+    return <></>
+  }
+
   useEffect(() => {
     const getUser = async () => {
-      const userRequest = await UsersAPI.getUser('1')
+      const userRequest = await UsersAPI.getUser(userId)
 
       if (!userRequest) {
         return

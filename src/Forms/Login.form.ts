@@ -1,11 +1,14 @@
 import { FormHTMLAttributes } from 'react'
+
+import * as UsersAPI from '@/Apis/Users'
+
 import { FormType } from '@/Types/Form.type'
 
 import { FIELD_TYPE_PASSWORD, FIELD_TYPE_TEXT } from '@/Consts/FieldTypes.const'
 import {
   LOGIN_BUTTON,
-  LOGIN_PASSWORD_PLACEHOLDER,
-  LOGIN_USERNAME_PLACEHOLDER
+  LOGIN_EMAIL_PLACEHOLDER,
+  LOGIN_PASSWORD_PLACEHOLDER
 } from '@/Consts/Login.const'
 import { ROUTES } from '@/Consts/Routes.const'
 
@@ -15,14 +18,17 @@ export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   onSubmit: async (e) => {
     const formData = new FormData(e.target as HTMLFormElement)
 
-    const { username, password } = Object.fromEntries(formData)
+    const { email, password } = Object.fromEntries(formData) as {
+      email: string
+      password: string
+    }
 
-    if (!username || !password) {
+    if (!email || !password) {
       const response = {
-        errorMessage: `Usuário e senha são obrigatórios`,
+        errorMessage: `Campos email e senha são obrigatórios.`,
 
         errors: {
-          username: !username ? `Campo obrigatório` : ``,
+          email: !email ? `Campo obrigatório` : ``,
           password: !password ? `Campo obrigatório` : ``
         }
       }
@@ -30,8 +36,21 @@ export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       return response
     }
 
+    const loginResponse = await UsersAPI.loginUser({
+      email,
+      password
+    })
+
+    if (!loginResponse) {
+      const response = {
+        errorMessage: `Falha no login. Verifique as informações inseridas e tente novamente.`
+      }
+
+      return response
+    }
+
     localStorage.setItem('nexus-token', 'nice')
-    localStorage.setItem('userId', '1')
+    localStorage.setItem('user-id', loginResponse.id)
 
     const response = {
       redirectUri: ROUTES.HOME.path
@@ -42,9 +61,9 @@ export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
   fields: [
     {
-      name: 'username',
-      label: LOGIN_USERNAME_PLACEHOLDER,
-      placeholder: LOGIN_USERNAME_PLACEHOLDER,
+      name: 'email',
+      label: LOGIN_EMAIL_PLACEHOLDER,
+      placeholder: LOGIN_EMAIL_PLACEHOLDER,
       type: FIELD_TYPE_TEXT
     },
 

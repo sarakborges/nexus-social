@@ -5,12 +5,26 @@
 
   white-space: nowrap;
 
-  > a {
+  > :is(a, span) {
+    display: flex;
+    place-items: center;
     gap: var(--size-sm);
 
     > svg {
       width: var(--size-lmd);
       height: var(--size-lmd);
+    }
+  }
+
+  > span {
+    color: var(--color-primary);
+
+    cursor: pointer;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: var(--color-primary-active);
     }
   }
 }

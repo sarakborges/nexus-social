@@ -4,6 +4,11 @@ export const ROUTES = {
     path: '/login'
   },
 
+  REGISTER: {
+    id: 'register',
+    path: '/register'
+  },
+
   HOME: {
     id: 'home',
     path: '/'

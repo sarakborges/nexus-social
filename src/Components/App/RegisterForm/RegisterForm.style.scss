@@ -1,0 +1,14 @@
+.register-form {
+  > .card {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-lmd);
+
+    padding: var(--size-xl);
+
+    > .register-navigation {
+      display: flex;
+      place-content: center;
+    }
+  }
+}

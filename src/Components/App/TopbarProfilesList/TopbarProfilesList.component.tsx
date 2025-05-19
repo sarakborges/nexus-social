@@ -64,7 +64,7 @@ export const TopbarProfilesListComponent = () => {
             <TypographyComponent renderAs="h2">
               {PROFILES_LIST_TITLE.replace(
                 ':count',
-                String(user.profiles?.length)
+                String(user.profiles?.length || 0)
               )}
             </TypographyComponent>
 

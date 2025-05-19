@@ -19,7 +19,7 @@ export const LoginFormComponent = () => {
         <FormComponent {...LOGIN_FORM} />
 
         <section className="login-navigation">
-          <LinkComponent to={ROUTES.LOGIN.path}>
+          <LinkComponent to={ROUTES.REGISTER.path}>
             {LOGIN_NO_ACCOUNT}
           </LinkComponent>
         </section>

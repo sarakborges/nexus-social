@@ -18,7 +18,7 @@ export const FormComponent = ({
 }: FormType & FormHTMLAttributes<HTMLFormElement>) => {
   const navigate = useNavigate()
   const [modalErrorMessage, setModalErrorMessage] = useState('')
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState<{ [propName: string]: string }>({})
 
   const { submitText, fields, onSubmit, ...formProps } = rest
 
@@ -42,7 +42,9 @@ export const FormComponent = ({
     e
   }: {
     errorMessage: string
-    errors: Array<string>
+    errors: {
+      [propName: string]: string
+    }
     e: eventType
   }) => {
     if (!errorMessage) {
@@ -62,7 +64,7 @@ export const FormComponent = ({
     navigate(redirectUri)
   }
 
-  const clearError = (fieldName) => {
+  const clearError = (fieldName: string) => {
     if (!errors) {
       setErrors({})
       return

@@ -62,9 +62,7 @@ export const TopbarMenuComponent = () => {
 
       <DropdownComponent ref={topbarMenuDropdownRef}>
         <section className="actions-menu">
-          {TOPBAR_MENU.filter(
-            (menuItem) => !menuItem.needsActiveProfile || activeProfile?.id
-          ).map((menuItem) => (
+          {TOPBAR_MENU.map((menuItem) => (
             <Fragment key={`topbar-menu-item-${menuItem.text}`}>
               {!menuItem.onClick ? (
                 <LinkComponent to={menuItem.to}>

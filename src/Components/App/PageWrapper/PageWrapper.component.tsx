@@ -1,7 +1,6 @@
 import { use, useEffect } from 'react'
 
 import * as UsersAPI from '@/Apis/Users'
-import * as ProfilesAPI from '@/Apis/Profiles'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'

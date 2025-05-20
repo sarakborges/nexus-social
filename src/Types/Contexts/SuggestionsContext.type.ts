@@ -1,4 +1,4 @@
-import { SuggestionType } from './Suggestion.type'
+import { SuggestionType } from '@/Types/Suggestion.type'
 
 export type SuggestionsContextType = {
   suggestions: Array<SuggestionType>

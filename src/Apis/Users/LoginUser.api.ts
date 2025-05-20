@@ -10,7 +10,9 @@ export const loginUser = async ({
   password: string
 }) => {
   const userRequest = await axios.get(
-    `http://localhost:3000/users${setFilters({ params: { email, password } })}`
+    `https://nexus-server-woad.vercel.app/users${setFilters({
+      params: { email, password }
+    })}`
   )
 
   const { status, data } = userRequest

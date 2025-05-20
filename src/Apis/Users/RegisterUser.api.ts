@@ -7,10 +7,13 @@ export const registerUser = async ({
   email: string
   password: string
 }) => {
-  const userRequest = await axios.post(`http://localhost:3000/users`, {
-    email,
-    password
-  })
+  const userRequest = await axios.post(
+    `https://nexus-server-woad.vercel.app/users`,
+    {
+      email,
+      password
+    }
+  )
 
   const { status, data } = userRequest
 

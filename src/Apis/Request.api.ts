@@ -5,7 +5,7 @@ import { RequestFiltersType } from '@/Types/RequestFilters.type'
 const token = localStorage.getItem('nexus-token')
 
 export const request = axios.create({
-  baseURL: `http://localhost:3000`,
+  baseURL: `https://nexus-server-woad.vercel.app`,
   headers: { Authorization: `Bearer ${token}` }
 })
 

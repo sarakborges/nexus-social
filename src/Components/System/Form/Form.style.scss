@@ -2,6 +2,22 @@
   display: flex;
   flex-flow: column;
   gap: var(--size-lmd);
+
+  > section {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-smd);
+
+    padding-top: var(--size-lmd);
+
+    border-top: 1px solid var(--color-primary);
+
+    .form-fields {
+      display: flex;
+      flex-flow: column;
+      gap: var(--size-lmd);
+    }
+  }
 }
 
 .error-modal {

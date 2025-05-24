@@ -1,4 +1,4 @@
-import React, { FormHTMLAttributes, useRef, useState } from 'react'
+import React, { FormHTMLAttributes, Fragment, useRef, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import { FieldComponent } from '@/Components/System/Field'
@@ -20,7 +20,7 @@ export const FormComponent = ({
   const [modalErrorMessage, setModalErrorMessage] = useState('')
   const [errors, setErrors] = useState<{ [propName: string]: string }>({})
 
-  const { submitText, fields, onSubmit, ...formProps } = rest
+  const { submitText, sections, onSubmit, ...formProps } = rest
 
   type eventType = MouseEvent | React.MouseEvent
 
@@ -94,15 +94,27 @@ export const FormComponent = ({
   return (
     <>
       <form className="form" {...formProps} onSubmit={doSubmit}>
-        {fields.map((fieldItem) => (
-          <FieldComponent
-            key={fieldItem.name}
-            error={errors?.[fieldItem.name] || ''}
-            onChange={() => {
-              clearError(fieldItem.name)
-            }}
-            {...fieldItem}
-          />
+        {sections.map((sectionItem) => (
+          <section key={sectionItem.id}>
+            {sectionItem.title && (
+              <TypographyComponent renderAs="h2">
+                {sectionItem.title}
+              </TypographyComponent>
+            )}
+
+            <main className="form-fields">
+              {sectionItem.fields.map((fieldItem) => (
+                <FieldComponent
+                  key={fieldItem.name}
+                  error={errors?.[fieldItem.name] || ''}
+                  onChange={() => {
+                    clearError(fieldItem.name)
+                  }}
+                  {...fieldItem}
+                />
+              ))}
+            </main>
+          </section>
         ))}
 
         <ButtonComponent type="submit">{submitText}</ButtonComponent>

@@ -59,19 +59,24 @@ export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
     return response
   },
 
-  fields: [
+  sections: [
     {
-      name: 'email',
-      label: LOGIN_EMAIL_PLACEHOLDER,
-      placeholder: LOGIN_EMAIL_PLACEHOLDER,
-      type: FIELD_TYPE_TEXT
-    },
+      id: 'login',
+      fields: [
+        {
+          name: 'email',
+          label: LOGIN_EMAIL_PLACEHOLDER,
+          placeholder: LOGIN_EMAIL_PLACEHOLDER,
+          type: FIELD_TYPE_TEXT
+        },
 
-    {
-      name: 'password',
-      label: LOGIN_PASSWORD_PLACEHOLDER,
-      placeholder: LOGIN_PASSWORD_PLACEHOLDER,
-      type: FIELD_TYPE_PASSWORD
+        {
+          name: 'password',
+          label: LOGIN_PASSWORD_PLACEHOLDER,
+          placeholder: LOGIN_PASSWORD_PLACEHOLDER,
+          type: FIELD_TYPE_PASSWORD
+        }
+      ]
     }
   ]
 }

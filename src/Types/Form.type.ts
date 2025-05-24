@@ -10,16 +10,21 @@ import {
 export type FormType = {
   submitText: string
 
-  fields: {
-    name: string
-    label: string
-    placeholder: string
-    type:
-      | typeof FIELD_TYPE_TEXT
-      | typeof FIELD_TYPE_TEXTAREA
-      | typeof FIELD_TYPE_CHECKBOX
-      | typeof FIELD_TYPE_PASSWORD
-      | typeof FIELD_TYPE_RADIO
-      | typeof FIELD_TYPE_SELECT
-  }[]
+  sections: Array<{
+    id: string
+    title?: string
+
+    fields: Array<{
+      name: string
+      label: string
+      placeholder: string
+      type:
+        | typeof FIELD_TYPE_TEXT
+        | typeof FIELD_TYPE_TEXTAREA
+        | typeof FIELD_TYPE_CHECKBOX
+        | typeof FIELD_TYPE_PASSWORD
+        | typeof FIELD_TYPE_RADIO
+        | typeof FIELD_TYPE_SELECT
+    }>
+  }>
 }

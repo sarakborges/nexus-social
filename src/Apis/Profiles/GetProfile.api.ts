@@ -9,5 +9,5 @@ export const getProfile = async (id: number) => {
     return
   }
 
-  return data[0]
+  return data
 }

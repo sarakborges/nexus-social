@@ -23,16 +23,16 @@ export const NAVBAR = [
   },
 
   {
-    id: `notifications`,
-    component: <NavbarNotificationsComponent />,
-    needsActiveProfile: true
-  },
-
-  {
     id: ROUTES.PROFILE.id,
     to: ROUTES.PROFILE.path,
     text: `Perfil`,
     icon: <FaUserCircle />,
+    needsActiveProfile: true
+  },
+
+  {
+    id: `notifications`,
+    component: <NavbarNotificationsComponent />,
     needsActiveProfile: true
   },
 

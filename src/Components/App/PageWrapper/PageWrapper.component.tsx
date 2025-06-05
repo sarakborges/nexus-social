@@ -6,7 +6,6 @@ import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { NavbarComponent } from '@/Components/App/Navbar'
-import { TopbarComponent } from '@/Components/App/Topbar'
 
 import './PageWrapper.style.scss'
 

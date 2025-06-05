@@ -31,7 +31,7 @@ export const ProfileListItemComponent = ({
   profile: ProfileType
   isActiveProfile?: boolean
 }) => {
-  const { user, setUser } = use(UserContext)
+  const { user } = use(UserContext)
   const { setActiveProfile } = use(ActiveProfileContext)
 
   const { id, name, picture } = profile

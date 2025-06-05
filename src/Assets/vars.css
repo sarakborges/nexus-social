@@ -11,11 +11,11 @@
   --color-background-hover: #061031;
 
   --button-text-color: #e4e1e8;
-  --button-primary: #5182df;
-  --button-primary-hover: #154bae;
+  --button-primary: #154bae;
+  --button-primary-hover: #5182df;
   --button-primary-disabled: #84a4de;
-  --button-cancel: #ff637b;
-  --button-cancel-hover: #ff2244;
+  --button-cancel: #ff2244;
+  --button-cancel-hover: #ff637b;
   --button-cancel-disabled: #ffa4b1;
 
   --field-background: #061031;

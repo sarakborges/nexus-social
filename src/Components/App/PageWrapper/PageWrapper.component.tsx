@@ -65,7 +65,6 @@ export const PageWrapperComponent = ({
       </aside>
 
       <aside className="page-content">
-        <TopbarComponent />
         <main>{children}</main>
       </aside>
     </main>

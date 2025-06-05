@@ -1,6 +1,5 @@
 .dropdown {
   position: absolute;
-  top: calc(100% + var(--size-sm));
   z-index: 99;
 
   > .card {
@@ -21,5 +20,13 @@
 
   &.left {
     left: 0;
+  }
+
+  &:not(.top) {
+    top: calc(100% + var(--size-sm));
+  }
+
+  &.top {
+    bottom: calc(100% + var(--size-sm));
   }
 }

@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: column;
   place-items: center;
+  place-content: space-between;
   gap: var(--size-smd);
 
   position: sticky;
@@ -15,29 +16,33 @@
 
   border-right: 1px solid var(--color-border);
 
-  > picture {
-    > img {
-      max-height: var(--size-logo);
-    }
-  }
-
-  > ul {
+  .navbar-menu {
     width: 100%;
 
-    > li {
-      > .link {
-        width: 100%;
-        padding: var(--size-smd) var(--size-lmd);
+    > picture {
+      > img {
+        max-height: var(--size-logo);
+      }
+    }
 
-        transition: background-color 0.3s, color 0.3s;
+    > ul {
+      width: 100%;
 
-        &:hover {
-          background-color: var(--color-background-hover);
-        }
+      > li {
+        > .link {
+          width: 100%;
+          padding: var(--size-smd) var(--size-lmd);
 
-        > svg {
-          width: var(--size-lmd);
-          height: var(--size-lmd);
+          transition: background-color 0.3s, color 0.3s;
+
+          &:hover {
+            background-color: var(--color-background-hover);
+          }
+
+          > svg {
+            width: var(--size-lmd);
+            height: var(--size-lmd);
+          }
         }
       }
     }

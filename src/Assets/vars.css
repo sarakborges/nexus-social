@@ -36,14 +36,15 @@
   --size-lg: 36px;
   --size-xl: 48px;
 
-  --size-profiles-list: 360px;
+  --size-profiles-list: 240px;
   --size-login: 400px;
-  --size-navbar: 240px;
+  --size-navbar: 280px;
   --size-home-suggestions: 360px;
   --size-topbar-notifications: 360px;
   --size-topbar-search: 480px;
   --size-new-post: 640px;
   --size-logo: 96px;
+  --size-navbar-profile-avatar: 108px;
   --size-avatar: 192px;
 
   --body-wrapper: clamp(320px, 1160px, 100%);

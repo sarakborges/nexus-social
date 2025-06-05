@@ -7,7 +7,7 @@ import { CardComponent } from '@/Components/System/Card'
 import './Dropdown.style.scss'
 
 export const DropdownComponent = forwardRef(
-  ({ children, left }: DropdownComponentType, ref) => {
+  ({ children, left, top }: DropdownComponentType, ref) => {
     const [isOpen, setIsOpen] = useState(false)
 
     const toggleDropdown = () => {
@@ -30,7 +30,12 @@ export const DropdownComponent = forwardRef(
 
     return (
       <div
-        className={['dropdown', isOpen ? 'open' : '', left ? 'left' : '']
+        className={[
+          'dropdown',
+          isOpen ? 'open' : '',
+          left ? 'left' : '',
+          top ? 'top' : ''
+        ]
           .filter(Boolean)
           .join(' ')}
       >

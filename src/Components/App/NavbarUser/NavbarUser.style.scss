@@ -1,0 +1,56 @@
+.navbar-user-wrapper {
+  width: 100%;
+  padding: var(--size-sm) var(--size-sm) 0;
+
+  > .navbar-user {
+    display: flex;
+    place-items: center;
+    place-content: space-between;
+    gap: var(--size-md);
+
+    position: relative;
+
+    padding: var(--size-smd);
+
+    background: var(--card-background);
+    border-radius: var(--size-sm);
+
+    > .button {
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+
+      img {
+        height: var(--size-lg);
+      }
+
+      > section {
+        display: flex;
+        flex-flow: column;
+        gap: var(--size-xs);
+
+        flex: 1;
+        overflow: hidden;
+
+        .typography {
+          max-width: 100%;
+          flex: 1;
+          overflow: hidden;
+
+          white-space: nowrap;
+          text-align: left;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    > .link {
+      aspect-ratio: 1;
+
+      > svg {
+        width: var(--size-md);
+        height: var(--size-md);
+      }
+    }
+  }
+}

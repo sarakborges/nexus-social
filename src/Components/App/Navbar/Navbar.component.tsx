@@ -8,6 +8,8 @@ import { ImageComponent } from '@/Components/System/Image'
 import { LinkComponent } from '@/Components/System/Link'
 import { TypographyComponent } from '@/Components/System/Typography'
 
+import { NavbarUserComponent } from '@/Components/App/NavbarUser'
+
 import './Navbar.style.scss'
 
 export const NavbarComponent = () => {
@@ -15,24 +17,29 @@ export const NavbarComponent = () => {
 
   return (
     <nav className="navbar">
-      <ImageComponent src="/logo.png" alt="Nexus" />
+      <section className="navbar-menu">
+        <ImageComponent src="/logo.png" alt="Nexus" />
 
-      <ul>
-        {NAVBAR.filter(
-          (navbarItem) => !navbarItem.needsActiveProfile || !!activeProfile?.id
-        ).map((navbarItem) => (
-          <li key={navbarItem.id}>
-            <LinkComponent
-              to={navbarItem.to.replace(':id', activeProfile?.uri)}
-            >
-              <>
-                {navbarItem.icon}
-                <TypographyComponent>{navbarItem.text}</TypographyComponent>
-              </>
-            </LinkComponent>
-          </li>
-        ))}
-      </ul>
+        <ul>
+          {NAVBAR.filter(
+            (navbarItem) =>
+              !navbarItem.needsActiveProfile || !!activeProfile?.id
+          ).map((navbarItem) => (
+            <li key={navbarItem.id}>
+              <LinkComponent
+                to={navbarItem.to.replace(':id', activeProfile?.uri)}
+              >
+                <>
+                  {navbarItem.icon}
+                  <TypographyComponent>{navbarItem.text}</TypographyComponent>
+                </>
+              </LinkComponent>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <NavbarUserComponent />
     </nav>
   )
 }

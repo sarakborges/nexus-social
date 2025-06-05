@@ -1,0 +1,95 @@
+.navbar-user-dropdown {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-md);
+
+  width: var(--size-navbar);
+
+  .navbar-user-dropdown-picture {
+    aspect-ratio: 1;
+    width: var(--size-navbar-profile-avatar);
+    padding: var(--size-sm);
+
+    border-radius: 100%;
+    background-color: var(--card-field-background);
+  }
+
+  .navbar-user-dropdown-name {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-xs);
+
+    overflow: hidden;
+
+    .typography {
+      max-width: 100%;
+      flex: 1;
+      overflow: hidden;
+
+      white-space: nowrap;
+      text-align: left;
+      text-overflow: ellipsis;
+    }
+  }
+
+  > .navbar-user-dropdown-actions {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-xs);
+
+    > .link {
+      place-content: flex-start;
+      gap: var(--size-sm);
+
+      height: var(--size-xl);
+
+      > svg {
+        width: var(--size-lmd);
+        height: var(--size-lmd);
+      }
+    }
+
+    > .button {
+      place-content: flex-start;
+      gap: var(--size-sm);
+
+      width: 100%;
+
+      > svg {
+        width: var(--size-lmd);
+        height: var(--size-lmd);
+      }
+    }
+
+    > .navbar-user-dropdown-change-profile {
+      position: relative;
+
+      > .dropdown {
+        left: calc(100% + var(--size-md));
+        bottom: calc(100% - calc(var(--size-xl) * 2));
+      }
+
+      > .button {
+        width: 100%;
+
+        > section {
+          display: flex;
+          place-items: center;
+          gap: var(--size-sm);
+
+          flex: 1;
+
+          > svg {
+            width: var(--size-lmd);
+            height: var(--size-lmd);
+          }
+        }
+
+        > svg {
+          width: var(--size-md);
+          height: var(--size-md);
+        }
+      }
+    }
+  }
+}

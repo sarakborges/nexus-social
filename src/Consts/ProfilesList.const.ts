@@ -1,4 +1,4 @@
-export const PROFILES_LIST_TITLE = `Seus perfis (:count)`
+export const PROFILES_LIST_TITLE = `Seus perfis`
 export const PROFILES_LIST_NEW_PROFILE = `Criar novo perfil`
 export const PROFILES_LIST_FILTER = `Filtrar perfis`
 export const PROFILES_LIST_ACTIVE_PROFILE = `Atualmente ativo`

@@ -100,7 +100,7 @@ export const ProfileListItemComponent = ({
 
         {!isActiveProfile && (
           <TypographyComponent smallText>
-            {PROFILES_LIST_UNSEEN_NOTIFICATIONS.replace(':count', '7')}
+            {PROFILES_LIST_UNSEEN_NOTIFICATIONS.replace(':count', '0')}
           </TypographyComponent>
         )}
       </section>

@@ -1,8 +1,8 @@
-.navbar-user-wrapper {
+.navbar-user {
   width: 100%;
   padding: var(--size-sm) var(--size-sm) 0;
 
-  > .navbar-user {
+  > .card {
     display: flex;
     place-items: center;
     place-content: space-between;
@@ -16,13 +16,17 @@
     border-radius: var(--size-sm);
 
     > .button {
-      gap: var(--size-sm);
+      gap: var(--size-smd);
 
       width: 100%;
+      padding: 0;
       overflow: hidden;
 
+      border-radius: var(--size-xl) var(--size-smd) var(--size-smd)
+        var(--size-xl);
+
       img {
-        height: var(--size-lg);
+        height: var(--size-xl);
       }
 
       > section {

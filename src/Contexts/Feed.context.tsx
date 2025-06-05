@@ -9,7 +9,8 @@ const INITIAL_FEED: FeedType[] = [
     content: `gays`,
     date: new Date('2025-05-01 07:15:00'),
     profile: {
-      id: '1',
+      id: 1,
+      userId: 1,
       name: 'doom.',
       uri: 'doomyumm',
       picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/doomyum6816297e9e8ce.png`
@@ -21,7 +22,8 @@ const INITIAL_FEED: FeedType[] = [
     picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/upload/950385/hoshimi-miyabi68196a8d86357.png`,
     date: new Date('2025-05-01 07:15:00'),
     profile: {
-      id: '1',
+      id: 1,
+      userId: 1,
       name: 'doom.',
       uri: 'doomyumm',
       picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/doomyum6816297e9e8ce.png`
@@ -34,7 +36,8 @@ const INITIAL_FEED: FeedType[] = [
     picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/upload/950385/hoshimi-miyabi68196a8d86357.png`,
     date: new Date('2025-05-01 07:15:00'),
     profile: {
-      id: '1',
+      id: 1,
+      userId: 1,
       name: 'doom.',
       uri: 'doomyumm',
       picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/doomyum6816297e9e8ce.png`

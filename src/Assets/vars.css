@@ -44,6 +44,7 @@
   --size-topbar-search: 480px;
   --size-new-post: 640px;
   --size-logo: 96px;
+  --size-avatar: 192px;
 
   --body-wrapper: clamp(320px, 1160px, 100%);
 

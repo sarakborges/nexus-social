@@ -1,21 +1,14 @@
 import { request } from '@/Apis/Request.api'
 
-import { UserType } from '@/Types/User.type'
-
 export const deleteUserProfile = async ({
   profileId,
-  user
+  userId
 }: {
-  profileId: string
-  user: UserType
+  profileId: number
+  userId: number
 }) => {
-  const profilesRequest = await request.put(`/users/${user.id}`, {
-    ...user,
-    activeProfile:
-      user.activeProfile === profileId ? undefined : user.activeProfile,
-    profiles: user.profiles?.filter(
-      (profileItem) => profileItem.id !== profileId
-    )
+  const profilesRequest = await request.patch(`/users/${userId}/remove`, {
+    profile: profileId
   })
 
   const { status } = profilesRequest

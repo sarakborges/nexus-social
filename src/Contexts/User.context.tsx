@@ -7,7 +7,9 @@ const UserContext = createContext<UserContextType>({} as UserContextType)
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState<UserType>({
-    id: ''
+    id: 0,
+    email: '',
+    password: ''
   })
 
   return (

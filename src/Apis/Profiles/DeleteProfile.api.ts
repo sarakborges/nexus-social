@@ -1,9 +1,7 @@
-import { request, setFilters } from '@/Apis/Request.api'
+import { request } from '@/Apis/Request.api'
 
-export const deleteProfile = async (id: string) => {
-  const profilesRequest = await request.delete(
-    `/profiles${setFilters({ params: { id } })}`
-  )
+export const deleteProfile = async (id: number) => {
+  const profilesRequest = await request.delete(`/profiles/${id}`)
 
   const { status } = profilesRequest
 

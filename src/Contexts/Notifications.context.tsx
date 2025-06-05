@@ -11,7 +11,8 @@ const INITIAL_NOTIFICATIONS: NotificationType[] = [
     type: NOTIFICATION_TYPES.CONNECTION_REQUEST,
     date: new Date('2025-05-01 07:15:00'),
     profile: {
-      id: '1',
+      id: 1,
+      userId: 1,
       name: 'hope.',
       uri: 'hopyumm',
       picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/first-blood67e450dcccc7c.png`
@@ -35,7 +36,8 @@ const INITIAL_NOTIFICATIONS: NotificationType[] = [
     type: NOTIFICATION_TYPES.CONNECTION_ACCEPTED,
     date: new Date('2025-05-05 01:45:00'),
     profile: {
-      id: '2',
+      id: 2,
+      userId: 1,
       name: 'doom.',
       uri: 'doomyumm',
       picture: `https://image.yoble.us/avatar/doomyum6822948348c3d.png`

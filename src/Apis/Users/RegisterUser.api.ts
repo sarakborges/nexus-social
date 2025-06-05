@@ -1,24 +1,11 @@
 import axios from 'axios'
 
-import { ProfileType } from '@/Types/Profile.type'
+import { UserType } from '@/Types/User.type'
 
-export const registerUser = async ({
-  email,
-  password,
-  profile
-}: {
-  email: string
-  password: string
-  profile: ProfileType
-}) => {
+export const registerUser = async (user: Partial<UserType>) => {
   const userRequest = await axios.post(
-    `https://nexus-server-woad.vercel.app/users`,
-    {
-      email,
-      password,
-      profiles: [profile],
-      activeProfile: '1'
-    }
+    `https://nexus-server-dam7.onrender.com/users`,
+    user
   )
 
   const { status, data } = userRequest

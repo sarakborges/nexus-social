@@ -3,6 +3,7 @@ import { FaTrash } from 'react-icons/fa'
 import { FaPencil } from 'react-icons/fa6'
 
 import * as UsersAPI from '@/Apis/Users'
+import * as ProfilesAPI from '@/Apis/Profiles'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
@@ -35,10 +36,10 @@ export const ProfileListItemComponent = ({
 
   const { id, name, picture } = profile
 
-  const changeActiveProfile = async (profileId: string) => {
+  const changeActiveProfile = async (profileId: number) => {
     const updateRequest = await UsersAPI.updateActiveProfile({
       profileId,
-      user
+      userId: user?.id
     })
 
     if (!updateRequest) {
@@ -50,31 +51,32 @@ export const ProfileListItemComponent = ({
     )
   }
 
-  const deleteProfile = async (profileId: string) => {
-    const deleteRequest = await UsersAPI.deleteUserProfile({
+  const deleteProfile = async (profileId: number) => {
+    const deleteProfileRequest = await ProfilesAPI.deleteProfile(profileId)
+
+    if (!deleteProfileRequest) {
+      return
+    }
+
+    const deleteFromUserRequest = await UsersAPI.deleteUserProfile({
       profileId,
-      user
+      userId: user?.id
     })
 
-    if (!deleteRequest) {
+    if (!deleteFromUserRequest) {
       return
+    }
+
+    if (user.activeProfile === profileId) {
+      setActiveProfile({ id: 0, name: '', uri: '', userId: 0 })
     }
 
     setUser({
       ...user,
+      activeProfile: user.activeProfile === profileId ? 0 : user.activeProfile,
       profiles: user.profiles?.filter(
         (profileItem) => profileItem.id !== profileId
       )
-    })
-
-    if (!isActiveProfile) {
-      return
-    }
-
-    setActiveProfile({
-      id: '',
-      name: '',
-      uri: ''
     })
   }
 

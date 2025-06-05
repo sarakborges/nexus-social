@@ -1,0 +1,32 @@
+.profile-form-route {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-lmd);
+
+  padding: var(--size-smd) var(--size-lmd);
+
+  > .card {
+    display: flex;
+    place-items: flex-start;
+    gap: var(--size-lg);
+
+    > form {
+      flex: 1;
+    }
+
+    > section {
+      display: flex;
+      flex-flow: column;
+      place-items: center;
+      gap: var(--size-md);
+
+      .image {
+        width: var(--size-avatar);
+
+        > img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

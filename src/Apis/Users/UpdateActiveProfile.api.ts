@@ -1,18 +1,18 @@
 import { request } from '@/Apis/Request.api'
 
-import { UserType } from '@/Types/User.type'
-
 export const updateActiveProfile = async ({
   profileId,
-  user
+  userId
 }: {
-  profileId: string
-  user: UserType
+  profileId: number
+  userId: number
 }) => {
-  const profilesRequest = await request.put(`/users/${user.id}`, {
-    ...user,
-    activeProfile: profileId
-  })
+  const profilesRequest = await request.patch(
+    `/users/${userId}/activeProfile`,
+    {
+      profile: profileId
+    }
+  )
 
   const { status } = profilesRequest
 

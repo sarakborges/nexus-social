@@ -1,9 +1,7 @@
-import { request, setFilters } from '@/Apis/Request.api'
+import { request } from '@/Apis/Request.api'
 
-export const getProfile = async (id: string) => {
-  const profilesRequest = await request.get(
-    `/profiles${setFilters({ params: { id } })}`
-  )
+export const getProfile = async (id: number) => {
+  const profilesRequest = await request.get(`/profiles/${id}`)
 
   const { status, data } = profilesRequest
 

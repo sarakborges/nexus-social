@@ -68,7 +68,7 @@ export const TopbarProfilesListComponent = () => {
               )}
             </TypographyComponent>
 
-            <LinkComponent to={ROUTES.HOME.path} asButton>
+            <LinkComponent to={ROUTES.NEW_PROFILE.path} asButton>
               {PROFILES_LIST_NEW_PROFILE}
             </LinkComponent>
           </header>

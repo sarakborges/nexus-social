@@ -17,10 +17,12 @@ type PageWrapperComponentType = {
 export const PageWrapperComponent = ({
   children
 }: PageWrapperComponentType) => {
-  const { setUser } = use(UserContext)
+  const { user, setUser } = use(UserContext)
   const { setActiveProfile } = use(ActiveProfileContext)
 
   const userId = localStorage.getItem('user-id')
+    ? Number(localStorage.getItem('user-id'))
+    : undefined
 
   if (!userId) {
     return <></>
@@ -30,21 +32,31 @@ export const PageWrapperComponent = ({
     const getUser = async () => {
       const userRequest = await UsersAPI.getUser(userId)
 
-      if (!userRequest) {
+      if (!userRequest?.profiles) {
         return
       }
 
-      setUser(userRequest)
+      const profilesRequest = await UsersAPI.getProfilesFromUser(userId)
+
+      if (!profilesRequest) {
+        return
+      }
+
+      setUser({ ...userRequest, profiles: profilesRequest })
+
+      if (profilesRequest.length < 1 || !userRequest.activeProfile) {
+        return
+      }
 
       setActiveProfile(
-        userRequest.profiles.find(
+        profilesRequest.find(
           (profileItem) => profileItem.id === userRequest.activeProfile
         )
       )
     }
 
     getUser()
-  }, [])
+  }, [user?.id])
 
   return (
     <main className="page-wrapper">

@@ -14,9 +14,14 @@ export const ROUTES = {
     path: '/'
   },
 
-  MY_PROFILES: {
-    id: 'my-profiles',
-    path: '/my-profiles'
+  NEW_PROFILE: {
+    id: 'new-profile',
+    path: '/new-profile'
+  },
+
+  EDIT_PROFILE: {
+    id: 'edit-profile',
+    path: '/edit-profile'
   },
 
   MESSAGES: {

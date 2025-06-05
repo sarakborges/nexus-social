@@ -1,13 +1,7 @@
-import { request, setFilters } from '@/Apis/Request.api'
+import { request } from '@/Apis/Request.api'
 
 export const getSuggestions = async () => {
-  const suggestionsRequest = await request.get(
-    `/suggestions${setFilters({
-      filters: {
-        perPage: 3
-      }
-    })}`
-  )
+  const suggestionsRequest = await request.get(`/suggestions`)
 
   const { status, data } = suggestionsRequest
 

@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-import { setFilters } from '@/Apis/Request.api'
-
 export const loginUser = async ({
   email,
   password
@@ -9,10 +7,9 @@ export const loginUser = async ({
   email: string
   password: string
 }) => {
-  const userRequest = await axios.get(
-    `https://nexus-server-woad.vercel.app/users${setFilters({
-      params: { email, password }
-    })}`
+  const userRequest = await axios.post(
+    `https://nexus-server-dam7.onrender.com/users/login`,
+    { email, password }
   )
 
   const { status, data } = userRequest
@@ -21,5 +18,5 @@ export const loginUser = async ({
     return
   }
 
-  return data[0]
+  return data
 }

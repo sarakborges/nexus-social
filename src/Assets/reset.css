@@ -135,6 +135,7 @@ img {
 * {
   box-sizing: border-box;
   font-size: 0;
+  scrollbar-width: thin;
 }
 body {
   font-optical-sizing: auto;

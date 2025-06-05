@@ -7,6 +7,6 @@ import { GroupType } from './Group.type'
 import { ProfileType } from './Profile.type'
 
 export type SuggestionType = {
-  list: ProfileType[] | GroupType[]
+  suggestions: ProfileType[] | GroupType[]
   type: typeof SUGGESTION_TYPE_PROFILE | typeof SUGGESTION_TYPE_GROUP
 }

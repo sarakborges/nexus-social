@@ -1,7 +1,7 @@
 import { request } from '@/Apis/Request.api'
 
-export const getSuggestions = async () => {
-  const suggestionsRequest = await request.get(`/suggestions`)
+export const getSuggestions = async (profileId: number) => {
+  const suggestionsRequest = await request.get(`/suggestions/${profileId}`)
 
   const { status, data } = suggestionsRequest
 

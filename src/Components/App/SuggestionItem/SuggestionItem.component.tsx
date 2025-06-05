@@ -61,7 +61,7 @@ export const SuggestionItemComponent = ({
     }
 
     suggestionText = suggestionProps.textFormat
-      .replace(':counter', suggestion[suggestionProps.counter])
+      .replace(':counter', suggestion[suggestionProps.counter] || 0)
       .replace(':text', suggestionText)
 
     return {

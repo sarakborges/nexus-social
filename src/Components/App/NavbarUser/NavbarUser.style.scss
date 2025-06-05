@@ -16,8 +16,9 @@
     border-radius: var(--size-sm);
 
     > .button {
+      gap: var(--size-sm);
+
       width: 100%;
-      padding: 0;
       overflow: hidden;
 
       img {
@@ -27,7 +28,6 @@
       > section {
         display: flex;
         flex-flow: column;
-        gap: var(--size-xs);
 
         flex: 1;
         overflow: hidden;

@@ -33,7 +33,7 @@ export const NavbarUserComponent = () => {
   return (
     <section className="navbar-user-wrapper">
       <div className="navbar-user">
-        <ButtonComponent transparent onClick={toggleDropdown}>
+        <ButtonComponent onClick={toggleDropdown}>
           <ImageComponent
             src={activeProfile?.picture || `/avatar-placeholder.png`}
             alt={activeProfile?.name}
@@ -42,10 +42,14 @@ export const NavbarUserComponent = () => {
           />
 
           <section>
-            <TypographyComponent>{activeProfile?.name}</TypographyComponent>
-            <TypographyComponent
-              smallText
-            >{`@${activeProfile?.uri}`}</TypographyComponent>
+            {!!activeProfile?.id && (
+              <>
+                <TypographyComponent>{activeProfile?.name}</TypographyComponent>
+                <TypographyComponent
+                  smallText
+                >{`@${activeProfile?.uri}`}</TypographyComponent>
+              </>
+            )}
           </section>
         </ButtonComponent>
 

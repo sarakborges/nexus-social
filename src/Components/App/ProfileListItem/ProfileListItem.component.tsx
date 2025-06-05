@@ -1,9 +1,7 @@
 import { use } from 'react'
-import { FaTrash } from 'react-icons/fa'
 import { FaPencil } from 'react-icons/fa6'
 
 import * as UsersAPI from '@/Apis/Users'
-import * as ProfilesAPI from '@/Apis/Profiles'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
@@ -21,6 +19,8 @@ import { ImageComponent } from '@/Components/System/Image'
 import { ButtonComponent } from '@/Components/System/Button'
 import { TypographyComponent } from '@/Components/System/Typography'
 import { LinkComponent } from '@/Components/System/Link'
+
+import { DeleteProfileComponent } from '@/Components/Actions/DeleteProfile'
 
 import './ProfileListItem.style.scss'
 
@@ -49,35 +49,6 @@ export const ProfileListItemComponent = ({
     setActiveProfile(
       user.profiles?.find((profileItem) => profileItem.id === profileId)!
     )
-  }
-
-  const deleteProfile = async (profileId: number) => {
-    const deleteProfileRequest = await ProfilesAPI.deleteProfile(profileId)
-
-    if (!deleteProfileRequest) {
-      return
-    }
-
-    const deleteFromUserRequest = await UsersAPI.deleteUserProfile({
-      profileId,
-      userId: user?.id
-    })
-
-    if (!deleteFromUserRequest) {
-      return
-    }
-
-    if (user.activeProfile === profileId) {
-      setActiveProfile({ id: 0, name: '', uri: '', userId: 0 })
-    }
-
-    setUser({
-      ...user,
-      activeProfile: user.activeProfile === profileId ? 0 : user.activeProfile,
-      profiles: user.profiles?.filter(
-        (profileItem) => profileItem.id !== profileId
-      )
-    })
   }
 
   return (
@@ -118,9 +89,7 @@ export const ProfileListItemComponent = ({
           </LinkComponent>
         )}
 
-        <ButtonComponent square cancel onClick={() => deleteProfile(id)}>
-          <FaTrash />
-        </ButtonComponent>
+        <DeleteProfileComponent profile={id} hideText />
       </section>
     </li>
   )

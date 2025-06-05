@@ -5,12 +5,13 @@ import { NotificationsContext } from '@/Contexts/Notifications.context'
 
 import { DropdownComponent } from '@/Components/System/Dropdown'
 import { ButtonComponent } from '@/Components/System/Button'
+import { TypographyComponent } from '@/Components/System/Typography'
 
 import { NotificationItemComponent } from '@/Components/App/NotificationItem'
 
-import './TopbarNotifications.style.scss'
+import './NavbarNotifications.style.scss'
 
-export const TopbarNotificationsComponent = () => {
+export const NavbarNotificationsComponent = () => {
   const { notifications } = use(NotificationsContext)
 
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
@@ -29,15 +30,15 @@ export const TopbarNotificationsComponent = () => {
   }
 
   return (
-    <div className="actions-dropdown-wrapper">
+    <div className="navbar-notifications">
       <ButtonComponent
-        square
         transparent
         onClick={toggleDropdown}
         active={isNotificationsOpen}
       >
-        <span className="notifications-counter">{notifications.length}</span>
         <FaBell />
+        <TypographyComponent>Notificações</TypographyComponent>
+        <span className="notifications-counter">{notifications.length}</span>
       </ButtonComponent>
 
       <DropdownComponent ref={topbarNotificationsDropdownRef}>

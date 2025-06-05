@@ -17,6 +17,8 @@
   border-right: 1px solid var(--color-border);
 
   .navbar-menu {
+    position: relative;
+
     width: 100%;
 
     > picture {

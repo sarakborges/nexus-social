@@ -4,6 +4,7 @@ import {
   SUGGESTION_TYPE_PROFILE,
   SUGGESTIONS_CONNECTIONS_TITLE,
   SUGGESTIONS_GROUPS_TITLE,
+  SUGGESTIONS_NONE,
   SUGGESTIONS_SEE_ALL
 } from '@/Consts/Suggestions.const'
 
@@ -55,15 +56,21 @@ export const SuggestionsComponent = ({
         <LinkComponent to={linkUri!}>{SUGGESTIONS_SEE_ALL}</LinkComponent>
       </header>
 
-      <ul>
-        {suggestions.map((suggestionItem) => (
-          <SuggestionItemComponent
-            key={suggestionItem.id}
-            suggestion={suggestionItem}
-            type={type}
-          />
-        ))}
-      </ul>
+      {!suggestions?.length && (
+        <TypographyComponent>{SUGGESTIONS_NONE}</TypographyComponent>
+      )}
+
+      {!!suggestions?.length && (
+        <ul>
+          {suggestions.map((suggestionItem) => (
+            <SuggestionItemComponent
+              key={suggestionItem.id}
+              suggestion={suggestionItem}
+              type={type}
+            />
+          ))}
+        </ul>
+      )}
     </CardComponent>
   )
 }

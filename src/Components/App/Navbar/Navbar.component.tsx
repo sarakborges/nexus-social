@@ -26,14 +26,18 @@ export const NavbarComponent = () => {
               !navbarItem.needsActiveProfile || !!activeProfile?.id
           ).map((navbarItem) => (
             <li key={navbarItem.id}>
-              <LinkComponent
-                to={navbarItem.to.replace(':id', activeProfile?.uri)}
-              >
-                <>
-                  {navbarItem.icon}
-                  <TypographyComponent>{navbarItem.text}</TypographyComponent>
-                </>
-              </LinkComponent>
+              {!!navbarItem?.component && navbarItem?.component}
+
+              {!!navbarItem.to && (
+                <LinkComponent
+                  to={navbarItem.to.replace(':id', activeProfile?.uri)}
+                >
+                  <>
+                    {navbarItem.icon}
+                    <TypographyComponent>{navbarItem.text}</TypographyComponent>
+                  </>
+                </LinkComponent>
+              )}
             </li>
           ))}
         </ul>

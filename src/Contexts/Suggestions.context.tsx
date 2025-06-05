@@ -8,7 +8,16 @@ const SuggestionsContext = createContext<SuggestionsContextType>(
 )
 
 const SuggestionsProvider = ({ children }) => {
-  const [suggestions, setSuggestions] = useState<Array<SuggestionType>>([])
+  const [suggestions, setSuggestions] = useState<Array<SuggestionType>>([
+    {
+      type: 'profile',
+      suggestions: []
+    },
+    {
+      type: 'group',
+      suggestions: []
+    }
+  ])
 
   return (
     <SuggestionsContext.Provider value={{ suggestions, setSuggestions }}>

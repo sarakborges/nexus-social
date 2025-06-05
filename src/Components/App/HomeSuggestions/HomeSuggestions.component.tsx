@@ -12,14 +12,14 @@ import './HomeSuggestions.style.scss'
 export const HomeSuggestionsComponent = () => {
   const { activeProfile } = use(ActiveProfileContext)
 
-  if (!activeProfile?.id) {
-    return <></>
-  }
-
   const { suggestions, setSuggestions } = use(SuggestionsContext)
 
   useEffect(() => {
     const getSuggestions = async () => {
+      if (!activeProfile?.id) {
+        return
+      }
+
       const suggestionsRequest = await SuggestionsApi.getSuggestions(
         activeProfile.id
       )

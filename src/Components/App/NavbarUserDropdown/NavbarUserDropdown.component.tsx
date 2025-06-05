@@ -7,6 +7,13 @@ import { UserContext } from '@/Contexts/User.context'
 
 import { ROUTES } from '@/Consts/Routes.const'
 import { PROFILES_LIST_NEW_PROFILE } from '@/Consts/ProfilesList.const'
+import {
+  NAVBAR_USER_CREATE_PROFILE_TO_START,
+  NAVBAR_USER_EDIT_PROFILE,
+  NAVBAR_USER_SELECT_PROFILE,
+  NAVBAR_USER_SELECT_PROFILE_TO_START,
+  NAVBAR_USER_WELCOME
+} from '@/Consts/Navbar.const'
 
 import { ImageComponent } from '@/Components/System/Image'
 import { TypographyComponent } from '@/Components/System/Typography'
@@ -16,7 +23,7 @@ import { DropdownComponent } from '@/Components/System/Dropdown'
 
 import { DeleteProfileComponent } from '@/Components/Actions/DeleteProfile'
 
-import { TopbarProfilesListComponent } from '@/Components/App/TopbarProfilesList'
+import { NavbarProfilesListComponent } from '@/Components/App/NavbarProfilesList'
 
 import './NavbarUserDropdown.style.scss'
 
@@ -55,17 +62,25 @@ export const NavbarUserDropdownComponent = () => {
             </TypographyComponent>
 
             <TypographyComponent renderAs="p">{`@${activeProfile?.uri}`}</TypographyComponent>
+
+            {!!activeProfile?.bio && (
+              <article>
+                <TypographyComponent smallText renderAs="p">
+                  {activeProfile?.bio}
+                </TypographyComponent>
+              </article>
+            )}
           </>
         )}
 
         {!!user?.profiles?.length && !activeProfile?.id && (
           <>
             <TypographyComponent renderAs="h2">
-              Bem vindo ao Nexus!
+              {NAVBAR_USER_WELCOME}
             </TypographyComponent>
 
             <TypographyComponent smallText renderAs="p">
-              Selecione um perfil para começar a interagir!
+              {NAVBAR_USER_SELECT_PROFILE_TO_START}
             </TypographyComponent>
           </>
         )}
@@ -73,11 +88,11 @@ export const NavbarUserDropdownComponent = () => {
         {!user?.profiles?.length && (
           <>
             <TypographyComponent renderAs="h2">
-              Bem vindo ao Nexus!
+              {NAVBAR_USER_WELCOME}
             </TypographyComponent>
 
             <TypographyComponent smallText renderAs="p">
-              Crie um perfil para começar a interagir!
+              {NAVBAR_USER_CREATE_PROFILE_TO_START}
             </TypographyComponent>
           </>
         )}
@@ -87,7 +102,9 @@ export const NavbarUserDropdownComponent = () => {
         {!!activeProfile?.id && (
           <LinkComponent to={ROUTES.EDIT_PROFILE.path} asButton>
             <FaPencil />
-            <TypographyComponent smallText>Editar perfil</TypographyComponent>
+            <TypographyComponent smallText>
+              {NAVBAR_USER_EDIT_PROFILE}
+            </TypographyComponent>
           </LinkComponent>
         )}
 
@@ -96,7 +113,7 @@ export const NavbarUserDropdownComponent = () => {
             <section>
               <FaUserCircle />
               <TypographyComponent smallText>
-                {!!activeProfile?.id ? `Trocar de perfil` : `Selecionar perfil`}
+                {NAVBAR_USER_SELECT_PROFILE}
               </TypographyComponent>
             </section>
 
@@ -104,7 +121,7 @@ export const NavbarUserDropdownComponent = () => {
           </ButtonComponent>
 
           <DropdownComponent top ref={navbarUserProfilesDropdownRef}>
-            <TopbarProfilesListComponent />
+            <NavbarProfilesListComponent />
           </DropdownComponent>
 
           {!user?.profiles?.length && (

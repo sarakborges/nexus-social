@@ -44,10 +44,13 @@ export const NavbarUserComponent = () => {
           <section>
             {!!activeProfile?.id && (
               <>
-                <TypographyComponent>{activeProfile?.name}</TypographyComponent>
-                <TypographyComponent
-                  smallText
-                >{`@${activeProfile?.uri}`}</TypographyComponent>
+                <TypographyComponent renderAs="p">
+                  {activeProfile?.name}
+                </TypographyComponent>
+
+                <TypographyComponent smallText renderAs="p">
+                  {`@${activeProfile?.uri}`}
+                </TypographyComponent>
               </>
             )}
           </section>

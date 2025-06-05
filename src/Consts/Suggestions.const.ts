@@ -13,3 +13,4 @@ export const SUGGESTION_TYPE_PROFILE = `profile`
 export const SUGGESTION_TYPE_GROUP = `group`
 
 export const SUGGESTIONS_SEE_ALL = `Ver todas sugestões`
+export const SUGGESTIONS_NONE = `Nenhuma sugestão encontrada.`

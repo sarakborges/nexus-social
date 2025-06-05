@@ -17,9 +17,9 @@ import { FieldComponent } from '@/Components/System/Field'
 
 import { ProfileListItemComponent } from '../ProfileListItem'
 
-import './TopbarProfilesList.style.scss'
+import './NavbarProfilesList.style.scss'
 
-export const TopbarProfilesListComponent = () => {
+export const NavbarProfilesListComponent = () => {
   const { user } = use(UserContext)
   const { activeProfile } = use(ActiveProfileContext)
 

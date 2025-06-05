@@ -4,6 +4,8 @@ import { FaTrash } from 'react-icons/fa'
 import * as UsersAPI from '@/Apis/Users'
 import * as ProfilesAPI from '@/Apis/Profiles'
 
+import { NAVBAR_USER_DELETE_PROFILE } from '@/Consts/Navbar.const'
+
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
@@ -54,7 +56,9 @@ export const DeleteProfileComponent = ({
       <FaTrash />
 
       {!hideText && (
-        <TypographyComponent smallText>Deletar perfil</TypographyComponent>
+        <TypographyComponent smallText>
+          {NAVBAR_USER_DELETE_PROFILE}
+        </TypographyComponent>
       )}
     </ButtonComponent>
   )

@@ -1,0 +1,57 @@
+.navbar-notifications {
+  position: relative;
+
+  > .dropdown {
+    top: calc(var(--size-md) * -1);
+    left: calc(100% - var(--size-md));
+  }
+
+  > .button {
+    place-content: flex-start;
+
+    width: 100%;
+    padding: var(--size-smd) var(--size-lmd);
+
+    border-radius: 0;
+
+    color: var(--color-primary);
+
+    transition: color 0.3s;
+
+    > .typography {
+      color: inherit;
+    }
+
+    svg {
+      width: var(--size-lmd);
+      height: var(--size-lmd);
+    }
+
+    &:is(.active, :hover) {
+      color: var(--color-primary-active);
+    }
+  }
+
+  .notifications-counter {
+    display: flex;
+    place-content: center;
+    place-items: center;
+
+    width: var(--size-md);
+    aspect-ratio: 1/1;
+
+    font-size: var(--size-smd);
+    color: var(--color-text);
+
+    background-color: var(--color-primary);
+    border-radius: 100%;
+  }
+
+  .notifications-list {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-lmd);
+
+    width: var(--size-topbar-notifications);
+  }
+}

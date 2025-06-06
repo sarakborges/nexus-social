@@ -35,20 +35,14 @@ export const PageWrapperComponent = ({
         return
       }
 
-      const profilesRequest = await UsersAPI.getProfilesFromUser(userId)
+      setUser(userRequest)
 
-      if (!profilesRequest) {
-        return
-      }
-
-      setUser({ ...userRequest, profiles: profilesRequest })
-
-      if (profilesRequest.length < 1 || !userRequest.activeProfile) {
+      if (userRequest.profiles.length < 1 || !userRequest.activeProfile) {
         return
       }
 
       setActiveProfile(
-        profilesRequest.find(
+        userRequest.profiles.find(
           (profileItem) => profileItem.id === userRequest.activeProfile
         )
       )

@@ -52,7 +52,7 @@ export const DeleteProfileComponent = ({
   }
 
   return (
-    <ButtonComponent square cancel onClick={deleteProfile}>
+    <ButtonComponent square={hideText} cancel onClick={deleteProfile}>
       <FaTrash />
 
       {!hideText && (

@@ -24,6 +24,7 @@ import { DropdownComponent } from '@/Components/System/Dropdown'
 import { DeleteProfileComponent } from '@/Components/Actions/DeleteProfile'
 
 import { NavbarProfilesListComponent } from '@/Components/App/NavbarProfilesList'
+import { DoLogoutComponent } from '@/Components/Actions/DoLogout'
 
 import './NavbarUserDropdown.style.scss'
 
@@ -138,6 +139,8 @@ export const NavbarUserDropdownComponent = () => {
         {!!activeProfile?.id && (
           <DeleteProfileComponent profile={activeProfile?.id} />
         )}
+
+        <DoLogoutComponent />
       </footer>
     </section>
   )

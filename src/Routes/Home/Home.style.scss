@@ -4,11 +4,14 @@
 
   padding: var(--size-lmd);
 
-  > .feed {
+  .home-no-profile {
     display: flex;
     flex-flow: column;
+    place-content: center;
+    place-items: center;
     gap: var(--size-lmd);
 
     flex: 1;
+    height: calc(100vh - (2 * var(--size-lmd)));
   }
 }

@@ -6,6 +6,7 @@ import { ROUTES } from '@/Consts/Routes.const'
 import { NAVBAR_USER_LOGOUT } from '@/Consts/Navbar.const'
 
 import { UserContext } from '@/Contexts/User.context'
+import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { ButtonComponent } from '@/Components/System/Button'
 import { TypographyComponent } from '@/Components/System/Typography'
@@ -14,12 +15,20 @@ export const DoLogoutComponent = () => {
   const navigate = useNavigate()
 
   const { setUser } = use(UserContext)
+  const { setActiveProfile } = use(ActiveProfileContext)
 
   const doLogout = async () => {
     setUser({
       email: '',
       password: '',
       id: 0
+    })
+
+    setActiveProfile({
+      id: 0,
+      name: '',
+      uri: '',
+      userId: 0
     })
 
     localStorage.removeItem('nexus-token')

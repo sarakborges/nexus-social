@@ -109,32 +109,33 @@ export const NavbarUserDropdownComponent = () => {
           </LinkComponent>
         )}
 
-        <div className="navbar-user-dropdown-change-profile">
-          <ButtonComponent onClick={toggleDropdown}>
-            <section>
-              <FaUserCircle />
-              <TypographyComponent smallText>
-                {NAVBAR_USER_SELECT_PROFILE}
-              </TypographyComponent>
-            </section>
+        <LinkComponent to={ROUTES.NEW_PROFILE.path} asButton>
+          <FaUserPlus />
 
-            <FaChevronRight />
-          </ButtonComponent>
+          <TypographyComponent smallText>
+            {PROFILES_LIST_NEW_PROFILE}
+          </TypographyComponent>
+        </LinkComponent>
 
-          <DropdownComponent top ref={navbarUserProfilesDropdownRef}>
-            <NavbarProfilesListComponent />
-          </DropdownComponent>
+        {!!user?.profiles?.length &&
+          (!activeProfile?.id || user?.profiles?.length > 1) && (
+            <div className="navbar-user-dropdown-change-profile">
+              <ButtonComponent onClick={toggleDropdown}>
+                <section>
+                  <FaUserCircle />
+                  <TypographyComponent smallText>
+                    {NAVBAR_USER_SELECT_PROFILE}
+                  </TypographyComponent>
+                </section>
 
-          {!user?.profiles?.length && (
-            <LinkComponent to={ROUTES.NEW_PROFILE.path} asButton>
-              <FaUserPlus />
+                <FaChevronRight />
+              </ButtonComponent>
 
-              <TypographyComponent smallText>
-                {PROFILES_LIST_NEW_PROFILE}
-              </TypographyComponent>
-            </LinkComponent>
+              <DropdownComponent top ref={navbarUserProfilesDropdownRef}>
+                <NavbarProfilesListComponent />
+              </DropdownComponent>
+            </div>
           )}
-        </div>
 
         {!!activeProfile?.id && (
           <DeleteProfileComponent profile={activeProfile?.id} />

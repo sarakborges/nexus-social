@@ -12,12 +12,11 @@
     flex: 1;
 
     > p {
-      height: calc(var(--size-xs) + var(--size-md));
-
       > a {
         display: inline-block;
 
         max-width: 100%;
+        height: calc(var(--size-xs) + var(--size-md));
         overflow: hidden;
 
         white-space: nowrap;

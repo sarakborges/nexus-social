@@ -14,6 +14,7 @@ import { GroupType } from '@/Types/Group.type'
 import { CardComponent } from '@/Components/System/Card'
 import { TypographyComponent } from '@/Components/System/Typography'
 import { LinkComponent } from '@/Components/System/Link'
+import { LoadingComponent } from '@/Components/System/Loading'
 
 import { SuggestionItemComponent } from '@/Components/App/SuggestionItem'
 
@@ -21,10 +22,12 @@ import './Suggestions.style.scss'
 
 export const SuggestionsComponent = ({
   suggestions,
-  type
+  type,
+  isLoading
 }: {
   suggestions: ProfileType[] | GroupType[]
   type: typeof SUGGESTION_TYPE_PROFILE | typeof SUGGESTION_TYPE_GROUP
+  isLoading: boolean
 }) => {
   const getSuggestionsTitle = () => {
     if (type === SUGGESTION_TYPE_PROFILE) {
@@ -56,20 +59,26 @@ export const SuggestionsComponent = ({
         <LinkComponent to={linkUri!}>{SUGGESTIONS_SEE_ALL}</LinkComponent>
       </header>
 
-      {!suggestions?.length && (
-        <TypographyComponent>{SUGGESTIONS_NONE}</TypographyComponent>
-      )}
+      {!!isLoading && <LoadingComponent />}
 
-      {!!suggestions?.length && (
-        <ul>
-          {suggestions.map((suggestionItem) => (
-            <SuggestionItemComponent
-              key={suggestionItem.id}
-              suggestion={suggestionItem}
-              type={type}
-            />
-          ))}
-        </ul>
+      {!isLoading && (
+        <>
+          {!suggestions?.length && (
+            <TypographyComponent>{SUGGESTIONS_NONE}</TypographyComponent>
+          )}
+
+          {!!suggestions?.length && (
+            <ul>
+              {suggestions.map((suggestionItem) => (
+                <SuggestionItemComponent
+                  key={suggestionItem.id}
+                  suggestion={suggestionItem}
+                  type={type}
+                />
+              ))}
+            </ul>
+          )}
+        </>
       )}
     </CardComponent>
   )

@@ -5,6 +5,7 @@ import { FieldComponent } from '@/Components/System/Field'
 import { ButtonComponent } from '@/Components/System/Button'
 import { ModalComponent } from '@/Components/System/Modal'
 import { TypographyComponent } from '@/Components/System/Typography'
+import { LoadingComponent } from '@/Components/System/Loading'
 
 import { FORM_ERROR_BUTTON, FORM_ERROR_TITLE } from '@/Consts/Form.const'
 
@@ -19,6 +20,7 @@ export const FormComponent = ({
   const navigate = useNavigate()
   const [modalErrorMessage, setModalErrorMessage] = useState('')
   const [errors, setErrors] = useState<{ [propName: string]: string }>({})
+  const [isLoading, setIsLoading] = useState(false)
 
   const { submitText, sections, onSubmit, ...formProps } = rest
 
@@ -79,7 +81,9 @@ export const FormComponent = ({
 
     setErrors({})
 
+    setIsLoading(true)
     const submitResponse = await onSubmit?.(e)
+    setIsLoading(false)
 
     if (!submitResponse) {
       return
@@ -117,12 +121,16 @@ export const FormComponent = ({
           </section>
         ))}
 
-        <ButtonComponent type="submit">{submitText}</ButtonComponent>
+        <ButtonComponent type="submit" disabled={isLoading}>
+          {!isLoading && submitText}
+          {!!isLoading && <LoadingComponent />}
+        </ButtonComponent>
       </form>
 
       <ModalComponent ref={errorModalRef} title={FORM_ERROR_TITLE}>
         <div className="error-modal">
           <TypographyComponent>{modalErrorMessage}</TypographyComponent>
+
           <ButtonComponent onClick={toggleErrorModal}>
             {FORM_ERROR_BUTTON}
           </ButtonComponent>

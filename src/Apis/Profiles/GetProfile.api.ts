@@ -1,13 +1,17 @@
 import { request } from '@/Apis/Request.api'
 
 export const getProfile = async (id: number) => {
-  const profilesRequest = await request.get(`/profiles/${id}`)
+  try {
+    const profilesRequest = await request.get(`/profiles/${id}`)
 
-  const { status, data } = profilesRequest
+    const { status, data } = profilesRequest
 
-  if (status !== 200) {
-    return
+    if (status !== 200) {
+      return
+    }
+
+    return data
+  } catch (e) {
+    console.log(e)
   }
-
-  return data
 }

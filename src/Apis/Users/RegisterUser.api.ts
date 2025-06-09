@@ -3,16 +3,20 @@ import axios from 'axios'
 import { UserType } from '@/Types/User.type'
 
 export const registerUser = async (user: Partial<UserType>) => {
-  const userRequest = await axios.post(
-    `https://nexus-server-dam7.onrender.com/users`,
-    user
-  )
+  try {
+    const userRequest = await axios.post(
+      `https://nexus-server-dam7.onrender.com/users`,
+      user
+    )
 
-  const { status, data } = userRequest
+    const { status, data } = userRequest
 
-  if (status !== 201) {
-    return
+    if (status !== 201) {
+      return
+    }
+
+    return data
+  } catch (e) {
+    console.log(e)
   }
-
-  return data
 }

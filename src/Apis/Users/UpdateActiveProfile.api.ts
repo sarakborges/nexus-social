@@ -7,18 +7,22 @@ export const updateActiveProfile = async ({
   profileId: number
   userId: number
 }) => {
-  const profilesRequest = await request.patch(
-    `/users/${userId}/activeProfile`,
-    {
-      profile: profileId
+  try {
+    const profilesRequest = await request.patch(
+      `/users/${userId}/activeProfile`,
+      {
+        profile: profileId
+      }
+    )
+
+    const { status } = profilesRequest
+
+    if (status !== 200) {
+      return false
     }
-  )
 
-  const { status } = profilesRequest
-
-  if (status !== 200) {
-    return false
+    return true
+  } catch (e) {
+    console.log(e)
   }
-
-  return true
 }

@@ -119,7 +119,17 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
         {
           name: 'picture',
           label: REGISTER_PICTURE_LABEL,
-          type: FIELD_TYPE_FILE
+          type: FIELD_TYPE_FILE,
+          onChange: async (e) => {
+            const pictureBase64 = (await readAsBase64(
+              (e.target as HTMLInputElement).files?.[0] as File
+            )) as string
+
+            const pictureEl = document.querySelector(
+              '#profile-picture'
+            ) as HTMLImageElement
+            pictureEl.src = pictureBase64
+          }
         },
 
         {

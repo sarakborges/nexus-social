@@ -7,15 +7,19 @@ export const deleteUserProfile = async ({
   profileId: number
   userId: number
 }) => {
-  const profilesRequest = await request.patch(`/users/${userId}/remove`, {
-    profile: profileId
-  })
+  try {
+    const profilesRequest = await request.patch(`/users/${userId}/remove`, {
+      profile: profileId
+    })
 
-  const { status } = profilesRequest
+    const { status } = profilesRequest
 
-  if (status !== 200) {
-    return false
+    if (status !== 200) {
+      return false
+    }
+
+    return true
+  } catch (e) {
+    console.log(e)
   }
-
-  return true
 }

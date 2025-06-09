@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react'
+
 import {
   FIELD_TYPE_CHECKBOX,
   FIELD_TYPE_FILE,
@@ -19,6 +21,7 @@ export type FormType = {
       name: string
       label?: string
       placeholder?: string
+      onChange?: (e: ChangeEvent) => void
       renderAs?:
         | typeof FIELD_TYPE_TEXT
         | typeof FIELD_TYPE_SELECT

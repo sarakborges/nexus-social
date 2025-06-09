@@ -1,9 +1,11 @@
-import { use, useEffect } from 'react'
+import { use, useEffect, useState } from 'react'
 
 import * as UsersAPI from '@/Apis/Users'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
+
+import { LoadingComponent } from '@/Components/System/Loading'
 
 import { NavbarComponent } from '@/Components/App/Navbar'
 
@@ -18,6 +20,7 @@ export const PageWrapperComponent = ({
 }: PageWrapperComponentType) => {
   const { user, setUser } = use(UserContext)
   const { setActiveProfile } = use(ActiveProfileContext)
+  const [isLoading, setIsLoading] = useState(false)
 
   const userId = localStorage.getItem('user-id')
     ? Number(localStorage.getItem('user-id'))
@@ -27,27 +30,31 @@ export const PageWrapperComponent = ({
     return <></>
   }
 
-  useEffect(() => {
-    const getUser = async () => {
-      const userRequest = await UsersAPI.getUser(userId)
+  const getUser = async () => {
+    setIsLoading(true)
+    const userRequest = await UsersAPI.getUser(userId)
+    setIsLoading(false)
 
-      if (!userRequest?.profiles) {
-        return
-      }
-
-      setUser(userRequest)
-
-      if (userRequest.profiles.length < 1 || !userRequest.activeProfile) {
-        return
-      }
-
-      setActiveProfile(
-        userRequest.profiles.find(
-          (profileItem) => profileItem.id === userRequest.activeProfile
-        )
-      )
+    if (!userRequest?.profiles) {
+      return
     }
 
+    setIsLoading(true)
+    setUser(userRequest)
+    setIsLoading(false)
+
+    if (userRequest.profiles.length < 1 || !userRequest.activeProfile) {
+      return
+    }
+
+    setActiveProfile(
+      userRequest.profiles.find(
+        (profileItem) => profileItem.id === userRequest.activeProfile
+      )
+    )
+  }
+
+  useEffect(() => {
     getUser()
   }, [user?.id])
 
@@ -58,7 +65,11 @@ export const PageWrapperComponent = ({
       </aside>
 
       <aside className="page-content">
-        <main>{children}</main>
+        <main>
+          {!isLoading && children}
+
+          {!!isLoading && <LoadingComponent />}
+        </main>
       </aside>
     </main>
   )

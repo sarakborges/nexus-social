@@ -1,4 +1,4 @@
-import { use, useEffect } from 'react'
+import { use, useEffect, useState } from 'react'
 
 import * as SuggestionsApi from '@/Apis/Suggestions'
 
@@ -11,26 +11,29 @@ import './HomeSuggestions.style.scss'
 
 export const HomeSuggestionsComponent = () => {
   const { activeProfile } = use(ActiveProfileContext)
+  const [isLoading, setIsLoading] = useState(false)
 
   const { suggestions, setSuggestions } = use(SuggestionsContext)
 
-  useEffect(() => {
-    const getSuggestions = async () => {
-      if (!activeProfile?.id) {
-        return
-      }
-
-      const suggestionsRequest = await SuggestionsApi.getSuggestions(
-        activeProfile.id
-      )
-
-      if (!suggestionsRequest) {
-        return
-      }
-
-      setSuggestions(suggestionsRequest)
+  const getSuggestions = async () => {
+    if (!activeProfile?.id) {
+      return
     }
 
+    setIsLoading(true)
+    const suggestionsRequest = await SuggestionsApi.getSuggestions(
+      activeProfile.id
+    )
+    setIsLoading(false)
+
+    if (!suggestionsRequest) {
+      return
+    }
+
+    setSuggestions(suggestionsRequest)
+  }
+
+  useEffect(() => {
     getSuggestions()
   }, [activeProfile?.id])
 
@@ -41,6 +44,7 @@ export const HomeSuggestionsComponent = () => {
           key={`${suggestionsList.type}-suggestions-list`}
           suggestions={suggestionsList.suggestions}
           type={suggestionsList.type}
+          isLoading={isLoading}
         />
       ))}
     </section>

@@ -7,16 +7,20 @@ export const addProfileToUser = async ({
   userId: number
   profile: number
 }) => {
-  const userRequest = await request.patch(`/users/${userId}/add`, {
-    userId,
-    profile
-  })
+  try {
+    const userRequest = await request.patch(`/users/${userId}/add`, {
+      userId,
+      profile
+    })
 
-  const { status } = userRequest
+    const { status } = userRequest
 
-  if (status !== 200) {
-    return
+    if (status !== 200) {
+      return
+    }
+
+    return true
+  } catch (e) {
+    console.log(e)
   }
-
-  return true
 }

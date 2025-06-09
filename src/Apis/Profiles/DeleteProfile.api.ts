@@ -1,13 +1,17 @@
 import { request } from '@/Apis/Request.api'
 
 export const deleteProfile = async (id: number) => {
-  const profilesRequest = await request.delete(`/profiles/${id}`)
+  try {
+    const profilesRequest = await request.delete(`/profiles/${id}`)
 
-  const { status } = profilesRequest
+    const { status } = profilesRequest
 
-  if (status !== 200) {
-    return false
+    if (status !== 200) {
+      return false
+    }
+
+    return true
+  } catch (e) {
+    console.log(e)
   }
-
-  return true
 }

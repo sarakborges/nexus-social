@@ -7,16 +7,20 @@ export const loginUser = async ({
   email: string
   password: string
 }) => {
-  const userRequest = await axios.post(
-    `https://nexus-server-dam7.onrender.com/users/login`,
-    { email, password }
-  )
+  try {
+    const userRequest = await axios.post(
+      `https://nexus-server-dam7.onrender.com/users/login`,
+      { email, password }
+    )
 
-  const { status, data } = userRequest
+    const { status, data } = userRequest
 
-  if (status !== 200) {
-    return
+    if (status !== 200) {
+      return
+    }
+
+    return data
+  } catch (e) {
+    console.log(e)
   }
-
-  return data
 }

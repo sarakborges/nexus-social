@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 import { PROFILE_FORM } from '@/Forms/Profile.form'
 
 import { TypographyComponent } from '@/Components/System/Typography'
@@ -12,35 +10,6 @@ import { PageWrapperComponent } from '@/Components/App/PageWrapper'
 import './ProfileForm.style.scss'
 
 export const ProfileFormRoute = () => {
-  const [name, setName] = useState('')
-  const [picture, setPicture] = useState('')
-
-  useEffect(() => {
-    const nameEl = document.querySelector('#name')
-    nameEl?.addEventListener('change', (e) => {
-      const value = (e.target as HTMLInputElement).value
-      setName(value)
-    })
-
-    const pictureEl = document.querySelector('#picture')
-    pictureEl?.addEventListener('change', (e) => {
-      if (!(e.target as HTMLInputElement).files?.[0]) {
-        return
-      }
-
-      const fileReader = new FileReader()
-
-      fileReader.onloadend = async () => {
-        const value = fileReader.result
-        setPicture(value as string)
-      }
-
-      fileReader.readAsDataURL(
-        (e!.target as HTMLInputElement).files?.[0] as File
-      )
-    })
-  }, [])
-
   return (
     <PageWrapperComponent>
       <main className="profile-form-route">
@@ -53,8 +22,9 @@ export const ProfileFormRoute = () => {
 
           <section>
             <ImageComponent
-              src={picture || '/avatar-placeholder.png'}
-              alt={name}
+              id="profile-picture"
+              src={'/avatar-placeholder.png'}
+              alt={''}
               square
               rounded
             />

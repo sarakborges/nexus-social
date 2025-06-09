@@ -1,13 +1,17 @@
 import { request } from '@/Apis/Request.api'
 
 export const getFeedByProfile = async (id: number) => {
-  const feedRequest = await request.get(`/feed/${id}`)
+  try {
+    const feedRequest = await request.get(`/feed/${id}`)
 
-  const { status, data } = feedRequest
+    const { status, data } = feedRequest
 
-  if (status !== 200) {
-    return
+    if (status !== 200) {
+      return
+    }
+
+    return data
+  } catch (e) {
+    console.log(e)
   }
-
-  return data
 }

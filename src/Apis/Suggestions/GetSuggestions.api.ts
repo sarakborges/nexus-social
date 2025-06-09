@@ -1,13 +1,17 @@
 import { request } from '@/Apis/Request.api'
 
 export const getSuggestions = async (profileId: number) => {
-  const suggestionsRequest = await request.get(`/suggestions/${profileId}`)
+  try {
+    const suggestionsRequest = await request.get(`/suggestions/${profileId}`)
 
-  const { status, data } = suggestionsRequest
+    const { status, data } = suggestionsRequest
 
-  if (status !== 200) {
-    return
+    if (status !== 200) {
+      return
+    }
+
+    return data
+  } catch (e) {
+    console.log(e)
   }
-
-  return data
 }

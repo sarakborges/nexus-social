@@ -9,3 +9,5 @@ export const NOTIFICATION_TITLES = {
   [NOTIFICATION_TYPES.ACCEPTED_AT_GROUP]: `Aceito no grupo`,
   [NOTIFICATION_TYPES.CONNECTION_ACCEPTED]: `Solicitação aceita`
 }
+
+export const NO_NOTIFICATIONS = `Sem novidades!`

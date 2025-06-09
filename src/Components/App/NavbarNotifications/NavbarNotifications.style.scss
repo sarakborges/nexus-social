@@ -47,11 +47,19 @@
     border-radius: 100%;
   }
 
-  .notifications-list {
+  .notifications-dropdown {
     display: flex;
     flex-flow: column;
-    gap: var(--size-lmd);
+    place-content: center;
+    place-items: center;
 
-    width: var(--size-topbar-notifications);
+    width: var(--size-navbar-notifications);
+    min-height: var(--size-navbar-notifications-height);
+
+    .notifications-list {
+      display: flex;
+      flex-flow: column;
+      gap: var(--size-lmd);
+    }
   }
 }

@@ -40,8 +40,8 @@
   --size-login: 400px;
   --size-navbar: 280px;
   --size-home-suggestions: 360px;
-  --size-topbar-notifications: 360px;
-  --size-topbar-search: 480px;
+  --size-navbar-notifications: 360px;
+  --size-navbar-notifications-height: 120px;
   --size-new-post: 640px;
   --size-logo: 96px;
   --size-navbar-profile-avatar: 108px;

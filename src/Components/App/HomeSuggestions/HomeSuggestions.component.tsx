@@ -32,7 +32,7 @@ export const HomeSuggestionsComponent = () => {
     }
 
     getSuggestions()
-  }, [activeProfile])
+  }, [activeProfile?.id])
 
   return (
     <section className="home-suggestions">

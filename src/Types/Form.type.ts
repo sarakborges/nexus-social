@@ -1,5 +1,6 @@
 import {
   FIELD_TYPE_CHECKBOX,
+  FIELD_TYPE_FILE,
   FIELD_TYPE_PASSWORD,
   FIELD_TYPE_RADIO,
   FIELD_TYPE_SELECT,
@@ -16,10 +17,11 @@ export type FormType = {
 
     fields: Array<{
       name: string
-      label: string
-      placeholder: string
+      label?: string
+      placeholder?: string
       type:
         | typeof FIELD_TYPE_TEXT
+        | typeof FIELD_TYPE_FILE
         | typeof FIELD_TYPE_TEXTAREA
         | typeof FIELD_TYPE_CHECKBOX
         | typeof FIELD_TYPE_PASSWORD

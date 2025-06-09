@@ -24,8 +24,20 @@ export const ProfileFormRoute = () => {
 
     const pictureEl = document.querySelector('#picture')
     pictureEl?.addEventListener('change', (e) => {
-      const value = (e.target as HTMLInputElement).value
-      setPicture(value)
+      if (!(e.target as HTMLInputElement).files?.[0]) {
+        return
+      }
+
+      const fileReader = new FileReader()
+
+      fileReader.onloadend = async () => {
+        const value = fileReader.result
+        setPicture(value as string)
+      }
+
+      fileReader.readAsDataURL(
+        (e!.target as HTMLInputElement).files?.[0] as File
+      )
     })
   }, [])
 

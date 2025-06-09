@@ -5,16 +5,16 @@ import * as ProfilesAPI from '@/Apis/Profiles'
 
 import { FormType } from '@/Types/Form.type'
 
-import { FIELD_TYPE_TEXT } from '@/Consts/FieldTypes.const'
+import { FIELD_TYPE_FILE, FIELD_TYPE_TEXT } from '@/Consts/FieldTypes.const'
 import {
   REGISTER_NAME_PLACEHOLDER,
   REGISTER_PICTURE_LABEL,
-  REGISTER_PICTURE_PLACEHOLDER,
   REGISTER_URI_LABEL,
   REGISTER_URI_PLACEHOLDER
 } from '@/Consts/Register.const'
 import { ROUTES } from '@/Consts/Routes.const'
 import { PROFILE_FORM_BUTTON } from '@/Consts/ProfileForm.const'
+import { readAsBase64 } from '@/Utils/ReadAsBase64.util'
 
 export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   submitText: PROFILE_FORM_BUTTON,
@@ -25,7 +25,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
     const { name, uri, picture } = Object.fromEntries(formData) as {
       name: string
       uri: string
-      picture: string
+      picture: File
     }
 
     if (![name, uri, picture].every(Boolean)) {
@@ -54,10 +54,12 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       return response
     }
 
+    const pictureBase64 = (await readAsBase64(picture)) as string
+
     const createProfileResponse = await ProfilesAPI.createProfile({
       name,
       uri,
-      picture,
+      picture: pictureBase64,
       userId
     })
 
@@ -110,8 +112,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
         {
           name: 'picture',
           label: REGISTER_PICTURE_LABEL,
-          placeholder: REGISTER_PICTURE_PLACEHOLDER,
-          type: FIELD_TYPE_TEXT
+          type: FIELD_TYPE_FILE
         }
       ]
     }

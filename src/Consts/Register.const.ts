@@ -5,6 +5,5 @@ export const REGISTER_PASSWORD_PLACEHOLDER = `Senha`
 export const REGISTER_NAME_PLACEHOLDER = `Nome do personagem`
 export const REGISTER_URI_PLACEHOLDER = `@sua-url`
 export const REGISTER_URI_LABEL = `Url personalizada`
-export const REGISTER_PICTURE_PLACEHOLDER = `http://link-da-foto (temporário)`
 export const REGISTER_PICTURE_LABEL = `Foto do seu personagem`
 export const REGISTER_GO_BACK = `Já possui uma conta? Entre agora!`

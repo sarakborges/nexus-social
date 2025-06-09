@@ -35,15 +35,13 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       picture: File
     }
 
-    if (![name, uri, picture, bio].every(Boolean)) {
+    if (![name, uri].every(Boolean)) {
       const response = {
-        errorMessage: `Todos os campos são obrigatórios.`,
+        errorMessage: `Preencha todos os campos obrigatórios.`,
 
         errors: {
           name: !name ? `Campo obrigatório` : ``,
-          uri: !uri ? `Campo obrigatório` : ``,
-          picture: !picture ? `Campo obrigatório` : ``,
-          bio: !bio ? `Campo obrigatório` : ``
+          uri: !uri ? `Campo obrigatório` : ``
         }
       }
 

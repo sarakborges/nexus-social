@@ -5,8 +5,14 @@ import * as ProfilesAPI from '@/Apis/Profiles'
 
 import { FormType } from '@/Types/Form.type'
 
-import { FIELD_TYPE_FILE, FIELD_TYPE_TEXT } from '@/Consts/FieldTypes.const'
 import {
+  FIELD_TYPE_FILE,
+  FIELD_TYPE_TEXT,
+  FIELD_TYPE_TEXTAREA
+} from '@/Consts/FieldTypes.const'
+import {
+  REGISTER_BIO_LABEL,
+  REGISTER_BIO_PLACEHOLDER,
   REGISTER_NAME_PLACEHOLDER,
   REGISTER_PICTURE_LABEL,
   REGISTER_URI_LABEL,
@@ -22,20 +28,22 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   onSubmit: async (e) => {
     const formData = new FormData(e.target as HTMLFormElement)
 
-    const { name, uri, picture } = Object.fromEntries(formData) as {
+    const { name, uri, picture, bio } = Object.fromEntries(formData) as {
       name: string
       uri: string
+      bio: string
       picture: File
     }
 
-    if (![name, uri, picture].every(Boolean)) {
+    if (![name, uri, picture, bio].every(Boolean)) {
       const response = {
         errorMessage: `Todos os campos são obrigatórios.`,
 
         errors: {
           name: !name ? `Campo obrigatório` : ``,
           uri: !uri ? `Campo obrigatório` : ``,
-          picture: !picture ? `Campo obrigatório` : ``
+          picture: !picture ? `Campo obrigatório` : ``,
+          bio: !bio ? `Campo obrigatório` : ``
         }
       }
 
@@ -60,6 +68,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       name,
       uri,
       picture: pictureBase64,
+      bio,
       userId
     })
 
@@ -113,6 +122,13 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
           name: 'picture',
           label: REGISTER_PICTURE_LABEL,
           type: FIELD_TYPE_FILE
+        },
+
+        {
+          name: 'bio',
+          label: REGISTER_BIO_LABEL,
+          placeholder: REGISTER_BIO_PLACEHOLDER,
+          renderAs: FIELD_TYPE_TEXTAREA
         }
       ]
     }

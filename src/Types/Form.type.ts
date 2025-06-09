@@ -19,7 +19,11 @@ export type FormType = {
       name: string
       label?: string
       placeholder?: string
-      type:
+      renderAs?:
+        | typeof FIELD_TYPE_TEXT
+        | typeof FIELD_TYPE_SELECT
+        | typeof FIELD_TYPE_TEXTAREA
+      type?:
         | typeof FIELD_TYPE_TEXT
         | typeof FIELD_TYPE_FILE
         | typeof FIELD_TYPE_TEXTAREA

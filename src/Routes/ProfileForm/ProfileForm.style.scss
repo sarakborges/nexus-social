@@ -12,6 +12,10 @@
 
     > form {
       flex: 1;
+
+      .field-component > .field-wrapper > .field:is(textarea) {
+        min-height: calc(var(--size-xl) * 3);
+      }
     }
 
     > section {

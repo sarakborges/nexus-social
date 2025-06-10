@@ -18,12 +18,12 @@ export const FeedListComponent = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const getFeed = async () => {
-    if (!activeProfile?.id) {
+    if (!activeProfile?._id) {
       return
     }
 
     setIsLoading(true)
-    const feedResponse = await FeedAPI.getFeedByProfile(activeProfile?.id)
+    const feedResponse = await FeedAPI.getFeedByProfile(activeProfile?._id)
     setIsLoading(false)
 
     if (!feedResponse?.length) {
@@ -35,7 +35,7 @@ export const FeedListComponent = () => {
 
   useEffect(() => {
     getFeed()
-  }, [activeProfile?.id])
+  }, [activeProfile?._id])
 
   return (
     <>
@@ -46,7 +46,10 @@ export const FeedListComponent = () => {
           {!!feed?.length && (
             <ul className="feed-list">
               {feed.map((feedItem) => (
-                <FeedItemComponent key={feedItem.id} feedData={feedItem} />
+                <FeedItemComponent
+                  key={`feed-item-${feedItem._id}`}
+                  feedData={feedItem}
+                />
               ))}
             </ul>
           )}

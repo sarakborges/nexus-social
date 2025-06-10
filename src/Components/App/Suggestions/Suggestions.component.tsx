@@ -71,7 +71,7 @@ export const SuggestionsComponent = ({
             <ul>
               {suggestions.map((suggestionItem) => (
                 <SuggestionItemComponent
-                  key={suggestionItem.id}
+                  key={`suggestion-item-${suggestionItem._id}`}
                   suggestion={suggestionItem}
                   type={type}
                 />

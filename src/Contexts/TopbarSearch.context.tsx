@@ -11,21 +11,21 @@ const INITIAL_SEARCH_RESULTS: Array<TopbarSearchResultsType> = [
     type: 'profile',
     items: [
       {
-        id: '1',
+        _id: '1',
         name: 'hope.',
         uri: 'hopyumm',
         picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/first-blood67e450dcccc7c.png`
       },
 
       {
-        id: '2',
+        _id: '2',
         name: 'doom.',
         uri: 'doomyumm',
         picture: `https://imageyobleus.nyc3.cdn.digitaloceanspaces.com/avatar/thumb/doomyum6816297e9e8ce.png`
       },
 
       {
-        id: '4',
+        _id: '4',
         name: 'barbatos.',
         uri: 'il-vento-dubriaco',
         picture: `https://image.yoble.us/avatar/il-vento-dubriaco6823c2196347d.png`

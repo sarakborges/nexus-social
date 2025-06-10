@@ -1,6 +1,6 @@
 import { request } from '@/Apis/Request.api'
 
-export const deleteProfile = async (id: number) => {
+export const deleteProfile = async (id: string) => {
   try {
     const profilesRequest = await request.delete(`/profiles/${id}`)
 

@@ -58,7 +58,7 @@ export const NavbarNotificationsComponent = () => {
             <ul className="notifications-list">
               {notifications.map((notificationItem) => (
                 <NotificationItemComponent
-                  key={`notification-item-${notificationItem.id}`}
+                  key={`notification-item-${notificationItem._id}`}
                   notification={notificationItem}
                 />
               ))}

@@ -20,14 +20,14 @@ export const HomeRoute = () => {
   return (
     <PageWrapperComponent>
       <main className="home-route">
-        {!!activeProfile?.id && (
+        {!!activeProfile?._id && (
           <>
             <FeedComponent />
             <HomeSuggestionsComponent />
           </>
         )}
 
-        {!activeProfile?.id && (
+        {!activeProfile?._id && (
           <div className="home-no-profile">
             {!user?.profiles?.length && (
               <>

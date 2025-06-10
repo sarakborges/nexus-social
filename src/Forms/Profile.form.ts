@@ -49,7 +49,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
     }
 
     const userId = localStorage.getItem('user-id')
-      ? Number(localStorage.getItem('user-id'))
+      ? localStorage.getItem('user-id')
       : undefined
 
     if (!userId) {
@@ -80,7 +80,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
     const updateUserProfilesResponse = await UsersAPI.addProfileToUser({
       userId,
-      profile: createProfileResponse.id
+      profile: createProfileResponse._id
     })
 
     if (!updateUserProfilesResponse) {

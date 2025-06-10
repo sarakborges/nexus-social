@@ -16,13 +16,13 @@ export const HomeSuggestionsComponent = () => {
   const { suggestions, setSuggestions } = use(SuggestionsContext)
 
   const getSuggestions = async () => {
-    if (!activeProfile?.id) {
+    if (!activeProfile?._id) {
       return
     }
 
     setIsLoading(true)
     const suggestionsRequest = await SuggestionsApi.getSuggestions(
-      activeProfile.id
+      activeProfile._id
     )
     setIsLoading(false)
 
@@ -35,7 +35,7 @@ export const HomeSuggestionsComponent = () => {
 
   useEffect(() => {
     getSuggestions()
-  }, [activeProfile?.id])
+  }, [activeProfile?._id])
 
   return (
     <section className="home-suggestions">

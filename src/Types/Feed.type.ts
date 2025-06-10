@@ -1,7 +1,7 @@
 import { ProfileType } from '@/Types/Profile.type'
 
 export type FeedType = {
-  id: string
+  _id: string
   content?: string
   picture?: string
   date: Date

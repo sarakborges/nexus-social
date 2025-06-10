@@ -56,7 +56,7 @@ export const NavbarUserDropdownComponent = () => {
       </section>
 
       <header className="navbar-user-dropdown-name">
-        {!!activeProfile?.id && (
+        {!!activeProfile?._id && (
           <>
             <TypographyComponent renderAs="h2">
               {activeProfile?.name}
@@ -74,7 +74,7 @@ export const NavbarUserDropdownComponent = () => {
           </>
         )}
 
-        {!!user?.profiles?.length && !activeProfile?.id && (
+        {!!user?.profiles?.length && !activeProfile?._id && (
           <>
             <TypographyComponent renderAs="h2">
               {NAVBAR_USER_WELCOME}
@@ -100,7 +100,7 @@ export const NavbarUserDropdownComponent = () => {
       </header>
 
       <footer className="navbar-user-dropdown-actions">
-        {!!activeProfile?.id && (
+        {!!activeProfile?._id && (
           <LinkComponent to={ROUTES.EDIT_PROFILE.path} asButton>
             <FaPencil />
             <TypographyComponent smallText>
@@ -118,7 +118,7 @@ export const NavbarUserDropdownComponent = () => {
         </LinkComponent>
 
         {!!user?.profiles?.length &&
-          (!activeProfile?.id || user?.profiles?.length > 1) && (
+          (!activeProfile?._id || user?.profiles?.length > 1) && (
             <div className="navbar-user-dropdown-change-profile">
               <ButtonComponent onClick={toggleDropdown}>
                 <section>
@@ -137,8 +137,8 @@ export const NavbarUserDropdownComponent = () => {
             </div>
           )}
 
-        {!!activeProfile?.id && (
-          <DeleteProfileComponent profile={activeProfile?.id} />
+        {!!activeProfile?._id && (
+          <DeleteProfileComponent profile={activeProfile?._id} />
         )}
 
         <DoLogoutComponent />

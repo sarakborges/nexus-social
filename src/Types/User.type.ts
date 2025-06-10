@@ -1,9 +1,9 @@
 import { ProfileType } from '@/Types/Profile.type'
 
 export type UserType = {
-  id: number
+  _id: string
   email: string
   password: string
-  activeProfile?: number
+  activeProfile?: string
   profiles?: Array<ProfileType>
 }

@@ -4,7 +4,7 @@ import { ProfileType } from '@/Types/Profile.type'
 import { GroupType } from './Group.type'
 
 export type NotificationType = {
-  id: string
+  _id: string
   type:
     | typeof NOTIFICATION_TYPES.CONNECTION_REQUEST
     | typeof NOTIFICATION_TYPES.ACCEPTED_AT_GROUP

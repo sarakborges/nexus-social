@@ -1,6 +1,6 @@
 import { request } from '@/Apis/Request.api'
 
-export const getUser = async (id: number) => {
+export const getUser = async (id: string) => {
   try {
     const userRequest = await request.get(`/users/${id}`)
 

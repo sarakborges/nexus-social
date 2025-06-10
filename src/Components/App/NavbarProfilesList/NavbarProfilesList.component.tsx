@@ -47,7 +47,7 @@ export const NavbarProfilesListComponent = () => {
             {user.profiles
               ?.filter(
                 (profileItem) =>
-                  profileItem.id !== activeProfile?.id &&
+                  profileItem._id !== activeProfile?._id &&
                   (!profilesFilter ||
                     profileItem.name
                       .toLocaleLowerCase()
@@ -55,7 +55,7 @@ export const NavbarProfilesListComponent = () => {
               )
               .map((profileItem) => (
                 <ProfileListItemComponent
-                  key={`user-profiles-${profileItem.id}`}
+                  key={`user-profiles-${profileItem._id}`}
                   profile={profileItem}
                 />
               ))}

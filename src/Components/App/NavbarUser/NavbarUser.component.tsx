@@ -43,7 +43,7 @@ export const NavbarUserComponent = () => {
           />
 
           <section>
-            {!!activeProfile?.id && (
+            {!!activeProfile?._id && (
               <>
                 <TypographyComponent renderAs="p">
                   {activeProfile?.name}

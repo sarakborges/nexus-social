@@ -1,6 +1,6 @@
 export type ProfileType = {
-  id: number
-  userId: number
+  _id: string
+  userId: string
   name: string
   uri: string
   picture?: string

@@ -9,8 +9,8 @@ const ActiveProfileContext = createContext<ActiveProfileContextType>(
 
 const ActiveProfileProvider = ({ children }) => {
   const [activeProfile, setActiveProfile] = useState<ProfileType>({
-    id: 0,
-    userId: 0,
+    _id: '',
+    userId: '',
     name: '',
     uri: ''
   })

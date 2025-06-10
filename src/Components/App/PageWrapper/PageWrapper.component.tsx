@@ -23,7 +23,7 @@ export const PageWrapperComponent = ({
   const [isLoading, setIsLoading] = useState(false)
 
   const userId = localStorage.getItem('user-id')
-    ? Number(localStorage.getItem('user-id'))
+    ? localStorage.getItem('user-id')
     : undefined
 
   if (!userId) {
@@ -49,14 +49,14 @@ export const PageWrapperComponent = ({
 
     setActiveProfile(
       userRequest.profiles.find(
-        (profileItem) => profileItem.id === userRequest.activeProfile
+        (profileItem) => profileItem._id === userRequest.activeProfile
       )
     )
   }
 
   useEffect(() => {
     getUser()
-  }, [user?.id])
+  }, [user?._id])
 
   return (
     <main className="page-wrapper">

@@ -23,7 +23,7 @@ export const NavbarComponent = () => {
         <ul>
           {NAVBAR.filter(
             (navbarItem) =>
-              !navbarItem.needsActiveProfile || !!activeProfile?.id
+              !navbarItem.needsActiveProfile || !!activeProfile?._id
           ).map((navbarItem) => (
             <li key={navbarItem.id}>
               {!!navbarItem?.component && navbarItem?.component}

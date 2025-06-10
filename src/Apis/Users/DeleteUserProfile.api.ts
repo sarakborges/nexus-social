@@ -4,8 +4,8 @@ export const deleteUserProfile = async ({
   profileId,
   userId
 }: {
-  profileId: number
-  userId: number
+  profileId: string
+  userId: string
 }) => {
   try {
     const profilesRequest = await request.patch(`/users/${userId}/remove`, {

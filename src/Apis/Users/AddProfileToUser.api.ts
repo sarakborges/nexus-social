@@ -4,8 +4,8 @@ export const addProfileToUser = async ({
   userId,
   profile
 }: {
-  userId: number
-  profile: number
+  userId: string
+  profile: string
 }) => {
   try {
     const userRequest = await request.patch(`/users/${userId}/add`, {

@@ -21,14 +21,14 @@ export const DoLogoutComponent = () => {
     setUser({
       email: '',
       password: '',
-      id: 0
+      _id: ''
     })
 
     setActiveProfile({
-      id: 0,
+      _id: '',
       name: '',
       uri: '',
-      userId: 0
+      userId: ''
     })
 
     localStorage.removeItem('nexus-token')

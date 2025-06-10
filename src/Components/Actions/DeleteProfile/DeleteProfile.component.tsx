@@ -17,7 +17,7 @@ export const DeleteProfileComponent = ({
   profile,
   hideText
 }: {
-  profile: number
+  profile: string
   hideText?: boolean
 }) => {
   const { user, setUser } = use(UserContext)
@@ -36,7 +36,7 @@ export const DeleteProfileComponent = ({
     setIsLoading(true)
     const deleteFromUserRequest = await UsersAPI.deleteUserProfile({
       profileId: profile,
-      userId: user?.id
+      userId: user?._id
     })
     setIsLoading(false)
 
@@ -45,14 +45,14 @@ export const DeleteProfileComponent = ({
     }
 
     if (user.activeProfile === profile) {
-      setActiveProfile({ id: 0, name: '', uri: '', userId: 0 })
+      setActiveProfile({ _id: '', name: '', uri: '', userId: '' })
     }
 
     setUser({
       ...user,
-      activeProfile: user.activeProfile === profile ? 0 : user.activeProfile,
+      activeProfile: user.activeProfile === profile ? '' : user.activeProfile,
       profiles: user.profiles?.filter(
-        (profileItem) => profileItem.id !== profile
+        (profileItem) => profileItem._id !== profile
       )
     })
   }

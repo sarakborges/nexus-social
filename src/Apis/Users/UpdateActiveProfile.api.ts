@@ -4,8 +4,8 @@ export const updateActiveProfile = async ({
   profileId,
   userId
 }: {
-  profileId: number
-  userId: number
+  profileId: string
+  userId: string
 }) => {
   try {
     const profilesRequest = await request.patch(

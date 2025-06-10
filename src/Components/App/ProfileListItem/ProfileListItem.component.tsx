@@ -34,12 +34,12 @@ export const ProfileListItemComponent = ({
   const { user } = use(UserContext)
   const { setActiveProfile } = use(ActiveProfileContext)
 
-  const { id, name, picture } = profile
+  const { _id, name, picture } = profile
 
-  const changeActiveProfile = async (profileId: number) => {
+  const changeActiveProfile = async (profileId: string) => {
     const updateRequest = await UsersAPI.updateActiveProfile({
       profileId,
-      userId: user?.id
+      userId: user?._id
     })
 
     if (!updateRequest) {
@@ -47,7 +47,7 @@ export const ProfileListItemComponent = ({
     }
 
     setActiveProfile(
-      user.profiles?.find((profileItem) => profileItem.id === profileId)!
+      user.profiles?.find((profileItem) => profileItem._id === profileId)!
     )
   }
 
@@ -78,7 +78,7 @@ export const ProfileListItemComponent = ({
 
       <section className="profiles-list-actions">
         {!isActiveProfile && (
-          <ButtonComponent onClick={() => changeActiveProfile(id)}>
+          <ButtonComponent onClick={() => changeActiveProfile(_id)}>
             {PROFILES_LIST_ACTIVATE_PROFILE}
           </ButtonComponent>
         )}
@@ -89,7 +89,7 @@ export const ProfileListItemComponent = ({
           </LinkComponent>
         )}
 
-        <DeleteProfileComponent profile={id} hideText />
+        <DeleteProfileComponent profile={_id} hideText />
       </section>
     </li>
   )

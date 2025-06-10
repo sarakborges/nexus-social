@@ -1,6 +1,6 @@
 import { request } from '@/Apis/Request.api'
 
-export const getProfile = async (id: number) => {
+export const getProfile = async (id: string) => {
   try {
     const profilesRequest = await request.get(`/profiles/${id}`)
 

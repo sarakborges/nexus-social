@@ -99,7 +99,7 @@ export const FormComponent = ({
     <>
       <form className="form" {...formProps} onSubmit={doSubmit}>
         {sections.map((sectionItem) => (
-          <section key={sectionItem.id}>
+          <section key={`form-section-${sectionItem.id}`}>
             {sectionItem.title && (
               <TypographyComponent renderAs="h2">
                 {sectionItem.title}

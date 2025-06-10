@@ -50,7 +50,7 @@ export const REGISTER_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
     }
 
     localStorage.setItem('nexus-token', 'nice')
-    localStorage.setItem('user-id', registerResponse.id)
+    localStorage.setItem('user-id', registerResponse._id)
 
     const response = {
       redirectUri: ROUTES.HOME.path

@@ -35,13 +35,7 @@ export const PageWrapperComponent = ({
     const userRequest = await UsersAPI.getUser(userId)
     setIsLoading(false)
 
-    if (!userRequest?.profiles) {
-      return
-    }
-
-    setIsLoading(true)
     setUser(userRequest)
-    setIsLoading(false)
 
     if (userRequest.profiles.length < 1 || !userRequest.activeProfile) {
       return

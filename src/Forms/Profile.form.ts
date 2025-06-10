@@ -20,6 +20,7 @@ import {
 } from '@/Consts/Register.const'
 import { ROUTES } from '@/Consts/Routes.const'
 import { PROFILE_FORM_BUTTON } from '@/Consts/ProfileForm.const'
+
 import { readAsBase64 } from '@/Utils/ReadAsBase64.util'
 
 export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
@@ -60,12 +61,15 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       return response
     }
 
-    const pictureBase64 = (await readAsBase64(picture)) as string
+    const pictureBase64 = await readAsBase64(picture)
 
     const createProfileResponse = await ProfilesAPI.createProfile({
       name,
       uri,
-      picture: pictureBase64,
+      picture: pictureBase64.replace(
+        'data:application/octet-stream;base64,',
+        ''
+      ),
       bio,
       userId
     })
@@ -121,9 +125,9 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
           label: REGISTER_PICTURE_LABEL,
           type: FIELD_TYPE_FILE,
           onChange: async (e) => {
-            const pictureBase64 = (await readAsBase64(
+            const pictureBase64 = await readAsBase64(
               (e.target as HTMLInputElement).files?.[0] as File
-            )) as string
+            )
 
             const pictureEl = document.querySelector(
               '#profile-picture'

@@ -9,7 +9,6 @@ export const addProfileToUser = async ({
 }) => {
   try {
     const userRequest = await request.patch(`/users/${userId}/add`, {
-      userId,
       profile
     })
 

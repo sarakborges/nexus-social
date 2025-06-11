@@ -95,6 +95,19 @@ export const FormComponent = ({
       return
     }
 
+    setUser({
+      _id: '',
+      email: '',
+      password: ''
+    })
+
+    setActiveProfile({
+      _id: '',
+      name: '',
+      uri: '',
+      userId: ''
+    })
+
     setIsLoading(true)
     const userRequest = await UsersAPI.getUser(userId)
     setIsLoading(false)

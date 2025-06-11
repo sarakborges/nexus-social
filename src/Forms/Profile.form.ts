@@ -45,51 +45,72 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       return response
     }
 
-    const userId = localStorage.getItem('user-id')
-      ? localStorage.getItem('user-id')
-      : undefined
+    if (!!_id) {
+      const updateProfileResponse = await ProfilesAPI.updateProfile({
+        ...formDataEntries
+      })
 
-    if (!userId) {
+      if (!updateProfileResponse) {
+        const response = {
+          errorMessage: `Falha ao eviar. Verifique as informações inseridas e tente novamente.`
+        }
+
+        return response
+      }
+
       const response = {
-        errorMessage: `Falha ao enviar. Verifique se você está logado e tente novamente.`
+        redirectUri: ROUTES.HOME.path,
+        reloadUser: true
+      }
+
+      return response
+    } else {
+      const userId = localStorage.getItem('user-id')
+        ? localStorage.getItem('user-id')
+        : undefined
+
+      if (!userId) {
+        const response = {
+          errorMessage: `Falha ao enviar. Verifique se você está logado e tente novamente.`
+        }
+
+        return response
+      }
+
+      const createProfileResponse = await ProfilesAPI.createProfile({
+        name,
+        uri,
+        ...formDataEntriesRest
+      })
+
+      if (!createProfileResponse) {
+        const response = {
+          errorMessage: `Falha ao eviar. Verifique as informações inseridas e tente novamente.`
+        }
+
+        return response
+      }
+
+      const updateUserProfilesResponse = await UsersAPI.addProfileToUser({
+        userId,
+        profile: createProfileResponse._id
+      })
+
+      if (!updateUserProfilesResponse) {
+        const response = {
+          errorMessage: `Falha ao enviar. Verifique as informações inseridas e tente novamente.`
+        }
+
+        return response
+      }
+
+      const response = {
+        redirectUri: ROUTES.HOME.path,
+        reloadUser: true
       }
 
       return response
     }
-
-    const createProfileResponse = await ProfilesAPI.createProfile({
-      name,
-      uri,
-      ...formDataEntriesRest
-    })
-
-    if (!createProfileResponse) {
-      const response = {
-        errorMessage: `Falha ao eviar. Verifique as informações inseridas e tente novamente.`
-      }
-
-      return response
-    }
-
-    const updateUserProfilesResponse = await UsersAPI.addProfileToUser({
-      userId,
-      profile: createProfileResponse._id
-    })
-
-    if (!updateUserProfilesResponse) {
-      const response = {
-        errorMessage: `Falha ao enviar. Verifique as informações inseridas e tente novamente.`
-      }
-
-      return response
-    }
-
-    const response = {
-      redirectUri: ROUTES.HOME.path,
-      reloadUser: true
-    }
-
-    return response
   },
 
   sections: [

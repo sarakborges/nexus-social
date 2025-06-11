@@ -1,5 +1,10 @@
 import { use, useRef } from 'react'
-import { FaChevronRight, FaUserCircle, FaUserPlus } from 'react-icons/fa'
+import {
+  FaChevronRight,
+  FaTimes,
+  FaUserCircle,
+  FaUserPlus
+} from 'react-icons/fa'
 import { FaPencil } from 'react-icons/fa6'
 
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
@@ -28,7 +33,7 @@ import { DoLogoutComponent } from '@/Components/Actions/DoLogout'
 
 import './NavbarUserDropdown.style.scss'
 
-export const NavbarUserDropdownComponent = () => {
+export const NavbarUserDropdownComponent = ({ closeParentDropdown }) => {
   const { activeProfile } = use(ActiveProfileContext)
   const { user } = use(UserContext)
 
@@ -46,13 +51,19 @@ export const NavbarUserDropdownComponent = () => {
 
   return (
     <section className="navbar-user-dropdown">
-      <section className="navbar-user-dropdown-picture">
-        <ImageComponent
-          src={activeProfile?.picture || `/avatar-placeholder.png`}
-          alt={activeProfile?.name}
-          rounded
-          square
-        />
+      <section className="navbar-user-dropdown-header">
+        <div className="navbar-user-dropdown-picture">
+          <ImageComponent
+            src={activeProfile?.picture || `/avatar-placeholder.png`}
+            alt={activeProfile?.name}
+            rounded
+            square
+          />
+        </div>
+
+        <ButtonComponent square transparent onClick={closeParentDropdown}>
+          <FaTimes />
+        </ButtonComponent>
       </section>
 
       <header className="navbar-user-dropdown-name">

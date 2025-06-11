@@ -31,22 +31,22 @@ export const ROUTES = {
 
   PROFILE: {
     id: 'profile',
-    path: '/profile/:id'
+    path: '/profile/:uri'
   },
 
   GROUP: {
     id: 'group',
-    path: '/group/:id'
+    path: '/group/:uri'
   },
 
   PROFILE_CONNECTIONS: {
     id: 'connections',
-    path: '/profile/:id/connections'
+    path: '/profile/:uri/connections'
   },
 
   PROFILE_GROUPS: {
     id: 'groups',
-    path: '/profile/:id/groups'
+    path: '/profile/:uri/groups'
   },
 
   SUGGESTIONS_PROFILE: {

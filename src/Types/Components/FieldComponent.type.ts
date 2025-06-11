@@ -22,6 +22,7 @@ export type FieldComponentType = {
     label: string
     value: string
   }[]
+  hidden?: boolean
 } & (InputHTMLAttributes<HTMLInputElement> &
   SelectHTMLAttributes<HTMLSelectElement> &
   TextareaHTMLAttributes<HTMLTextAreaElement>)

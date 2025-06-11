@@ -7,14 +7,17 @@ import { ProtectedRouteComponent } from '@/Components/System/ProtectedRoute'
 import { HomeRoute } from '@/Routes/Home'
 import { LoginRoute } from '@/Routes/Login'
 import { RegisterRoute } from '@/Routes/Register'
-import { ProfileFormRoute } from '@/Routes/ProfileForm'
+import { ProfileRoute } from '@/Routes/Profile'
+import { EditProfileRoute } from '@/Routes/EditProfile'
+import { CreateProfileRoute } from '@/Routes/CreateProfile'
 
 const routeComponents = {
   home: HomeRoute,
   login: LoginRoute,
   register: RegisterRoute,
-  'new-profile': ProfileFormRoute,
-  'edit-profile': ProfileFormRoute
+  'new-profile': CreateProfileRoute,
+  'edit-profile': EditProfileRoute,
+  profile: ProfileRoute
 }
 
 const { LOGIN, REGISTER, ...protectedRoutes } = ROUTES

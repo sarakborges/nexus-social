@@ -5,23 +5,16 @@ import * as ProfilesAPI from '@/Apis/Profiles'
 
 import { FormType } from '@/Types/Form.type'
 
-import {
-  FIELD_TYPE_FILE,
-  FIELD_TYPE_TEXT,
-  FIELD_TYPE_TEXTAREA
-} from '@/Consts/FieldTypes.const'
+import { FIELD_TYPE_TEXT, FIELD_TYPE_TEXTAREA } from '@/Consts/FieldTypes.const'
 import {
   REGISTER_BIO_LABEL,
   REGISTER_BIO_PLACEHOLDER,
   REGISTER_NAME_PLACEHOLDER,
-  REGISTER_PICTURE_LABEL,
   REGISTER_URI_LABEL,
   REGISTER_URI_PLACEHOLDER
 } from '@/Consts/Register.const'
 import { ROUTES } from '@/Consts/Routes.const'
 import { PROFILE_FORM_BUTTON } from '@/Consts/ProfileForm.const'
-
-import { readAsBase64 } from '@/Utils/ReadAsBase64.util'
 
 export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   submitText: PROFILE_FORM_BUTTON,
@@ -29,12 +22,15 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   onSubmit: async (e) => {
     const formData = new FormData(e.target as HTMLFormElement)
 
-    const { name, uri, picture, bio } = Object.fromEntries(formData) as {
+    const formDataEntries = Object.fromEntries(formData) as {
+      _id: string
       name: string
       uri: string
       bio: string
-      picture: File
+      picture: string
     }
+
+    const { _id, name, uri, ...formDataEntriesRest } = formDataEntries
 
     if (![name, uri].every(Boolean)) {
       const response = {
@@ -55,28 +51,21 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
     if (!userId) {
       const response = {
-        errorMessage: `Falha ao criar perfil. Verifique se você está logado e tente novamente.`
+        errorMessage: `Falha ao enviar. Verifique se você está logado e tente novamente.`
       }
 
       return response
     }
 
-    const pictureBase64 = await readAsBase64(picture)
-
     const createProfileResponse = await ProfilesAPI.createProfile({
       name,
       uri,
-      picture: pictureBase64.replace(
-        'data:application/octet-stream;base64,',
-        ''
-      ),
-      bio,
-      userId
+      ...formDataEntriesRest
     })
 
     if (!createProfileResponse) {
       const response = {
-        errorMessage: `Falha ao criar perfil. Verifique as informações inseridas e tente novamente.`
+        errorMessage: `Falha ao eviar. Verifique as informações inseridas e tente novamente.`
       }
 
       return response
@@ -89,14 +78,15 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
     if (!updateUserProfilesResponse) {
       const response = {
-        errorMessage: `Falha ao criar perfil. Verifique as informações inseridas e tente novamente.`
+        errorMessage: `Falha ao enviar. Verifique as informações inseridas e tente novamente.`
       }
 
       return response
     }
 
     const response = {
-      redirectUri: ROUTES.HOME.path
+      redirectUri: ROUTES.HOME.path,
+      reloadUser: true
     }
 
     return response
@@ -106,6 +96,11 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
     {
       id: 'profile',
       fields: [
+        {
+          name: '_id',
+          hidden: true
+        },
+
         {
           name: 'name',
           label: REGISTER_NAME_PLACEHOLDER,
@@ -122,18 +117,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
         {
           name: 'picture',
-          label: REGISTER_PICTURE_LABEL,
-          type: FIELD_TYPE_FILE,
-          onChange: async (e) => {
-            const pictureBase64 = await readAsBase64(
-              (e.target as HTMLInputElement).files?.[0] as File
-            )
-
-            const pictureEl = document.querySelector(
-              '#profile-picture'
-            ) as HTMLImageElement
-            pictureEl.src = pictureBase64
-          }
+          hidden: true
         },
 
         {

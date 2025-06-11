@@ -1,9 +1,9 @@
-.profile-form-route {
+.profile-form {
   display: flex;
   flex-flow: column;
   gap: var(--size-lmd);
 
-  padding: var(--size-smd) var(--size-lmd);
+  padding: var(--size-lmd);
 
   > .card {
     display: flex;
@@ -18,17 +18,27 @@
       }
     }
 
-    > section {
+    > .profile-picture-changer {
       display: flex;
       flex-flow: column;
-      place-items: center;
       gap: var(--size-md);
 
-      .image {
-        width: var(--size-avatar);
+      > main {
+        padding: var(--size-sm);
 
-        > img {
-          width: 100%;
+        border-radius: 100%;
+        background-color: var(--card-field-background);
+
+        > .field-component {
+          display: none;
+        }
+
+        .image {
+          width: var(--size-avatar);
+
+          > img {
+            width: 100%;
+          }
         }
       }
     }

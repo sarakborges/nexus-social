@@ -3,6 +3,7 @@ import { ChangeEvent } from 'react'
 import {
   FIELD_TYPE_CHECKBOX,
   FIELD_TYPE_FILE,
+  FIELD_TYPE_HIDDEN,
   FIELD_TYPE_PASSWORD,
   FIELD_TYPE_RADIO,
   FIELD_TYPE_SELECT,
@@ -13,6 +14,10 @@ import {
 export type FormType = {
   submitText: string
 
+  initialValues?: {
+    [key: string]: string
+  }
+
   sections: Array<{
     id: string
     title?: string
@@ -20,6 +25,7 @@ export type FormType = {
     fields: Array<{
       name: string
       label?: string
+      hidden?: boolean
       placeholder?: string
       onChange?: (e: ChangeEvent) => void
       renderAs?:
@@ -34,6 +40,7 @@ export type FormType = {
         | typeof FIELD_TYPE_PASSWORD
         | typeof FIELD_TYPE_RADIO
         | typeof FIELD_TYPE_SELECT
+        | typeof FIELD_TYPE_HIDDEN
     }>
   }>
 }

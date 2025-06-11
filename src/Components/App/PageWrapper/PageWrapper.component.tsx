@@ -26,11 +26,11 @@ export const PageWrapperComponent = ({
     ? localStorage.getItem('user-id')
     : undefined
 
-  if (!userId) {
-    return <></>
-  }
-
   const getUser = async () => {
+    if (!userId || user?._id === userId) {
+      return
+    }
+
     setIsLoading(true)
     const userRequest = await UsersAPI.getUser(userId)
     setIsLoading(false)
@@ -54,17 +54,18 @@ export const PageWrapperComponent = ({
 
   return (
     <main className="page-wrapper">
-      <aside>
-        <NavbarComponent />
-      </aside>
+      {!isLoading && (
+        <>
+          <NavbarComponent />
+          <main className="page-content">{children}</main>
+        </>
+      )}
 
-      <aside className="page-content">
-        <main>
-          {!isLoading && children}
-
-          {!!isLoading && <LoadingComponent />}
-        </main>
-      </aside>
+      {!!isLoading && (
+        <div className="loader-wrapper">
+          <LoadingComponent />
+        </div>
+      )}
     </main>
   )
 }

@@ -54,6 +54,18 @@ export const NavbarUserComponent = () => {
                 </TypographyComponent>
               </>
             )}
+
+            {!activeProfile?._id && (
+              <>
+                <TypographyComponent renderAs="p">
+                  Bem vindo!
+                </TypographyComponent>
+
+                <TypographyComponent smallText renderAs="p">
+                  Selecione um perfil aqui.
+                </TypographyComponent>
+              </>
+            )}
           </section>
         </ButtonComponent>
 
@@ -61,8 +73,8 @@ export const NavbarUserComponent = () => {
           <FaCog />
         </LinkComponent>
 
-        <DropdownComponent top left ref={navbarUserDropdownRef}>
-          <NavbarUserDropdownComponent />
+        <DropdownComponent left ref={navbarUserDropdownRef}>
+          <NavbarUserDropdownComponent closeParentDropdown={toggleDropdown} />
         </DropdownComponent>
       </CardComponent>
     </section>

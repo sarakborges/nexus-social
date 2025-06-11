@@ -1,7 +1,8 @@
 import {
   FIELD_TYPE_TEXT,
   FIELD_TYPE_SELECT,
-  FIELD_TYPE_TEXTAREA
+  FIELD_TYPE_TEXTAREA,
+  FIELD_TYPE_HIDDEN
 } from '@/Consts/FieldTypes.const'
 
 import { SelectComponent } from '@/Components/System/Select'
@@ -24,6 +25,7 @@ export const FieldComponent = ({
   options,
   renderAs,
   initialValue,
+  hidden,
   ...rest
 }: FieldComponentType) => {
   const wrapperClasses = ['field-wrapper', error ? 'field-error' : '']
@@ -41,6 +43,10 @@ export const FieldComponent = ({
       />
     ),
     [FIELD_TYPE_TEXTAREA]: <Textarea id={rest.name} {...rest} />
+  }
+
+  if (!!hidden) {
+    return <div className="hidden-field">{components[FIELD_TYPE_TEXT]}</div>
   }
 
   return (

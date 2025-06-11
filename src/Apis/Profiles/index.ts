@@ -1,6 +1,13 @@
 import { getAllProfiles } from './GetAllProfiles.api'
-import { getProfile } from './GetProfile.api'
+import { getProfileById } from './GetProfileById.api'
 import { createProfile } from './CreateProfile.api'
 import { deleteProfile } from './DeleteProfile.api'
+import { getProfileByUri } from './GetProfileByUri.api'
 
-export { getAllProfiles, getProfile, createProfile, deleteProfile }
+export {
+  getAllProfiles,
+  getProfileById,
+  createProfile,
+  deleteProfile,
+  getProfileByUri
+}

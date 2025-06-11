@@ -2,7 +2,6 @@
   display: flex;
   flex-flow: column;
   place-items: center;
-  place-content: space-between;
   gap: var(--size-smd);
 
   position: sticky;
@@ -11,21 +10,21 @@
   z-index: 99;
 
   width: var(--size-navbar);
-  height: 100vh;
+  min-height: 100vh;
   padding: var(--size-md) 0;
 
   border-right: 1px solid var(--color-border);
+
+  > picture {
+    > img {
+      max-height: var(--size-logo);
+    }
+  }
 
   .navbar-menu {
     position: relative;
 
     width: 100%;
-
-    > picture {
-      > img {
-        max-height: var(--size-logo);
-      }
-    }
 
     > ul {
       width: 100%;

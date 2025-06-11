@@ -5,13 +5,28 @@
 
   width: var(--size-navbar);
 
-  .navbar-user-dropdown-picture {
-    aspect-ratio: 1;
-    width: var(--size-navbar-profile-avatar);
-    padding: var(--size-sm);
+  .navbar-user-dropdown-header {
+    display: flex;
+    place-content: space-between;
 
-    border-radius: 100%;
-    background-color: var(--card-field-background);
+    .navbar-user-dropdown-picture {
+      aspect-ratio: 1;
+      width: var(--size-navbar-profile-avatar);
+      padding: var(--size-sm);
+
+      border-radius: 100%;
+      background-color: var(--card-field-background);
+    }
+
+    > .button {
+      height: var(--size-lg);
+      padding: 0;
+
+      svg {
+        width: var(--size-lmd);
+        height: var(--size-lmd);
+      }
+    }
   }
 
   .navbar-user-dropdown-name {
@@ -74,7 +89,7 @@
 
       > .dropdown {
         left: calc(100% + var(--size-md));
-        bottom: calc(100% - calc(var(--size-xl) * 2));
+        bottom: var(--size-md);
       }
 
       > .button {

@@ -1,8 +1,8 @@
 import { request } from '@/Apis/Request.api'
 
-export const getProfile = async (id: string) => {
+export const getProfileByUri = async (uri: string) => {
   try {
-    const profilesRequest = await request.get(`/profiles/${id}`)
+    const profilesRequest = await request.get(`/profiles/uri/${uri}`)
 
     const { status, data } = profilesRequest
 

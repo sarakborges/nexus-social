@@ -1,9 +1,21 @@
 .page-wrapper {
   display: flex;
 
+  min-height: 100vh;
+
   background-color: var(--color-background);
+
+  .loader-wrapper {
+    display: flex;
+    place-content: center;
+    place-items: center;
+
+    width: 100%;
+    height: 100vh;
+  }
 
   > .page-content {
     flex: 1;
+    min-height: 100vh;
   }
 }

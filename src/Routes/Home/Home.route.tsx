@@ -1,17 +1,18 @@
 import { use } from 'react'
 
+import { ROUTES } from '@/Consts/Routes.const'
+
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { TypographyComponent } from '@/Components/System/Typography'
+import { LinkComponent } from '@/Components/System/Link'
 
 import { PageWrapperComponent } from '@/Components/App/PageWrapper'
 import { FeedComponent } from '@/Components/App/Feed'
 import { HomeSuggestionsComponent } from '@/Components/App/HomeSuggestions'
 
 import './Home.style.scss'
-import { LinkComponent } from '@/Components/System/Link'
-import { ROUTES } from '@/Consts/Routes.const'
 
 export const HomeRoute = () => {
   const { user } = use(UserContext)

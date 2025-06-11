@@ -8,6 +8,7 @@ import { ActiveProfileProvider } from '@/Contexts/ActiveProfile.context'
 import { UserProvider } from '@/Contexts/User.context'
 import { TopbarSearchProvider } from '@/Contexts/TopbarSearch.context'
 import { SuggestionsProvider } from '@/Contexts/Suggestions.context'
+import { ProfileProvider } from './Contexts/Profile.context'
 
 import { ROUTER } from './Consts/Router.const'
 
@@ -19,7 +20,8 @@ const ContextProviders = ({ children }) => {
     ActiveProfileProvider,
     SuggestionsProvider,
     NotificationsProvider,
-    TopbarSearchProvider
+    TopbarSearchProvider,
+    ProfileProvider
   ]
 
   return providersList.reduce(

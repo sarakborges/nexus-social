@@ -1,3 +1,4 @@
+export const FIELD_TYPE_HIDDEN = `hidden`
 export const FIELD_TYPE_TEXT = `text`
 export const FIELD_TYPE_FILE = `file`
 export const FIELD_TYPE_SELECT = `select`

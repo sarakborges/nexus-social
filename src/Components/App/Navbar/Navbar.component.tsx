@@ -16,10 +16,12 @@ export const NavbarComponent = () => {
   const { activeProfile } = use(ActiveProfileContext)
 
   return (
-    <nav className="navbar">
-      <section className="navbar-menu">
-        <ImageComponent src="/logo.png" alt="Nexus" />
+    <aside className="navbar">
+      <ImageComponent src="/logo.png" alt="Nexus" />
 
+      <NavbarUserComponent />
+
+      <nav className="navbar-menu">
         <ul>
           {NAVBAR.filter(
             (navbarItem) =>
@@ -41,9 +43,7 @@ export const NavbarComponent = () => {
             </li>
           ))}
         </ul>
-      </section>
-
-      <NavbarUserComponent />
-    </nav>
+      </nav>
+    </aside>
   )
 }

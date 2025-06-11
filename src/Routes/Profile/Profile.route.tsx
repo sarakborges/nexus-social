@@ -37,7 +37,7 @@ export const ProfileRoute = () => {
 
   return (
     <PageWrapperComponent>
-      <main className="profile-route"></main>
+      <main className="profile-route">{isLoading ? 'nau' : profile.name}</main>
     </PageWrapperComponent>
   )
 }

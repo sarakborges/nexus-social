@@ -1,8 +1,7 @@
 import {
   FIELD_TYPE_TEXT,
   FIELD_TYPE_SELECT,
-  FIELD_TYPE_TEXTAREA,
-  FIELD_TYPE_HIDDEN
+  FIELD_TYPE_TEXTAREA
 } from '@/Consts/FieldTypes.const'
 
 import { SelectComponent } from '@/Components/System/Select'

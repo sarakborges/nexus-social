@@ -1,15 +1,15 @@
-.navbar-user-dropdown {
+.user-area-dropdown {
   display: flex;
   flex-flow: column;
   gap: var(--size-md);
 
   width: var(--size-navbar);
 
-  .navbar-user-dropdown-header {
+  .user-area-dropdown-header {
     display: flex;
     place-content: space-between;
 
-    .navbar-user-dropdown-picture {
+    .user-area-dropdown-picture {
       aspect-ratio: 1;
       width: var(--size-navbar-profile-avatar);
       padding: var(--size-sm);
@@ -29,7 +29,7 @@
     }
   }
 
-  .navbar-user-dropdown-name {
+  .user-area-dropdown-name {
     display: flex;
     flex-flow: column;
     gap: var(--size-xs);
@@ -51,7 +51,7 @@
     }
   }
 
-  > .navbar-user-dropdown-actions {
+  > .user-area-dropdown-actions {
     display: flex;
     flex-flow: column;
     gap: var(--size-xs);
@@ -84,12 +84,12 @@
       width: 100%;
     }
 
-    > .navbar-user-dropdown-change-profile {
+    > .user-area-dropdown-change-profile {
       position: relative;
 
       > .dropdown {
-        left: calc(100% + var(--size-md));
-        bottom: var(--size-md);
+        right: calc(100% + var(--size-smd));
+        bottom: calc(var(--size-md) * -1);
       }
 
       > .button {

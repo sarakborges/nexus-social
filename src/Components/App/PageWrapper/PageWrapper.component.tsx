@@ -8,6 +8,7 @@ import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 import { LoadingComponent } from '@/Components/System/Loading'
 
 import { NavbarComponent } from '@/Components/App/Navbar'
+import { TopbarComponent } from '@/Components/App/Topbar'
 
 import './PageWrapper.style.scss'
 
@@ -57,7 +58,11 @@ export const PageWrapperComponent = ({
       {!isLoading && (
         <>
           <NavbarComponent />
-          <main className="page-content">{children}</main>
+
+          <main className="page-content">
+            <TopbarComponent />
+            {children}
+          </main>
         </>
       )}
 

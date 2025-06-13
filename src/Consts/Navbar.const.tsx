@@ -5,8 +5,6 @@ import { FaPeopleGroup } from 'react-icons/fa6'
 
 import { ROUTES } from './Routes.const'
 
-import { NavbarNotificationsComponent } from '@/Components/App/NavbarNotifications'
-
 export const NAVBAR_USER_WELCOME = `Bem vindo ao Nexus!`
 export const NAVBAR_USER_SELECT_PROFILE_TO_START = `Selecione um perfil para começar a interagir!`
 export const NAVBAR_USER_CREATE_PROFILE_TO_START = `Crie um perfil para começar a interagir!`
@@ -28,12 +26,6 @@ export const NAVBAR = [
     to: ROUTES.PROFILE.path,
     text: `Perfil`,
     icon: <FaUserCircle />,
-    needsActiveProfile: true
-  },
-
-  {
-    id: `notifications`,
-    component: <NavbarNotificationsComponent />,
     needsActiveProfile: true
   },
 

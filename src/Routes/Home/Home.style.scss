@@ -12,6 +12,6 @@
     gap: var(--size-lmd);
 
     flex: 1;
-    height: calc(100vh - (2 * var(--size-lmd)));
+    padding: var(--size-xl);
   }
 }

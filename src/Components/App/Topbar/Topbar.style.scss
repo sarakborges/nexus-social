@@ -1,0 +1,12 @@
+.topbar {
+  position: sticky;
+  right: 0;
+  top: 0;
+  z-index: 99;
+
+  display: flex;
+  place-content: space-between;
+  place-items: center;
+
+  padding: var(--size-lmd) var(--size-lmd) 0;
+}

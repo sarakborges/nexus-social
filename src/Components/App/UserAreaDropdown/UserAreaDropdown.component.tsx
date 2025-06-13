@@ -27,32 +27,32 @@ import { ButtonComponent } from '@/Components/System/Button'
 import { DropdownComponent } from '@/Components/System/Dropdown'
 
 import { DeleteProfileComponent } from '@/Components/Actions/DeleteProfile'
-
-import { NavbarProfilesListComponent } from '@/Components/App/NavbarProfilesList'
 import { DoLogoutComponent } from '@/Components/Actions/DoLogout'
 
-import './NavbarUserDropdown.style.scss'
+import { UserAreaProfilesListComponent } from '@/Components/App/UserAreaProfilesList'
 
-export const NavbarUserDropdownComponent = ({ closeParentDropdown }) => {
+import './UserAreaDropdown.style.scss'
+
+export const UserAreaDropdownComponent = ({ closeParentDropdown }) => {
   const { activeProfile } = use(ActiveProfileContext)
   const { user } = use(UserContext)
 
-  const navbarUserProfilesDropdownRef = useRef<{
+  const userAreaProfilesDropdownRef = useRef<{
     toggleDropdown: (e: MouseEvent | React.MouseEvent) => void
   } | null>(null)
 
   const toggleDropdown = (e) => {
-    if (!navbarUserProfilesDropdownRef?.current) {
+    if (!userAreaProfilesDropdownRef?.current) {
       return
     }
 
-    navbarUserProfilesDropdownRef?.current?.toggleDropdown(e)
+    userAreaProfilesDropdownRef?.current?.toggleDropdown(e)
   }
 
   return (
-    <section className="navbar-user-dropdown">
-      <section className="navbar-user-dropdown-header">
-        <div className="navbar-user-dropdown-picture">
+    <section className="user-area-dropdown">
+      <section className="user-area-dropdown-header">
+        <div className="user-area-dropdown-picture">
           <ImageComponent
             src={activeProfile?.picture || `/avatar-placeholder.png`}
             alt={activeProfile?.name}
@@ -66,7 +66,7 @@ export const NavbarUserDropdownComponent = ({ closeParentDropdown }) => {
         </ButtonComponent>
       </section>
 
-      <header className="navbar-user-dropdown-name">
+      <header className="user-area-dropdown-name">
         {!!activeProfile?._id && (
           <>
             <TypographyComponent renderAs="h2">
@@ -110,7 +110,7 @@ export const NavbarUserDropdownComponent = ({ closeParentDropdown }) => {
         )}
       </header>
 
-      <footer className="navbar-user-dropdown-actions">
+      <footer className="user-area-dropdown-actions">
         {!!activeProfile?._id && (
           <LinkComponent to={ROUTES.EDIT_PROFILE.path} asButton>
             <FaPencil />
@@ -130,7 +130,7 @@ export const NavbarUserDropdownComponent = ({ closeParentDropdown }) => {
 
         {!!user?.profiles?.length &&
           (!activeProfile?._id || user?.profiles?.length > 1) && (
-            <div className="navbar-user-dropdown-change-profile">
+            <div className="user-area-dropdown-change-profile">
               <ButtonComponent onClick={toggleDropdown}>
                 <section>
                   <FaUserCircle />
@@ -138,12 +138,10 @@ export const NavbarUserDropdownComponent = ({ closeParentDropdown }) => {
                     {NAVBAR_USER_SELECT_PROFILE}
                   </TypographyComponent>
                 </section>
-
-                <FaChevronRight />
               </ButtonComponent>
 
-              <DropdownComponent top ref={navbarUserProfilesDropdownRef}>
-                <NavbarProfilesListComponent />
+              <DropdownComponent top ref={userAreaProfilesDropdownRef}>
+                <UserAreaProfilesListComponent />
               </DropdownComponent>
             </div>
           )}

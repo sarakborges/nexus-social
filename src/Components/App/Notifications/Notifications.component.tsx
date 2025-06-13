@@ -11,9 +11,9 @@ import { TypographyComponent } from '@/Components/System/Typography'
 
 import { NotificationItemComponent } from '@/Components/App/NotificationItem'
 
-import './NavbarNotifications.style.scss'
+import './Notifications.style.scss'
 
-export const NavbarNotificationsComponent = () => {
+export const NotificationsComponent = () => {
   const { notifications } = use(NotificationsContext)
 
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
@@ -32,7 +32,7 @@ export const NavbarNotificationsComponent = () => {
   }
 
   return (
-    <div className="navbar-notifications">
+    <div className="notifications">
       <ButtonComponent
         transparent
         onClick={toggleDropdown}

@@ -1,6 +1,11 @@
 import { use } from 'react'
 
 import { ROUTES } from '@/Consts/Routes.const'
+import {
+  CREATE_PROFILE_BUTTON,
+  CREATE_PROFILE_CTA,
+  SELECT_PROFILE_CTA
+} from '@/Consts/Home.const'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
@@ -33,11 +38,11 @@ export const HomeRoute = () => {
             {!user?.profiles?.length && (
               <>
                 <TypographyComponent renderAs="h2">
-                  Crie um perfil para começar a usar o Nexus!
+                  {CREATE_PROFILE_CTA}
                 </TypographyComponent>
 
                 <LinkComponent to={ROUTES.NEW_PROFILE.path} asButton>
-                  Clique aqui para criar seu perfil
+                  {CREATE_PROFILE_BUTTON}
                 </LinkComponent>
               </>
             )}
@@ -45,9 +50,7 @@ export const HomeRoute = () => {
             {!!user?.profiles?.length && (
               <>
                 <TypographyComponent renderAs="h2">
-                  Selecione um perfil para começar a usar o Nexus!
-                  <br />
-                  Clique no ícone no canto inferior esquerdo da barra lateral.
+                  {SELECT_PROFILE_CTA}
                 </TypographyComponent>
               </>
             )}

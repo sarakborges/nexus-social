@@ -4,6 +4,10 @@ import { FaCog } from 'react-icons/fa'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { ROUTES } from '@/Consts/Routes.const'
+import {
+  USER_AREA_SELECT_PROFILE_CTA,
+  USER_AREA_WELCOME
+} from '@/Consts/UserArea.const'
 
 import { ImageComponent } from '@/Components/System/Image'
 import { TypographyComponent } from '@/Components/System/Typography'
@@ -12,27 +16,27 @@ import { ButtonComponent } from '@/Components/System/Button'
 import { DropdownComponent } from '@/Components/System/Dropdown'
 import { CardComponent } from '@/Components/System/Card'
 
-import { NavbarUserDropdownComponent } from '@/Components/App/NavbarUserDropdown'
+import { UserAreaDropdownComponent } from '@/Components/App/UserAreaDropdown'
 
-import './NavbarUser.style.scss'
+import './UserArea.style.scss'
 
-export const NavbarUserComponent = () => {
+export const UserAreaComponent = () => {
   const { activeProfile } = use(ActiveProfileContext)
 
-  const navbarUserDropdownRef = useRef<{
+  const userAreaDropdownRef = useRef<{
     toggleDropdown: (e: MouseEvent | React.MouseEvent) => void
   } | null>(null)
 
   const toggleDropdown = (e) => {
-    if (!navbarUserDropdownRef?.current) {
+    if (!userAreaDropdownRef?.current) {
       return
     }
 
-    navbarUserDropdownRef?.current?.toggleDropdown(e)
+    userAreaDropdownRef?.current?.toggleDropdown(e)
   }
 
   return (
-    <section className="navbar-user">
+    <section className="user-area">
       <CardComponent>
         <ButtonComponent onClick={toggleDropdown} transparent>
           <ImageComponent
@@ -58,11 +62,11 @@ export const NavbarUserComponent = () => {
             {!activeProfile?._id && (
               <>
                 <TypographyComponent renderAs="p">
-                  Bem vindo!
+                  {USER_AREA_WELCOME}
                 </TypographyComponent>
 
                 <TypographyComponent smallText renderAs="p">
-                  Selecione um perfil aqui.
+                  {USER_AREA_SELECT_PROFILE_CTA}
                 </TypographyComponent>
               </>
             )}
@@ -73,8 +77,8 @@ export const NavbarUserComponent = () => {
           <FaCog />
         </LinkComponent>
 
-        <DropdownComponent left ref={navbarUserDropdownRef}>
-          <NavbarUserDropdownComponent closeParentDropdown={toggleDropdown} />
+        <DropdownComponent ref={userAreaDropdownRef}>
+          <UserAreaDropdownComponent closeParentDropdown={toggleDropdown} />
         </DropdownComponent>
       </CardComponent>
     </section>

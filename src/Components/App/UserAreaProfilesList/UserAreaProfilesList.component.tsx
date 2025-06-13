@@ -14,9 +14,9 @@ import { FieldComponent } from '@/Components/System/Field'
 
 import { ProfileListItemComponent } from '../ProfileListItem'
 
-import './NavbarProfilesList.style.scss'
+import './UserAreaProfilesList.style.scss'
 
-export const NavbarProfilesListComponent = () => {
+export const UserAreaProfilesListComponent = () => {
   const { user } = use(UserContext)
   const { activeProfile } = use(ActiveProfileContext)
 

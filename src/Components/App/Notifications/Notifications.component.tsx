@@ -35,11 +35,11 @@ export const NotificationsComponent = () => {
     <div className="notifications">
       <ButtonComponent
         transparent
+        square
         onClick={toggleDropdown}
         active={isNotificationsOpen}
       >
         <FaBell />
-        <TypographyComponent>Notificações</TypographyComponent>
 
         {!!notifications.length && (
           <span className="notifications-counter">{notifications.length}</span>

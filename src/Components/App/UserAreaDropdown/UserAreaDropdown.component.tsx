@@ -1,10 +1,5 @@
 import { use, useRef } from 'react'
-import {
-  FaChevronRight,
-  FaTimes,
-  FaUserCircle,
-  FaUserPlus
-} from 'react-icons/fa'
+import { FaTimes, FaUserCircle, FaUserPlus } from 'react-icons/fa'
 import { FaPencil } from 'react-icons/fa6'
 
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'

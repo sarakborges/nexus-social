@@ -9,4 +9,10 @@
   place-items: center;
 
   padding: var(--size-lmd) var(--size-lmd) 0;
+
+  > .topbar-user-actions {
+    display: flex;
+    place-items: center;
+    gap: var(--size-lmd);
+  }
 }

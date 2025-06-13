@@ -1,38 +1,19 @@
 .notifications {
   position: relative;
 
-  > .dropdown {
-    top: calc(var(--size-md) * -1);
-    left: calc(100% - var(--size-md));
-  }
-
   > .button {
-    place-content: flex-start;
-
-    width: 100%;
-    padding: var(--size-smd) var(--size-lmd);
-
-    border-radius: 0;
-
-    color: var(--color-primary);
-
-    transition: color 0.3s;
-
-    > .typography {
-      color: inherit;
-    }
-
     svg {
       width: var(--size-lmd);
       height: var(--size-lmd);
     }
-
-    &:is(.active, :hover) {
-      color: var(--color-primary-active);
-    }
   }
 
   .notifications-counter {
+    position: absolute;
+    right: var(--size-xs);
+    top: var(--size-xs);
+    z-index: 1;
+
     display: flex;
     place-content: center;
     place-items: center;

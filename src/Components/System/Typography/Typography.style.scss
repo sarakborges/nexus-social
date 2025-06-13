@@ -20,6 +20,7 @@
 
   &:is(p) {
     line-height: var(--line-height-md);
+    white-space: pre;
   }
 }
 

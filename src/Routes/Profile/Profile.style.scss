@@ -1,2 +1,36 @@
 .profile-route {
+  display: flex;
+  gap: var(--size-lmd);
+
+  .profile-info {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-lmd);
+
+    flex: 1;
+
+    > header {
+      display: flex;
+      gap: var(--size-lg);
+
+      .image {
+        width: var(--size-avatar);
+      }
+
+      > main {
+        display: flex;
+        flex-flow: column;
+        gap: var(--size-smd);
+      }
+    }
+  }
+}
+
+.no-profile {
+  display: flex;
+  place-content: center;
+  place-items: center;
+
+  flex: 1;
+  padding: var(--size-xl);
 }

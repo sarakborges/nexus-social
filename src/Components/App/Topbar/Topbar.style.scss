@@ -8,7 +8,9 @@
   place-content: space-between;
   place-items: center;
 
-  padding: var(--size-lmd) var(--size-lmd) 0;
+  padding: var(--size-lmd);
+
+  background-color: var(--color-background);
 
   > .topbar-user-actions {
     display: flex;

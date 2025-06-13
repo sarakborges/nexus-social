@@ -2,14 +2,10 @@
   display: flex;
   gap: var(--size-lmd);
 
-  padding: var(--size-lmd);
-
   .home-no-profile {
     display: flex;
-    flex-flow: column;
     place-content: center;
     place-items: center;
-    gap: var(--size-lmd);
 
     flex: 1;
     padding: var(--size-xl);

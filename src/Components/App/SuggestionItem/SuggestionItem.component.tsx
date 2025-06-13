@@ -66,7 +66,7 @@ export const SuggestionItemComponent = ({
 
     return {
       suggestionText,
-      linkUri: suggestionProps.route.path.replace(':id', uri)
+      linkUri: suggestionProps.route.path.replace(':uri', uri)
     }
   }
 

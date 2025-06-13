@@ -14,8 +14,12 @@
     height: 100vh;
   }
 
-  > .page-content {
+  > .page-content-wrapper {
     flex: 1;
     min-height: 100vh;
+
+    .page-content {
+      padding: 0 var(--size-lmd) var(--size-lmd);
+    }
   }
 }

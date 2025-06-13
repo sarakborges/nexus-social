@@ -59,10 +59,10 @@ export const PageWrapperComponent = ({
         <>
           <NavbarComponent />
 
-          <main className="page-content">
+          <div className="page-content-wrapper">
             <TopbarComponent />
-            {children}
-          </main>
+            <main className="page-content">{children}</main>
+          </div>
         </>
       )}
 

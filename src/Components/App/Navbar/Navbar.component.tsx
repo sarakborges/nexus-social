@@ -25,7 +25,7 @@ export const NavbarComponent = () => {
           ).map((navbarItem) => (
             <li key={navbarItem.id}>
               <LinkComponent
-                to={navbarItem.to.replace(':id', activeProfile?.uri)}
+                to={navbarItem.to.replace(':uri', activeProfile?.uri)}
               >
                 <>
                   {navbarItem.icon}

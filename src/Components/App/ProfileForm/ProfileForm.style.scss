@@ -3,8 +3,6 @@
   flex-flow: column;
   gap: var(--size-lmd);
 
-  padding: var(--size-lmd);
-
   > .card {
     display: flex;
     place-items: flex-start;
@@ -15,6 +13,38 @@
 
       .field-component > .field-wrapper > .field:is(textarea) {
         min-height: calc(var(--size-xl) * 3);
+      }
+
+      > .profile-form-links {
+        > header {
+          display: flex;
+          place-items: center;
+          place-content: space-between;
+
+          > .button {
+            height: auto;
+          }
+        }
+
+        > ul {
+          display: flex;
+          flex-flow: column;
+          gap: var(--size-smd);
+
+          > li {
+            display: flex;
+            gap: var(--size-smd);
+
+            .field-component {
+              flex: 1;
+            }
+
+            svg {
+              width: var(--size-lmd);
+              height: var(--size-lmd);
+            }
+          }
+        }
       }
     }
 

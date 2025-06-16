@@ -22,6 +22,13 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   onSubmit: async (e) => {
     const formData = new FormData(e.target as HTMLFormElement)
 
+    const links: Array<string> = []
+    Object.keys(Object.fromEntries(formData))
+      .filter((item) => item.includes('links'))
+      .forEach((item) =>
+        links.push(Object.fromEntries(formData)[item] as string)
+      )
+
     const formDataEntries = Object.fromEntries(formData) as {
       _id: string
       name: string
@@ -30,7 +37,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       picture: string
     }
 
-    const { _id, name, uri, ...formDataEntriesRest } = formDataEntries
+    const { _id, name, uri, bio, picture } = formDataEntries
 
     if (![name, uri].every(Boolean)) {
       const response = {
@@ -47,7 +54,12 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
     if (!!_id) {
       const updateProfileResponse = await ProfilesAPI.updateProfile({
-        ...formDataEntries
+        _id,
+        name,
+        uri,
+        bio,
+        picture,
+        links
       })
 
       if (!updateProfileResponse) {
@@ -80,7 +92,10 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       const createProfileResponse = await ProfilesAPI.createProfile({
         name,
         uri,
-        ...formDataEntriesRest
+        bio,
+        picture,
+        userId,
+        links
       })
 
       if (!createProfileResponse) {

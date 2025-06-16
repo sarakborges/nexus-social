@@ -5,5 +5,6 @@ export type ProfileType = {
   uri: string
   picture?: string
   bio?: string
+  links?: Array<string>
   connectionsInCommon?: number
 }

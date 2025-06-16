@@ -23,7 +23,7 @@ export const ButtonComponent = ({
     .join(' ')
 
   return (
-    <button className={classList} {...rest}>
+    <button type={rest.type || 'button'} className={classList} {...rest}>
       {children}
     </button>
   )

@@ -1,4 +1,4 @@
-import { use } from 'react'
+import { use, useEffect, useState } from 'react'
 
 import { PROFILE_FORM } from '@/Forms/Profile.form'
 
@@ -15,9 +15,11 @@ import { FieldComponent } from '@/Components/System/Field'
 import './ProfileForm.style.scss'
 import { readAsBase64 } from '@/Utils/ReadAsBase64.util'
 import { ButtonComponent } from '@/Components/System/Button'
+import { FaTimes } from 'react-icons/fa'
 
 export const ProfileFormComponent = ({ isEdit }: { isEdit?: boolean }) => {
   const { activeProfile } = use(ActiveProfileContext)
+  const [links, setLinks] = useState<Array<number>>([])
 
   if (!!isEdit && !activeProfile?._id) {
     return <></>
@@ -76,6 +78,23 @@ export const ProfileFormComponent = ({ isEdit }: { isEdit?: boolean }) => {
     pictureInputEl.value = ''
   }
 
+  const addNewLink = () => {
+    const [lastLink] = [...links].reverse()
+    setLinks(!!links.length ? [...links, lastLink + 1] : [0])
+  }
+
+  const removeLink = (index: number) => {
+    setLinks([...links].filter((item) => item !== index))
+  }
+
+  useEffect(() => {
+    if (!isEdit || !activeProfile?._id || !activeProfile?.links?.length) {
+      return
+    }
+
+    setLinks([...(activeProfile?.links).map((_, index) => index)])
+  }, [activeProfile?._id])
+
   return (
     <main className="profile-form">
       <TypographyComponent renderAs="h1">
@@ -83,10 +102,36 @@ export const ProfileFormComponent = ({ isEdit }: { isEdit?: boolean }) => {
       </TypographyComponent>
 
       <CardComponent>
-        <FormComponent
-          {...PROFILE_FORM}
-          initialValues={initialValues}
-        ></FormComponent>
+        <FormComponent {...PROFILE_FORM} initialValues={initialValues}>
+          <section className="profile-form-links">
+            <header>
+              <TypographyComponent>Links</TypographyComponent>
+              <ButtonComponent onClick={addNewLink}>
+                Adicionar link
+              </ButtonComponent>
+            </header>
+
+            <ul>
+              {links.map((linkItem) => (
+                <li key={`links-${linkItem}`}>
+                  <FieldComponent
+                    name={`links[${linkItem}]`}
+                    placeholder="http://seulinkaqui"
+                    defaultValue={activeProfile?.links?.[linkItem]}
+                  />
+
+                  <ButtonComponent
+                    square
+                    cancel
+                    onClick={() => removeLink(linkItem)}
+                  >
+                    <FaTimes />
+                  </ButtonComponent>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </FormComponent>
 
         <section className="profile-picture-changer">
           <main>

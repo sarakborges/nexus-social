@@ -180,6 +180,8 @@ export const FormComponent = ({
           </section>
         ))}
 
+        {children}
+
         <ButtonComponent type="submit" disabled={isLoading}>
           {!isLoading && submitText}
           {!!isLoading && <LoadingComponent />}

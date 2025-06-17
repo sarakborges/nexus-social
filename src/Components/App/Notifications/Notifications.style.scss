@@ -34,8 +34,8 @@
     place-content: center;
     place-items: center;
 
-    width: var(--size-navbar-notifications);
-    min-height: var(--size-navbar-notifications-height);
+    width: var(--size-notifications);
+    min-height: var(--size-notifications-height);
 
     .notifications-list {
       display: flex;

@@ -20,5 +20,25 @@
     gap: var(--size-smd);
 
     flex: 1;
+
+    > .profile-name {
+      display: flex;
+      flex-flow: column;
+      gap: var(--size-xs);
+    }
+
+    > .profile-actions {
+      display: flex;
+      gap: var(--size-sm);
+
+      .button {
+        height: auto;
+
+        > svg {
+          width: var(--size-lmd);
+          height: var(--size-lmd);
+        }
+      }
+    }
   }
 }

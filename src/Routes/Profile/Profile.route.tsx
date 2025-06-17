@@ -6,9 +6,14 @@ import * as ProfilesAPI from '@/Apis/Profiles'
 import { ProfileContext } from '@/Contexts/Profile.context'
 
 import { LoadingComponent } from '@/Components/System/Loading'
+import { CardComponent } from '@/Components/System/Card'
+import { TypographyComponent } from '@/Components/System/Typography'
+import { LinkComponent } from '@/Components/System/Link'
 
 import { PageWrapperComponent } from '@/Components/App/PageWrapper'
 import { ProfileHeaderComponent } from '@/Components/App/ProfileHeader'
+import { SuggestionItemComponent } from '@/Components/App/SuggestionItem'
+import { ProfileTabsComponent } from '@/Components/App/ProfileTabs'
 
 import './Profile.style.scss'
 
@@ -58,13 +63,42 @@ export const ProfileRoute = () => {
       )}
 
       {!isLoading && (
-        <main className="profile-route">
-          <section className="profile-info">
+        <div className="profile-route">
+          <main className="profile-main">
             <ProfileHeaderComponent />
-          </section>
+            <ProfileTabsComponent />
+          </main>
 
-          <section></section>
-        </main>
+          <section className="profile-lists">
+            <CardComponent className="suggestions">
+              <header>
+                <TypographyComponent>{'Conexões'}</TypographyComponent>
+                <LinkComponent to={''}>{'Ver todas'}</LinkComponent>
+              </header>
+
+              <ul>
+                <SuggestionItemComponent
+                  suggestion={profile}
+                  type={'profile'}
+                />
+              </ul>
+            </CardComponent>
+
+            <CardComponent className="suggestions">
+              <header>
+                <TypographyComponent>{'Grupos'}</TypographyComponent>
+                <LinkComponent to={''}>{'Ver todos'}</LinkComponent>
+              </header>
+
+              <ul>
+                <SuggestionItemComponent
+                  suggestion={profile}
+                  type={'profile'}
+                />
+              </ul>
+            </CardComponent>
+          </section>
+        </div>
       )}
     </PageWrapperComponent>
   )

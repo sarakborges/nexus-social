@@ -39,13 +39,18 @@ export const ROUTES = {
     path: '/group/:uri'
   },
 
+  PROFILE_FEED: {
+    id: 'profile-feed',
+    path: '/profile/:uri/feed'
+  },
+
   PROFILE_CONNECTIONS: {
-    id: 'connections',
+    id: 'profile-connections',
     path: '/profile/:uri/connections'
   },
 
   PROFILE_GROUPS: {
-    id: 'groups',
+    id: 'profile-groups',
     path: '/profile/:uri/groups'
   },
 

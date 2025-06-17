@@ -2,6 +2,7 @@ export const REGISTER_TITLE = `Criar nova conta`
 export const REGISTER_BUTTON = `Cadastrar`
 export const REGISTER_EMAIL_PLACEHOLDER = `Email`
 export const REGISTER_PASSWORD_PLACEHOLDER = `Senha`
+export const REGISTER_PASSWORD_CONFIRM_PLACEHOLDER = `Confirmar senha`
 export const REGISTER_NAME_PLACEHOLDER = `Nome do personagem`
 export const REGISTER_URI_PLACEHOLDER = `@sua-url`
 export const REGISTER_URI_LABEL = `Url personalizada`

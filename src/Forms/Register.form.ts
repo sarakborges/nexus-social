@@ -8,6 +8,7 @@ import { FIELD_TYPE_PASSWORD, FIELD_TYPE_TEXT } from '@/Consts/FieldTypes.const'
 import {
   REGISTER_BUTTON,
   REGISTER_EMAIL_PLACEHOLDER,
+  REGISTER_PASSWORD_CONFIRM_PLACEHOLDER,
   REGISTER_PASSWORD_PLACEHOLDER
 } from '@/Consts/Register.const'
 import { ROUTES } from '@/Consts/Routes.const'
@@ -18,18 +19,37 @@ export const REGISTER_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   onSubmit: async (e) => {
     const formData = new FormData(e.target as HTMLFormElement)
 
-    const { email, password } = Object.fromEntries(formData) as {
+    const {
+      email,
+      password,
+      'password-confirm': passwordConfirm
+    } = Object.fromEntries(formData) as {
       email: string
       password: string
+      ['password-confirm']: string
     }
 
-    if (![email, password].every(Boolean)) {
+    if (![email, password, passwordConfirm].every(Boolean)) {
       const response = {
         errorMessage: `Todos os campos são obrigatórios.`,
 
         errors: {
           email: !email ? `Campo obrigatório` : ``,
-          password: !password ? `Campo obrigatório` : ``
+          password: !password ? `Campo obrigatório` : ``,
+          'password-confirm': !passwordConfirm ? `Campo obrigatório` : ``
+        }
+      }
+
+      return response
+    }
+
+    if (password !== passwordConfirm) {
+      const response = {
+        errorMessage: `As senhas não conferem.`,
+
+        errors: {
+          password: `Senha não confere`,
+          'password-confirm': `Senha não confere`
         }
       }
 
@@ -62,7 +82,6 @@ export const REGISTER_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   sections: [
     {
       id: 'access',
-      title: 'Dados de login',
       fields: [
         {
           name: 'email',
@@ -75,6 +94,13 @@ export const REGISTER_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
           name: 'password',
           label: REGISTER_PASSWORD_PLACEHOLDER,
           placeholder: REGISTER_PASSWORD_PLACEHOLDER,
+          type: FIELD_TYPE_PASSWORD
+        },
+
+        {
+          name: 'password-confirm',
+          label: REGISTER_PASSWORD_CONFIRM_PLACEHOLDER,
+          placeholder: REGISTER_PASSWORD_CONFIRM_PLACEHOLDER,
           type: FIELD_TYPE_PASSWORD
         }
       ]

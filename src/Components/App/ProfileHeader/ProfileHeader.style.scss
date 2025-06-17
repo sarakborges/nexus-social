@@ -1,10 +1,17 @@
 .profile-header {
   display: flex;
   place-items: flex-start;
-  gap: var(--size-lg);
+  gap: var(--size-lmd);
 
-  .image {
-    width: var(--size-avatar);
+  .profile-header-picture {
+    padding: var(--size-smd);
+
+    border-radius: 100%;
+    background-color: var(--card-field-background);
+
+    .image {
+      width: var(--size-avatar);
+    }
   }
 
   > main {

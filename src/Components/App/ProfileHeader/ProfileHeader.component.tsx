@@ -18,12 +18,14 @@ export const ProfileHeaderComponent = () => {
 
   return (
     <header className="profile-header">
-      <ImageComponent
-        src={profile?.picture || `/avatar-placeholder.png`}
-        alt={profile?.name}
-        rounded
-        square
-      />
+      <section className="profile-header-picture">
+        <ImageComponent
+          src={profile?.picture || `/avatar-placeholder.png`}
+          alt={profile?.name}
+          rounded
+          square
+        />
+      </section>
 
       <main>
         <TypographyComponent renderAs="h1">{profile?.name}</TypographyComponent>

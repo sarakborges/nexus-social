@@ -8,53 +8,28 @@
     place-items: flex-start;
     gap: var(--size-lg);
 
-    > form {
+    form {
       flex: 1;
 
       .field-component > .field-wrapper > .field:is(textarea) {
         min-height: calc(var(--size-xl) * 3);
       }
-
-      > .profile-form-links {
-        > header {
-          display: flex;
-          place-items: center;
-          place-content: space-between;
-
-          > .button {
-            height: auto;
-          }
-        }
-
-        > ul {
-          display: flex;
-          flex-flow: column;
-          gap: var(--size-smd);
-
-          > li {
-            display: flex;
-            place-items: flex-end;
-            gap: var(--size-smd);
-
-            .field-component {
-              flex: 1;
-            }
-
-            svg {
-              width: var(--size-lmd);
-              height: var(--size-lmd);
-            }
-          }
-        }
-      }
     }
 
-    > .profile-picture-changer {
+    .profile-picture-changer {
       display: flex;
       flex-flow: column;
+      place-items: center;
       gap: var(--size-md);
 
-      > main {
+      > .button {
+        height: auto;
+      }
+
+      > label {
+        position: relative;
+
+        width: calc(var(--size-avatar) + (2 * var(--size-smd)));
         padding: var(--size-smd);
 
         border-radius: 100%;
@@ -69,6 +44,42 @@
 
           > img {
             width: 100%;
+          }
+        }
+
+        > .profile-picture-changer-icon {
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: 1;
+
+          place-content: center;
+          place-items: center;
+
+          width: 100%;
+          height: 100%;
+
+          border-radius: 100%;
+          background-color: var(--profile-picture-change-overlay);
+          cursor: pointer;
+
+          color: var(--color-text);
+
+          > svg {
+            width: var(--size-lg);
+            height: var(--size-lg);
+          }
+        }
+
+        &:not(:hover) {
+          > .profile-picture-changer-icon {
+            display: none;
+          }
+        }
+
+        &:hover {
+          > .profile-picture-changer-icon {
+            display: flex;
           }
         }
       }

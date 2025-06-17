@@ -28,11 +28,12 @@ export const FormComponent = ({
   const [modalErrorMessage, setModalErrorMessage] = useState('')
   const [errors, setErrors] = useState<{ [propName: string]: string }>({})
   const [isLoading, setIsLoading] = useState(false)
+  const [activeSection, setActiveSection] = useState(rest.sections[0].id)
 
   const { setUser } = use(UserContext)
   const { setActiveProfile } = use(ActiveProfileContext)
 
-  const { submitText, sections, onSubmit, ...formProps } = rest
+  const { submitText, sections, extraSections, onSubmit, ...formProps } = rest
 
   type eventType = MouseEvent | React.MouseEvent
 
@@ -148,11 +149,40 @@ export const FormComponent = ({
     handleRedirect(redirectUri)
   }
 
+  const toggleFormSection = (sectionId: string) => {
+    setActiveSection(sectionId)
+  }
+
   return (
-    <>
-      <form className="form" {...formProps} onSubmit={doSubmit}>
+    <form {...formProps} onSubmit={doSubmit} className="form">
+      {(sections?.length > 1 || !!extraSections?.length) && (
+        <header className="form-header">
+          <ul>
+            {(!!extraSections?.length
+              ? [...sections, ...extraSections]
+              : [...sections]
+            ).map((sectionItem) => (
+              <li>
+                <ButtonComponent
+                  onClick={() => toggleFormSection(sectionItem.id)}
+                  transparent={sectionItem.id !== activeSection}
+                >
+                  {sectionItem.title}
+                </ButtonComponent>
+              </li>
+            ))}
+          </ul>
+        </header>
+      )}
+
+      <main className="form-body">
         {sections.map((sectionItem) => (
-          <section key={`form-section-${sectionItem.id}`}>
+          <section
+            key={`form-section-${sectionItem.id}`}
+            className={`form-section ${
+              activeSection === sectionItem.id ? 'active' : ''
+            }`}
+          >
             {sectionItem.title && (
               <TypographyComponent renderAs="h2">
                 {sectionItem.title}
@@ -180,23 +210,39 @@ export const FormComponent = ({
           </section>
         ))}
 
-        {children}
+        {!!extraSections?.length &&
+          extraSections.map((sectionItem) => (
+            <section
+              key={`form-section-${sectionItem.id}`}
+              className={`form-section ${
+                activeSection === sectionItem.id ? 'active' : ''
+              }`}
+            >
+              {sectionItem.title && (
+                <TypographyComponent renderAs="h2">
+                  {sectionItem.title}
+                </TypographyComponent>
+              )}
+
+              {sectionItem.content}
+            </section>
+          ))}
 
         <ButtonComponent type="submit" disabled={isLoading}>
           {!isLoading && submitText}
           {!!isLoading && <LoadingComponent />}
         </ButtonComponent>
-      </form>
 
-      <ModalComponent ref={errorModalRef} title={FORM_ERROR_TITLE}>
-        <div className="error-modal">
-          <TypographyComponent>{modalErrorMessage}</TypographyComponent>
+        <ModalComponent ref={errorModalRef} title={FORM_ERROR_TITLE}>
+          <div className="error-modal">
+            <TypographyComponent>{modalErrorMessage}</TypographyComponent>
 
-          <ButtonComponent onClick={toggleErrorModal}>
-            {FORM_ERROR_BUTTON}
-          </ButtonComponent>
-        </div>
-      </ModalComponent>
-    </>
+            <ButtonComponent onClick={toggleErrorModal}>
+              {FORM_ERROR_BUTTON}
+            </ButtonComponent>
+          </div>
+        </ModalComponent>
+      </main>
+    </form>
   )
 }

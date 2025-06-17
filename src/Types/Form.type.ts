@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, JSX } from 'react'
 
 import {
   FIELD_TYPE_CHECKBOX,
@@ -17,6 +17,12 @@ export type FormType = {
   initialValues?: {
     [key: string]: string
   }
+
+  extraSections?: Array<{
+    id: string
+    title?: string
+    content: JSX.Element
+  }>
 
   sections: Array<{
     id: string

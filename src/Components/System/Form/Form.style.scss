@@ -1,29 +1,65 @@
 .form {
   display: flex;
-  flex-flow: column;
   gap: var(--size-lmd);
 
-  > section {
+  .form-header {
+    ul {
+      display: flex;
+      flex-flow: column;
+      gap: var(--size-smd);
+
+      > li {
+        > .button {
+          place-content: flex-start;
+
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .form-body {
     display: flex;
     flex-flow: column;
-    gap: var(--size-smd);
+    gap: var(--size-lmd);
 
-    &:not(:first-child) {
-      padding-top: var(--size-lmd);
+    flex: 1;
 
-      border-top: 1px solid var(--color-primary);
-    }
-
-    .form-fields {
+    > form {
       display: flex;
       flex-flow: column;
       gap: var(--size-lmd);
     }
-  }
-}
 
-.error-modal {
-  display: flex;
-  flex-flow: column;
-  gap: var(--size-md);
+    .form-section {
+      flex-flow: column;
+      gap: var(--size-smd);
+
+      &:not(.active) {
+        display: none;
+      }
+      &.active {
+        display: flex;
+      }
+
+      > h2 {
+        padding-bottom: var(--size-sm);
+
+        border-bottom: 1px solid var(--color-primary);
+      }
+
+      .form-fields {
+        display: flex;
+        flex-flow: column;
+        gap: var(--size-lmd);
+      }
+    }
+
+    .error-modal {
+      display: flex;
+      flex-flow: column;
+      gap: var(--size-md);
+    }
+  }
 }

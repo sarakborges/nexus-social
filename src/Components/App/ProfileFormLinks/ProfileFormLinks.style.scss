@@ -1,0 +1,39 @@
+.profile-form-links {
+  display: flex;
+  flex-flow: column;
+  gap: var(--size-sm);
+
+  > footer {
+    display: flex;
+    place-items: center;
+    place-content: flex-end;
+
+    > .button {
+      svg {
+        width: var(--size-lmd);
+        height: var(--size-lmd);
+      }
+    }
+  }
+
+  > ul {
+    display: flex;
+    flex-flow: column;
+    gap: var(--size-smd);
+
+    > li {
+      display: flex;
+      place-items: flex-end;
+      gap: var(--size-smd);
+
+      .field-component {
+        flex: 1;
+      }
+
+      svg {
+        width: var(--size-lmd);
+        height: var(--size-lmd);
+      }
+    }
+  }
+}

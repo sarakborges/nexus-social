@@ -1,4 +1,9 @@
 import { use, useEffect, useState } from 'react'
+import { FaPencil } from 'react-icons/fa6'
+
+import { ProfileType } from '@/Types/Profile.type'
+
+import { readAsBase64 } from '@/Utils/ReadAsBase64.util'
 
 import { PROFILE_FORM } from '@/Forms/Profile.form'
 
@@ -11,27 +16,21 @@ import { FormComponent } from '@/Components/System/Form'
 import { CardComponent } from '@/Components/System/Card'
 import { ImageComponent } from '@/Components/System/Image'
 import { FieldComponent } from '@/Components/System/Field'
+import { ButtonComponent } from '@/Components/System/Button'
+
+import { ProfileFormLinksComponent } from '@/Components/App/ProfileFormLinks'
 
 import './ProfileForm.style.scss'
-import { readAsBase64 } from '@/Utils/ReadAsBase64.util'
-import { ButtonComponent } from '@/Components/System/Button'
-import { FaTimes } from 'react-icons/fa'
 
 export const ProfileFormComponent = ({ isEdit }: { isEdit?: boolean }) => {
   const { activeProfile } = use(ActiveProfileContext)
-  const [links, setLinks] = useState<Array<number>>([])
+  const [initialValues, setInitialValues] = useState<
+    Omit<Omit<ProfileType, 'links'>, 'connectionsInCommon'> | undefined
+  >()
 
   if (!!isEdit && !activeProfile?._id) {
     return <></>
   }
-
-  const { connectionsInCommon, ...activeProfileRest } = activeProfile
-
-  const initialValues = isEdit
-    ? {
-        ...activeProfileRest
-      }
-    : {}
 
   const changeProfilePicture = async (e) => {
     const pictureBase64 = await readAsBase64(
@@ -54,18 +53,6 @@ export const ProfileFormComponent = ({ isEdit }: { isEdit?: boolean }) => {
     pictureInputEl.value = newPicture
   }
 
-  const openPictureSelector = () => {
-    const pictureInputEl = document.querySelector(
-      '#fake-picture'
-    ) as HTMLInputElement
-
-    if (!pictureInputEl) {
-      return
-    }
-
-    pictureInputEl.click()
-  }
-
   const removePicture = () => {
     const pictureEl = document.querySelector(
       '#profile-picture'
@@ -78,21 +65,14 @@ export const ProfileFormComponent = ({ isEdit }: { isEdit?: boolean }) => {
     pictureInputEl.value = ''
   }
 
-  const addNewLink = () => {
-    const [lastLink] = [...links].reverse()
-    setLinks(!!links.length ? [...links, lastLink + 1] : [0])
-  }
-
-  const removeLink = (index: number) => {
-    setLinks([...links].filter((item) => item !== index))
-  }
-
   useEffect(() => {
-    if (!isEdit || !activeProfile?._id || !activeProfile?.links?.length) {
+    if (!isEdit || !activeProfile?._id) {
       return
     }
 
-    setLinks([...(activeProfile?.links).map((_, index) => index)])
+    const { connectionsInCommon, ...activeProfileRest } = activeProfile
+
+    setInitialValues({ ...activeProfileRest })
   }, [activeProfile?._id])
 
   return (
@@ -102,73 +82,52 @@ export const ProfileFormComponent = ({ isEdit }: { isEdit?: boolean }) => {
       </TypographyComponent>
 
       <CardComponent>
-        <FormComponent {...PROFILE_FORM} initialValues={initialValues}>
-          <section className="profile-form-links">
-            <header>
-              <TypographyComponent>Links</TypographyComponent>
-              <ButtonComponent onClick={addNewLink}>
-                Adicionar link
-              </ButtonComponent>
-            </header>
+        <FormComponent
+          {...PROFILE_FORM}
+          initialValues={initialValues}
+          extraSections={[
+            {
+              id: 'profile-picture',
+              title: 'Foto de perfil',
+              content: (
+                <section className="profile-picture-changer">
+                  <label>
+                    <FieldComponent
+                      id="picture-file"
+                      type={FIELD_TYPE_FILE}
+                      onChange={changeProfilePicture}
+                    />
 
-            <ul>
-              {links.map((linkItem) => (
-                <li key={`links-${linkItem}`}>
-                  <FieldComponent
-                    name={`links-label[${linkItem}]`}
-                    label="Texto do link"
-                    placeholder="Texto do link"
-                    defaultValue={activeProfile?.links?.[linkItem]?.label}
-                  />
+                    <ImageComponent
+                      id="profile-picture"
+                      src={
+                        (!!isEdit && activeProfile?.picture) ||
+                        '/avatar-placeholder.png'
+                      }
+                      alt={''}
+                      square
+                      rounded
+                    />
 
-                  <FieldComponent
-                    name={`links-uri[${linkItem}]`}
-                    label="URL do link"
-                    placeholder="http://seulinkaqui"
-                    defaultValue={activeProfile?.links?.[linkItem]?.uri}
-                  />
+                    <span className="profile-picture-changer-icon">
+                      <FaPencil />
+                    </span>
+                  </label>
 
-                  <ButtonComponent
-                    square
-                    cancel
-                    onClick={() => removeLink(linkItem)}
-                  >
-                    <FaTimes />
+                  <ButtonComponent cancel onClick={removePicture}>
+                    Remover foto
                   </ButtonComponent>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </FormComponent>
+                </section>
+              )
+            },
 
-        <section className="profile-picture-changer">
-          <main>
-            <FieldComponent
-              id="fake-picture"
-              type={FIELD_TYPE_FILE}
-              onChange={changeProfilePicture}
-            />
-
-            <ImageComponent
-              id="profile-picture"
-              src={
-                (!!isEdit && activeProfile?.picture) ||
-                '/avatar-placeholder.png'
-              }
-              alt={''}
-              square
-              rounded
-            />
-          </main>
-
-          <ButtonComponent onClick={openPictureSelector}>
-            Selecionar foto
-          </ButtonComponent>
-
-          <ButtonComponent cancel onClick={removePicture}>
-            Remover foto
-          </ButtonComponent>
-        </section>
+            {
+              content: <ProfileFormLinksComponent isEdit={!!isEdit} />,
+              id: 'profile-links',
+              title: 'Links'
+            }
+          ]}
+        />
       </CardComponent>
     </main>
   )

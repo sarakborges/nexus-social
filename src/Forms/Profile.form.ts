@@ -143,6 +143,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   sections: [
     {
       id: 'profile',
+      title: 'Informações básicas',
       fields: [
         {
           name: '_id',

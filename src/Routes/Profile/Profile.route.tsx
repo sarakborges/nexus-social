@@ -6,10 +6,9 @@ import * as ProfilesAPI from '@/Apis/Profiles'
 import { ProfileContext } from '@/Contexts/Profile.context'
 
 import { LoadingComponent } from '@/Components/System/Loading'
-import { ImageComponent } from '@/Components/System/Image'
-import { TypographyComponent } from '@/Components/System/Typography'
 
 import { PageWrapperComponent } from '@/Components/App/PageWrapper'
+import { ProfileHeaderComponent } from '@/Components/App/ProfileHeader'
 
 import './Profile.style.scss'
 
@@ -61,26 +60,7 @@ export const ProfileRoute = () => {
       {!isLoading && (
         <main className="profile-route">
           <section className="profile-info">
-            <header>
-              <ImageComponent
-                src={profile?.picture || `/avatar-placeholder.png`}
-                alt={profile?.name}
-                rounded
-                square
-              />
-
-              <main>
-                <TypographyComponent renderAs="h1">
-                  {profile?.name}
-                </TypographyComponent>
-
-                <TypographyComponent renderAs="h2">{`@${profile?.uri}`}</TypographyComponent>
-
-                <TypographyComponent renderAs="p">
-                  {profile?.bio}
-                </TypographyComponent>
-              </main>
-            </header>
+            <ProfileHeaderComponent />
           </section>
 
           <section></section>

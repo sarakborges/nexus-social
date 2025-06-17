@@ -115,9 +115,17 @@ export const ProfileFormComponent = ({ isEdit }: { isEdit?: boolean }) => {
               {links.map((linkItem) => (
                 <li key={`links-${linkItem}`}>
                   <FieldComponent
-                    name={`links[${linkItem}]`}
+                    name={`links-label[${linkItem}]`}
+                    label="Texto do link"
+                    placeholder="Texto do link"
+                    defaultValue={activeProfile?.links?.[linkItem]?.label}
+                  />
+
+                  <FieldComponent
+                    name={`links-uri[${linkItem}]`}
+                    label="URL do link"
                     placeholder="http://seulinkaqui"
-                    defaultValue={activeProfile?.links?.[linkItem]}
+                    defaultValue={activeProfile?.links?.[linkItem]?.uri}
                   />
 
                   <ButtonComponent

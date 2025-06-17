@@ -22,12 +22,24 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
   onSubmit: async (e) => {
     const formData = new FormData(e.target as HTMLFormElement)
 
-    const links: Array<string> = []
+    const linkLabels: Array<string> = []
     Object.keys(Object.fromEntries(formData))
-      .filter((item) => item.includes('links'))
+      .filter((item) => item.includes('links-label'))
       .forEach((item) =>
-        links.push(Object.fromEntries(formData)[item] as string)
+        linkLabels.push(Object.fromEntries(formData)[item] as string)
       )
+
+    const linkUris: Array<string> = []
+    Object.keys(Object.fromEntries(formData))
+      .filter((item) => item.includes('links-uri'))
+      .forEach((item) =>
+        linkUris.push(Object.fromEntries(formData)[item] as string)
+      )
+
+    const links = linkLabels.map((_, linkIndex) => ({
+      label: linkLabels[linkIndex],
+      uri: linkUris[linkIndex]
+    }))
 
     const formDataEntries = Object.fromEntries(formData) as {
       _id: string
@@ -71,7 +83,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       }
 
       const response = {
-        redirectUri: ROUTES.HOME.path,
+        redirectUri: ROUTES.PROFILE.path.replace(':uri', uri),
         reloadUser: true
       }
 

@@ -33,6 +33,7 @@
 
           > li {
             display: flex;
+            place-items: flex-end;
             gap: var(--size-smd);
 
             .field-component {

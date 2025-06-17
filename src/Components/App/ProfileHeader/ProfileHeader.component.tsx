@@ -17,7 +17,7 @@ export const ProfileHeaderComponent = () => {
   }
 
   return (
-    <header>
+    <header className="profile-header">
       <ImageComponent
         src={profile?.picture || `/avatar-placeholder.png`}
         alt={profile?.name}

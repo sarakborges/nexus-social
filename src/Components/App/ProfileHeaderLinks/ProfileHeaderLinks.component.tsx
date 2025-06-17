@@ -15,7 +15,7 @@ export const ProfileHeaderLinksComponent = () => {
   }
 
   return (
-    <ul>
+    <ul className="profile-header-links">
       {profile?.links?.map((linkItem) => (
         <li key={`profile-links-${linkItem.label}`}>
           <a href={linkItem.uri} target="_blank" rel="noreferrer noopener">

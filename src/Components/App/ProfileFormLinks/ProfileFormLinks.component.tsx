@@ -3,7 +3,6 @@ import { FaPlus, FaTimes } from 'react-icons/fa'
 
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
-import { TypographyComponent } from '@/Components/System/Typography'
 import { FieldComponent } from '@/Components/System/Field'
 import { ButtonComponent } from '@/Components/System/Button'
 

@@ -77,10 +77,12 @@ export const ProfileRoute = () => {
               </header>
 
               <ul>
-                <SuggestionItemComponent
-                  suggestion={profile}
-                  type={'profile'}
-                />
+                {profile?.connections?.map((connectionItem) => (
+                  <SuggestionItemComponent
+                    suggestion={connectionItem?.otherProfile}
+                    type={'profile'}
+                  />
+                ))}
               </ul>
             </CardComponent>
 
@@ -91,10 +93,12 @@ export const ProfileRoute = () => {
               </header>
 
               <ul>
-                <SuggestionItemComponent
-                  suggestion={profile}
-                  type={'profile'}
-                />
+                {profile?.groups?.map((groupItem) => (
+                  <SuggestionItemComponent
+                    suggestion={groupItem}
+                    type={'group'}
+                  />
+                ))}
               </ul>
             </CardComponent>
           </section>

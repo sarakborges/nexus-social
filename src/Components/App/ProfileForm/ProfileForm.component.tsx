@@ -1,7 +1,7 @@
 import { use, useEffect, useState } from 'react'
 import { FaPencil } from 'react-icons/fa6'
 
-import { ProfileType } from '@/Types/Profile.type'
+import { ProfileFormType } from '@/Types/Profile.type'
 
 import { readAsBase64 } from '@/Utils/ReadAsBase64.util'
 
@@ -25,7 +25,7 @@ import './ProfileForm.style.scss'
 export const ProfileFormComponent = ({ isEdit }: { isEdit?: boolean }) => {
   const { activeProfile } = use(ActiveProfileContext)
   const [initialValues, setInitialValues] = useState<
-    Omit<Omit<ProfileType, 'links'>, 'connectionsInCommon'> | undefined
+    ProfileFormType | undefined
   >()
 
   if (!!isEdit && !activeProfile?._id) {

@@ -1,18 +1,20 @@
 import { use } from 'react'
+import { MdMoreHoriz } from 'react-icons/md'
 
 import { ProfileContext } from '@/Contexts/Profile.context'
+import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { ImageComponent } from '@/Components/System/Image'
 import { TypographyComponent } from '@/Components/System/Typography'
+import { ButtonComponent } from '@/Components/System/Button'
 
 import { ProfileHeaderLinksComponent } from '@/Components/App/ProfileHeaderLinks'
 
 import './ProfileHeader.style.scss'
-import { ButtonComponent } from '@/Components/System/Button'
-import { MdMoreHoriz } from 'react-icons/md'
 
 export const ProfileHeaderComponent = () => {
   const { profile } = use(ProfileContext)
+  const { activeProfile } = use(ActiveProfileContext)
 
   if (!profile) {
     return <></>
@@ -42,13 +44,15 @@ export const ProfileHeaderComponent = () => {
 
         <ProfileHeaderLinksComponent />
 
-        <section className="profile-actions">
-          <ButtonComponent>Conectar</ButtonComponent>
+        {profile?._id !== activeProfile?._id && (
+          <section className="profile-actions">
+            <ButtonComponent>Conectar-se</ButtonComponent>
 
-          <ButtonComponent square transparent>
-            <MdMoreHoriz />
-          </ButtonComponent>
-        </section>
+            <ButtonComponent square transparent>
+              <MdMoreHoriz />
+            </ButtonComponent>
+          </section>
+        )}
       </main>
     </header>
   )

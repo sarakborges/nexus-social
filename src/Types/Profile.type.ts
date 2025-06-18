@@ -18,4 +18,5 @@ export type ProfileType = ProfileFormType & {
   connectionsInCommon?: number
   connections?: Array<ConnectionsType>
   groups?: Array<GroupType>
+  isConnectedWithTarget?: boolean
 }

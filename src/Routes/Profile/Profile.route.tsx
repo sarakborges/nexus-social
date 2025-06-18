@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 import * as ProfilesAPI from '@/Apis/Profiles'
 
 import { ProfileContext } from '@/Contexts/Profile.context'
+import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { LoadingComponent } from '@/Components/System/Loading'
 import { CardComponent } from '@/Components/System/Card'
@@ -20,16 +21,20 @@ import './Profile.style.scss'
 export const ProfileRoute = () => {
   const { uri } = useParams()
   const { profile, setProfile } = use(ProfileContext)
+  const { activeProfile } = use(ActiveProfileContext)
 
   const [isLoading, setIsLoading] = useState(false)
 
   const getProfile = async () => {
-    if (!uri) {
+    if (!uri || !activeProfile?._id) {
       return
     }
 
     setIsLoading(true)
-    const profileRequest = await ProfilesAPI.getProfileByUri(uri)
+    const profileRequest = await ProfilesAPI.getProfileByUri({
+      uri,
+      activeProfileId: activeProfile?._id
+    })
     setIsLoading(false)
 
     if (!profileRequest?._id) {
@@ -48,7 +53,7 @@ export const ProfileRoute = () => {
 
   useEffect(() => {
     getProfile()
-  }, [uri])
+  }, [uri, activeProfile?._id])
 
   if (!profile) {
     return <></>

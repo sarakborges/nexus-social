@@ -46,7 +46,9 @@ export const ProfileHeaderComponent = () => {
 
         {profile?._id !== activeProfile?._id && (
           <section className="profile-actions">
-            <ButtonComponent>Conectar-se</ButtonComponent>
+            {!profile?.isConnectedWithTarget && (
+              <ButtonComponent>Conectar-se</ButtonComponent>
+            )}
 
             <ButtonComponent square transparent>
               <MdMoreHoriz />

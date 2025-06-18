@@ -51,13 +51,23 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
     const { _id, name, uri, bio, picture } = formDataEntries
 
-    if (![name, uri].every(Boolean)) {
+    const cleanUri = uri
+      .trim()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^\w.\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+
+    if (![name, cleanUri].every(Boolean)) {
       const response = {
         errorMessage: `Preencha todos os campos obrigatórios.`,
 
         errors: {
           name: !name ? `Campo obrigatório` : ``,
-          uri: !uri ? `Campo obrigatório` : ``
+          uri: !cleanUri ? `Campo obrigatório` : ``
         }
       }
 

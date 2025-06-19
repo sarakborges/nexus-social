@@ -4,6 +4,7 @@ export type FeedType = {
   _id: string
   content?: string
   picture?: string
-  date: Date
+  createdAt: Date
+  profileId: string
   profile: ProfileType
 }

@@ -8,16 +8,18 @@ import { ActiveProfileProvider } from '@/Contexts/ActiveProfile.context'
 import { UserProvider } from '@/Contexts/User.context'
 import { TopbarSearchProvider } from '@/Contexts/TopbarSearch.context'
 import { SuggestionsProvider } from '@/Contexts/Suggestions.context'
-import { ProfileProvider } from './Contexts/Profile.context'
+import { ProfileProvider } from '@/Contexts/Profile.context'
+import { FeedProvider } from '@/Contexts/Feed.context'
 
-import { ROUTER } from './Consts/Router.const'
+import { ROUTER } from '@/Consts/Router.const'
 
-import './Assets/main.css'
+import '@/Assets/main.css'
 
 const ContextProviders = ({ children }) => {
   const providersList = [
     UserProvider,
     ActiveProfileProvider,
+    FeedProvider,
     SuggestionsProvider,
     NotificationsProvider,
     TopbarSearchProvider,

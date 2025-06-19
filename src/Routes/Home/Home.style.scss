@@ -4,8 +4,10 @@
 
   .home-no-profile {
     display: flex;
+    flex-flow: column;
     place-content: center;
     place-items: center;
+    gap: var(--size-lmd);
 
     flex: 1;
     padding: var(--size-xl);

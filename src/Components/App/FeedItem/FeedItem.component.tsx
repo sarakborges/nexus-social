@@ -12,19 +12,19 @@ import { ImageComponent } from '@/Components/System/Image'
 import './FeedItem.style.scss'
 
 export const FeedItemComponent = ({ feedData }: { feedData: FeedType }) => {
-  const { profile, content, picture, date } = feedData
-  const { uri, name, picture: profilePicture } = profile[0]
+  const { profile, content, picture, createdAt } = feedData
+  const { uri, name, picture: profilePicture } = profile
 
   const feedItemDate = new Intl.DateTimeFormat('pt-BR', {
     dateStyle: 'long',
     timeStyle: 'short'
-  }).format(new Date(date))
+  }).format(new Date(createdAt))
 
   return (
     <li className="feed-item">
       <CardComponent>
         <section className="feed-item-header">
-          <LinkComponent to={ROUTES.PROFILE.path.replace(':id', uri)}>
+          <LinkComponent to={ROUTES.PROFILE.path.replace(':uri', uri)}>
             <ImageComponent
               alt={name}
               src={profilePicture || '/avatar-placeholder.png'}
@@ -35,7 +35,7 @@ export const FeedItemComponent = ({ feedData }: { feedData: FeedType }) => {
 
           <div className="feed-item-header-user-id">
             <TypographyComponent>
-              <LinkComponent to={ROUTES.PROFILE.path.replace(':id', uri)}>
+              <LinkComponent to={ROUTES.PROFILE.path.replace(':uri', uri)}>
                 {name}
               </LinkComponent>
             </TypographyComponent>

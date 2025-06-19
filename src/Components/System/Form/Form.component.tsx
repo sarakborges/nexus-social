@@ -5,11 +5,13 @@ import * as UsersAPI from '@/Apis/Users'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
+import { FeedContext } from '@/Contexts/Feed.context'
 
 import { FORM_ERROR_BUTTON, FORM_ERROR_TITLE } from '@/Consts/Form.const'
 import { FIELD_TYPE_FILE } from '@/Consts/FieldTypes.const'
 
 import { FormType } from '@/Types/Form.type'
+import { FeedType } from '@/Types/Feed.type'
 
 import { FieldComponent } from '@/Components/System/Field'
 import { ButtonComponent } from '@/Components/System/Button'
@@ -22,6 +24,7 @@ import './Form.style.scss'
 export const FormComponent = ({
   children,
   initialValues,
+  hideSubmit,
   ...rest
 }: FormType & FormHTMLAttributes<HTMLFormElement>) => {
   const navigate = useNavigate()
@@ -31,6 +34,7 @@ export const FormComponent = ({
   const [activeSection, setActiveSection] = useState(rest.sections[0].id)
 
   const { setUser } = use(UserContext)
+  const { feed, setFeed } = use(FeedContext)
   const { setActiveProfile } = use(ActiveProfileContext)
 
   const { submitText, sections, extraSections, onSubmit, ...formProps } = rest
@@ -126,6 +130,10 @@ export const FormComponent = ({
     )
   }
 
+  const updateFeed = (newFeedItem: FeedType) => {
+    setFeed([newFeedItem, ...feed])
+  }
+
   const doSubmit = async (e) => {
     e.preventDefault()
 
@@ -139,7 +147,12 @@ export const FormComponent = ({
       return
     }
 
-    const { redirectUri, errorMessage, errors, reloadUser } = submitResponse
+    const { redirectUri, errorMessage, errors, reloadUser, insertedFeed } =
+      submitResponse
+
+    if (!!insertedFeed) {
+      updateFeed(insertedFeed)
+    }
 
     if (!!reloadUser) {
       handleReloadUser()
@@ -228,10 +241,12 @@ export const FormComponent = ({
             </section>
           ))}
 
-        <ButtonComponent type="submit" disabled={isLoading}>
-          {!isLoading && submitText}
-          {!!isLoading && <LoadingComponent />}
-        </ButtonComponent>
+        {!hideSubmit && (
+          <ButtonComponent type="submit" disabled={isLoading}>
+            {!isLoading && submitText}
+            {!!isLoading && <LoadingComponent />}
+          </ButtonComponent>
+        )}
 
         <ModalComponent ref={errorModalRef} title={FORM_ERROR_TITLE}>
           <div className="error-modal">
@@ -242,6 +257,8 @@ export const FormComponent = ({
             </ButtonComponent>
           </div>
         </ModalComponent>
+
+        {children}
       </main>
     </form>
   )

@@ -1,5 +1,3 @@
-import { FeedProvider } from '@/Contexts/Feed.context'
-
 import { NewPostComponent } from '@/Components/App/NewPost'
 import { FeedListComponent } from '@/Components/App/FeedList'
 
@@ -9,10 +7,7 @@ export const FeedComponent = () => {
   return (
     <section className="feed">
       <NewPostComponent />
-
-      <FeedProvider>
-        <FeedListComponent />
-      </FeedProvider>
+      <FeedListComponent />
     </section>
   )
 }

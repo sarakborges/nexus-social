@@ -13,6 +13,7 @@ import {
 
 export type FormType = {
   submitText: string
+  hideSubmit?: boolean
 
   initialValues?: {
     [key: string]: string

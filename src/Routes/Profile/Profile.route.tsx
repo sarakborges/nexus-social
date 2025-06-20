@@ -81,14 +81,23 @@ export const ProfileRoute = () => {
                 <LinkComponent to={''}>{'Ver todas'}</LinkComponent>
               </header>
 
-              <ul>
-                {profile?.connections?.map((connectionItem) => (
-                  <SuggestionItemComponent
-                    suggestion={connectionItem?.otherProfile}
-                    type={'profile'}
-                  />
-                ))}
-              </ul>
+              {!profile?.connections?.length && (
+                <TypographyComponent>
+                  {`${profile?.name} não possui conexões ainda.`}
+                </TypographyComponent>
+              )}
+
+              {!!profile?.connections?.length && (
+                <ul>
+                  {profile?.connections?.map((connectionItem) => (
+                    <SuggestionItemComponent
+                      suggestion={connectionItem?.otherProfile}
+                      type={'profile'}
+                      key={`profile-connections-${profile?._id}-${connectionItem?._id}`}
+                    />
+                  ))}
+                </ul>
+              )}
             </CardComponent>
 
             <CardComponent className="suggestions">
@@ -97,14 +106,23 @@ export const ProfileRoute = () => {
                 <LinkComponent to={''}>{'Ver todos'}</LinkComponent>
               </header>
 
-              <ul>
-                {profile?.groups?.map((groupItem) => (
-                  <SuggestionItemComponent
-                    suggestion={groupItem}
-                    type={'group'}
-                  />
-                ))}
-              </ul>
+              {!profile?.groups?.length && (
+                <TypographyComponent>
+                  {`${profile?.name} não participa de grupos ainda.`}
+                </TypographyComponent>
+              )}
+
+              {!!profile?.groups?.length && (
+                <ul>
+                  {profile?.groups?.map((groupItem) => (
+                    <SuggestionItemComponent
+                      suggestion={groupItem}
+                      type={'group'}
+                      key={`profile-groups-${profile?._id}-${groupItem?._id}`}
+                    />
+                  ))}
+                </ul>
+              )}
             </CardComponent>
           </section>
         </div>

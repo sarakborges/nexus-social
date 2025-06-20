@@ -10,20 +10,36 @@
 
     .feed-item-header {
       display: flex;
-      place-items: center;
+      place-items: flex-start;
+      place-content: space-between;
       gap: var(--size-md);
 
-      > a > .image > img {
-        max-width: var(--size-xl);
+      > .button {
+        height: auto;
+
+        svg {
+          width: var(--size-md);
+          height: var(--size-md);
+        }
       }
 
-      > .feed-item-header-user-id {
+      > main {
         display: flex;
-        flex-flow: column;
-        gap: var(--size-sm);
+        place-items: center;
+        gap: var(--size-md);
 
-        > span > a {
-          display: inline;
+        > a > .image > img {
+          max-width: var(--size-xl);
+        }
+
+        > .feed-item-header-user-id {
+          display: flex;
+          flex-flow: column;
+          gap: var(--size-sm);
+
+          > span > a {
+            display: inline;
+          }
         }
       }
     }

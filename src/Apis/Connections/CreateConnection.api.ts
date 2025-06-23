@@ -2,9 +2,7 @@ import { request } from '@/Apis/Request.api'
 
 export const createConnection = async (profileId: string) => {
   try {
-    const connectionsRequest = await request.post(
-      `/connections/create/${profileId}`
-    )
+    const connectionsRequest = await request.post(`/connections`, { profileId })
 
     const { status, data } = connectionsRequest
 

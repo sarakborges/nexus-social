@@ -20,6 +20,7 @@ import { TypographyComponent } from '@/Components/System/Typography'
 import { LoadingComponent } from '@/Components/System/Loading'
 
 import './Form.style.scss'
+import { request } from '@/Apis/Request.api'
 
 export const FormComponent = ({
   children,
@@ -109,6 +110,10 @@ export const FormComponent = ({
     const userRequest = await UsersAPI.getUser()
     setIsLoading(false)
 
+    if (!userRequest) {
+      return
+    }
+
     setUser(userRequest)
 
     if (userRequest.profiles.length < 1 || !userRequest.activeProfile) {
@@ -143,11 +148,11 @@ export const FormComponent = ({
       submitResponse
 
     if (!!insertedFeed) {
-      updateFeed(insertedFeed)
+      await updateFeed(insertedFeed)
     }
 
     if (!!reloadUser) {
-      handleReloadUser()
+      await handleReloadUser()
     }
 
     handleError({ errorMessage, e, errors })

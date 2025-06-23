@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-const token = localStorage.getItem('nexus-token')
-
 // const baseURL = `http://localhost:3000/`
 const baseURL = `https://nexus-server-dam7.onrender.com/`
 
@@ -9,13 +7,18 @@ export const request = axios.create({
   baseURL,
   withCredentials: true,
   headers: {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`
+    'Content-Type': 'application/json'
   }
 })
 
-request.interceptors.response.use(
-  (response) => response,
+request.interceptors.request.use(
+  (response) => {
+    const token = localStorage.getItem('nexus-token')
+
+    response.headers['Authorization'] = `Bearer ${token}`
+
+    return response
+  },
   async (error) => {
     const originalRequest = error.config
 

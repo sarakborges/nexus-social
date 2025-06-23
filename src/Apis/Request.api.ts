@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const token = localStorage.getItem('nexus-token')
 
-const baseURL = `http://localhost:3000/`
-// const baseURL = `https://nexus-server-dam7.onrender.com/`
+// const baseURL = `http://localhost:3000/`
+const baseURL = `https://nexus-server-dam7.onrender.com/`
 
 export const request = axios.create({
   baseURL,

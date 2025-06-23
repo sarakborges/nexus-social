@@ -1,7 +1,6 @@
 import { use, useState } from 'react'
 import { FaTrash } from 'react-icons/fa'
 
-import * as UsersAPI from '@/Apis/Users'
 import * as ProfilesAPI from '@/Apis/Profiles'
 
 import { NAVBAR_USER_DELETE_PROFILE } from '@/Consts/Navbar.const'
@@ -30,14 +29,6 @@ export const DeleteProfileComponent = ({
     setIsLoading(false)
 
     if (!deleteProfileRequest) {
-      return
-    }
-
-    setIsLoading(true)
-    const deleteFromUserRequest = await UsersAPI.deleteUserProfile(profile)
-    setIsLoading(false)
-
-    if (!deleteFromUserRequest) {
       return
     }
 

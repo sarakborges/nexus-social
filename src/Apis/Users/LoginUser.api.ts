@@ -9,7 +9,8 @@ export const loginUser = async ({
 }) => {
   try {
     const userRequest = await axios.post(
-      `https://nexus-server-dam7.onrender.com/users/auth/login`,
+      // `https://nexus-server-dam7.onrender.com/auth/login`,
+      `http://localhost:3000/auth/login`,
       { email, password }
     )
 

@@ -32,7 +32,6 @@ export const DoLogoutComponent = () => {
     })
 
     localStorage.removeItem('nexus-token')
-    localStorage.removeItem('user-id')
 
     navigate(ROUTES.LOGIN.path)
   }

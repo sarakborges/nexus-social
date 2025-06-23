@@ -1,6 +1,5 @@
 import { FormHTMLAttributes } from 'react'
 
-import * as UsersAPI from '@/Apis/Users'
 import * as ProfilesAPI from '@/Apis/Profiles'
 
 import { FormType } from '@/Types/Form.type'
@@ -76,7 +75,6 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
     if (!!_id) {
       const updateProfileResponse = await ProfilesAPI.updateProfile({
-        _id,
         name,
         uri,
         bio,
@@ -110,18 +108,6 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       if (!createProfileResponse) {
         const response = {
           errorMessage: `Falha ao eviar. Verifique as informações inseridas e tente novamente.`
-        }
-
-        return response
-      }
-
-      const updateUserProfilesResponse = await UsersAPI.addProfileToUser({
-        profile: createProfileResponse._id
-      })
-
-      if (!updateUserProfilesResponse) {
-        const response = {
-          errorMessage: `Falha ao enviar. Verifique as informações inseridas e tente novamente.`
         }
 
         return response

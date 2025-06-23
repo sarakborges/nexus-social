@@ -92,14 +92,6 @@ export const FormComponent = ({
   }
 
   const handleReloadUser = async () => {
-    const userId = localStorage.getItem('user-id')
-      ? localStorage.getItem('user-id')
-      : undefined
-
-    if (!userId) {
-      return
-    }
-
     setUser({
       _id: '',
       email: '',

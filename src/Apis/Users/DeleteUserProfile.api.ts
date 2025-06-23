@@ -1,14 +1,8 @@
 import { request } from '@/Apis/Request.api'
 
-export const deleteUserProfile = async ({
-  profile,
-  userId
-}: {
-  profile: string
-  userId: string
-}) => {
+export const deleteUserProfile = async (profile: string) => {
   try {
-    const profilesRequest = await request.patch(`/users/${userId}/remove`, {
+    const profilesRequest = await request.patch(`/users/remove`, {
       profile
     })
 

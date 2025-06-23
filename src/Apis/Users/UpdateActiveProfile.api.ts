@@ -1,19 +1,10 @@
 import { request } from '@/Apis/Request.api'
 
-export const updateActiveProfile = async ({
-  profileId,
-  userId
-}: {
-  profileId: string
-  userId: string
-}) => {
+export const updateActiveProfile = async (profileId: string) => {
   try {
-    const profilesRequest = await request.patch(
-      `/users/${userId}/activeProfile`,
-      {
-        profile: profileId
-      }
-    )
+    const profilesRequest = await request.patch(`/users/activeProfile`, {
+      profile: profileId
+    })
 
     const { status } = profilesRequest
 

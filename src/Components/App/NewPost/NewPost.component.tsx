@@ -1,7 +1,4 @@
-import { use } from 'react'
 import { FaImage } from 'react-icons/fa'
-
-import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { FEED_PUBLISH, NEW_POST_ADD_TO_POST } from '@/Consts/Feed.const'
 import { NEW_FEED_ITEM } from '@/Forms/NewFeedItem.form'
@@ -14,16 +11,10 @@ import { TypographyComponent } from '@/Components/System/Typography'
 import './NewPost.style.scss'
 
 export const NewPostComponent = () => {
-  const { activeProfile } = use(ActiveProfileContext)
-
   return (
     <div className="new-post">
       <CardComponent>
-        <FormComponent
-          {...NEW_FEED_ITEM}
-          hideSubmit
-          initialValues={{ 'profile-id': activeProfile?._id }}
-        >
+        <FormComponent {...NEW_FEED_ITEM} hideSubmit>
           <section className="new-post-actions">
             <section className="new-post-actions-uploads">
               <TypographyComponent>{NEW_POST_ADD_TO_POST}</TypographyComponent>

@@ -49,8 +49,8 @@ export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       return response
     }
 
-    localStorage.setItem('nexus-token', 'nice')
-    localStorage.setItem('user-id', loginResponse._id)
+    localStorage.setItem('nexus-token', loginResponse.token)
+    localStorage.setItem('user-id', loginResponse.user._id)
 
     const response = {
       redirectUri: ROUTES.HOME.path

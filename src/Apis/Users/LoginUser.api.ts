@@ -9,7 +9,7 @@ export const loginUser = async ({
 }) => {
   try {
     const userRequest = await axios.post(
-      `https://nexus-server-dam7.onrender.com/users/login`,
+      `https://nexus-server-dam7.onrender.com/users/auth/login`,
       { email, password }
     )
 

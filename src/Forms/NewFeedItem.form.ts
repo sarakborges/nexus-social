@@ -17,17 +17,13 @@ export const NEW_FEED_ITEM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       'button[type=submit]'
     ) as HTMLButtonElement
 
-    const { content, 'profile-id': profileId } = Object.fromEntries(
-      formData
-    ) as {
+    const { content } = Object.fromEntries(formData) as {
       content: string
-      'profile-id': string
     }
 
     submitButton.disabled = true
     const publishResponse = await FeedAPI.createNewFeedItem({
-      content,
-      profileId
+      content
     })
     submitButton.disabled = false
 
@@ -56,11 +52,6 @@ export const NEW_FEED_ITEM: FormType & FormHTMLAttributes<HTMLFormElement> = {
           name: 'content',
           placeholder: NEW_POST_PLACEHOLDER,
           renderAs: FIELD_TYPE_TEXTAREA
-        },
-
-        {
-          name: 'profile-id',
-          hidden: true
         }
       ]
     }

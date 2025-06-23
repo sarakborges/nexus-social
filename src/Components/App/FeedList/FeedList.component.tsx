@@ -18,12 +18,8 @@ export const FeedListComponent = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   const getFeed = async () => {
-    if (!activeProfile?._id) {
-      return
-    }
-
     setIsLoading(true)
-    const feedResponse = await FeedAPI.getFeedByProfile(activeProfile?._id)
+    const feedResponse = await FeedAPI.getFeedByProfile()
     setIsLoading(false)
 
     if (!feedResponse?.length) {

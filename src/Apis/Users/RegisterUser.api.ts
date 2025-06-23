@@ -5,7 +5,7 @@ import { UserType } from '@/Types/User.type'
 export const registerUser = async (user: Partial<UserType>) => {
   try {
     const userRequest = await axios.post(
-      `https://nexus-server-dam7.onrender.com/users`,
+      `https://nexus-server-dam7.onrender.com/auth/register`,
       user
     )
 

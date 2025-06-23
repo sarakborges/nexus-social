@@ -1,17 +1,10 @@
 import { request } from '@/Apis/Request.api'
 
-export const createConnection = async ({
-  requestedBy,
-  between
-}: {
-  requestedBy: string
-  between: Array<string>
-}) => {
+export const createConnection = async (profileId: string) => {
   try {
-    const connectionsRequest = await request.post(`/connections/create`, {
-      requestedBy,
-      between
-    })
+    const connectionsRequest = await request.post(
+      `/connections/create/${profileId}`
+    )
 
     const { status, data } = connectionsRequest
 

@@ -29,10 +29,9 @@ export const ProfileHeaderComponent = () => {
 
   const requestConnection = async () => {
     setIsLoading(true)
-    const connectionRequest = await ConnectionsAPI.createConnection({
-      between: [profile?._id, activeProfile?._id],
-      requestedBy: activeProfile?._id
-    })
+    const connectionRequest = await ConnectionsAPI.createConnection(
+      profile?._id
+    )
     setIsLoading(false)
 
     if (!connectionRequest?._id) {
@@ -48,10 +47,9 @@ export const ProfileHeaderComponent = () => {
 
   const acceptConnection = async () => {
     setIsLoading(true)
-    const connectionRequest = await ConnectionsAPI.acceptConnection([
-      profile?._id,
-      activeProfile?._id
-    ])
+    const connectionRequest = await ConnectionsAPI.acceptConnection(
+      profile?._id
+    )
     setIsLoading(false)
 
     if (!connectionRequest?._id) {
@@ -85,10 +83,9 @@ export const ProfileHeaderComponent = () => {
 
   const deleteConnection = async () => {
     setIsLoading(true)
-    const connectionRequest = await ConnectionsAPI.deleteConnection([
-      profile?._id,
-      activeProfile?._id
-    ])
+    const connectionRequest = await ConnectionsAPI.deleteConnection(
+      profile?._id
+    )
     setIsLoading(false)
 
     if (!connectionRequest?._id) {

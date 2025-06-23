@@ -1,14 +1,8 @@
 import { request } from '@/Apis/Request.api'
 
-export const addProfileToUser = async ({
-  userId,
-  profile
-}: {
-  userId: string
-  profile: string
-}) => {
+export const addProfileToUser = async ({ profile }: { profile: string }) => {
   try {
-    const userRequest = await request.patch(`/users/${userId}/add`, {
+    const userRequest = await request.patch(`/users/add`, {
       profile
     })
 

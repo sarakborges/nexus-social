@@ -99,24 +99,11 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
 
       return response
     } else {
-      const userId = localStorage.getItem('user-id')
-        ? localStorage.getItem('user-id')
-        : undefined
-
-      if (!userId) {
-        const response = {
-          errorMessage: `Falha ao enviar. Verifique se você está logado e tente novamente.`
-        }
-
-        return response
-      }
-
       const createProfileResponse = await ProfilesAPI.createProfile({
         name,
         uri,
         bio,
         picture,
-        userId,
         links
       })
 
@@ -129,7 +116,6 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       }
 
       const updateUserProfilesResponse = await UsersAPI.addProfileToUser({
-        userId,
         profile: createProfileResponse._id
       })
 

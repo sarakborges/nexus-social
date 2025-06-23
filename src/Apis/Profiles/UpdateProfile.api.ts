@@ -4,9 +4,7 @@ import { ProfileType } from '@/Types/Profile.type'
 
 export const updateProfile = async (profile: Partial<ProfileType>) => {
   try {
-    const { _id, ...profileRest } = profile
-
-    const profileRequest = await request.patch(`/profiles/${_id}`, profileRest)
+    const profileRequest = await request.patch(`/profiles`, profile)
 
     const { status, data } = profileRequest
 

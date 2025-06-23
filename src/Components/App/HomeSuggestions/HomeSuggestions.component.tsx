@@ -21,9 +21,7 @@ export const HomeSuggestionsComponent = () => {
     }
 
     setIsLoading(true)
-    const suggestionsRequest = await SuggestionsApi.getSuggestions(
-      activeProfile._id
-    )
+    const suggestionsRequest = await SuggestionsApi.getSuggestions()
     setIsLoading(false)
 
     if (!suggestionsRequest) {

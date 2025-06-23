@@ -34,10 +34,7 @@ export const DeleteProfileComponent = ({
     }
 
     setIsLoading(true)
-    const deleteFromUserRequest = await UsersAPI.deleteUserProfile({
-      profile,
-      userId: user?._id
-    })
+    const deleteFromUserRequest = await UsersAPI.deleteUserProfile(profile)
     setIsLoading(false)
 
     if (!deleteFromUserRequest) {

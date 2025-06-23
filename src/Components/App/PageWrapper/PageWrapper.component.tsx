@@ -23,17 +23,9 @@ export const PageWrapperComponent = ({
   const { setActiveProfile } = use(ActiveProfileContext)
   const [isLoading, setIsLoading] = useState(false)
 
-  const userId = localStorage.getItem('user-id')
-    ? localStorage.getItem('user-id')
-    : undefined
-
   const getUser = async () => {
-    if (!userId || user?._id === userId) {
-      return
-    }
-
     setIsLoading(true)
-    const userRequest = await UsersAPI.getUser(userId)
+    const userRequest = await UsersAPI.getUser()
     setIsLoading(false)
 
     setUser(userRequest)

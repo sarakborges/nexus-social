@@ -1,10 +1,10 @@
 import { request } from '@/Apis/Request.api'
 
-export const deleteConnection = async (between: Array<string>) => {
+export const deleteConnection = async (profileId: string) => {
   try {
-    const connectionsRequest = await request.post(`/connections/delete`, {
-      between
-    })
+    const connectionsRequest = await request.delete(
+      `/connections/delete${profileId}`
+    )
 
     const { status, data } = connectionsRequest
 

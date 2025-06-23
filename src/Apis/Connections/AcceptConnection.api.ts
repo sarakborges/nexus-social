@@ -1,10 +1,10 @@
 import { request } from '@/Apis/Request.api'
 
-export const acceptConnection = async (between: Array<string>) => {
+export const acceptConnection = async (profileId: string) => {
   try {
-    const connectionsRequest = await request.post(`/connections/accept`, {
-      between
-    })
+    const connectionsRequest = await request.patch(
+      `/connections/accept/${profileId}`
+    )
 
     const { status, data } = connectionsRequest
 

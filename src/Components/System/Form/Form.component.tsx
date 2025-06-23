@@ -114,7 +114,7 @@ export const FormComponent = ({
     })
 
     setIsLoading(true)
-    const userRequest = await UsersAPI.getUser(userId)
+    const userRequest = await UsersAPI.getUser()
     setIsLoading(false)
 
     setUser(userRequest)

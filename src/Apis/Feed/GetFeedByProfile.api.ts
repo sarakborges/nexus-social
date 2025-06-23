@@ -1,8 +1,8 @@
 import { request } from '@/Apis/Request.api'
 
-export const getFeedByProfile = async (id: string) => {
+export const getFeedByProfile = async () => {
   try {
-    const feedRequest = await request.get(`/feed/${id}`)
+    const feedRequest = await request.get(`/feed`)
 
     const { status, data } = feedRequest
 

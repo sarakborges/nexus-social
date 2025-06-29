@@ -1,5 +1,3 @@
-import { FaCheck, FaTimes } from 'react-icons/fa'
-
 import { NotificationType } from '@/Types/Notification.type'
 
 import { ROUTES } from '@/Consts/Routes.const'
@@ -8,10 +6,12 @@ import {
   NOTIFICATION_TYPES
 } from '@/Consts/Notifications.const'
 
-import { ButtonComponent } from '@/Components/System/Button'
 import { LinkComponent } from '@/Components/System/Link'
 import { ImageComponent } from '@/Components/System/Image'
 import { TypographyComponent } from '@/Components/System/Typography'
+
+import { AcceptConnectionComponent } from '@/Components/Actions/AcceptConnection'
+import { DeleteConnectionComponent } from '@/Components/Actions/DeleteConnection'
 
 import './NotificationItem.style.scss'
 
@@ -22,15 +22,6 @@ export const NotificationItemComponent = ({
 }) => {
   const getNotificationProps = () => {
     let linkUri
-
-    const notificationPropsTypes = {
-      [NOTIFICATION_TYPES.CONNECTION_REQUEST]: 'profile',
-      [NOTIFICATION_TYPES.CONNECTION_ACCEPTED]: 'profile',
-      [NOTIFICATION_TYPES.ACCEPTED_AT_GROUP]: 'group'
-    }
-
-    const notificationProps =
-      notification[notificationPropsTypes[notification.type]]
 
     if (notification.type === NOTIFICATION_TYPES.CONNECTION_REQUEST) {
       linkUri = ROUTES.PROFILE
@@ -45,12 +36,15 @@ export const NotificationItemComponent = ({
     }
 
     return {
-      linkUri: linkUri.path.replace(':id', notificationProps.uri || ''),
-      name: notificationProps.name,
+      linkUri: linkUri.path.replace(
+        ':uri',
+        notification.otherProfile?.uri || ''
+      ),
+      name: notification.otherProfile?.name,
 
       pictureProps: {
-        src: notificationProps.picture,
-        alt: notificationProps.name
+        src: notification.otherProfile?.picture,
+        alt: notification.otherProfile?.name
       }
     }
   }
@@ -88,13 +82,23 @@ export const NotificationItemComponent = ({
       <section className="notification-actions">
         {notification.type === NOTIFICATION_TYPES.CONNECTION_REQUEST && (
           <>
-            <ButtonComponent square>
-              <FaCheck />
-            </ButtonComponent>
+            <AcceptConnectionComponent
+              iconOnly
+              profile={{
+                ...notification.otherProfile!,
+                connectionStatus: 'requested',
+                requestedBy: notification.otherProfile!._id
+              }}
+            />
 
-            <ButtonComponent square cancel>
-              <FaTimes />
-            </ButtonComponent>
+            <DeleteConnectionComponent
+              iconOnly
+              profile={{
+                ...notification.otherProfile!,
+                connectionStatus: 'requested',
+                requestedBy: notification.otherProfile!._id
+              }}
+            />
           </>
         )}
       </section>

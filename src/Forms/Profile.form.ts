@@ -55,8 +55,8 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
-      .replace(/[^\w.\s-]/g, '')
-      .replace(/\s+/g, '-')
+      .replace(/[^\w\s.-]/g, '')
+      .replace(/[\s\u00A0\u200B\u202F]+/g, '-')
       .replace(/-+/g, '-')
       .replace(/^-|-$/g, '')
 
@@ -76,7 +76,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
     if (!!_id) {
       const updateProfileResponse = await ProfilesAPI.updateProfile({
         name,
-        uri,
+        uri: cleanUri,
         bio,
         picture,
         links
@@ -91,7 +91,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       }
 
       const response = {
-        redirectUri: ROUTES.PROFILE.path.replace(':uri', uri),
+        redirectUri: ROUTES.PROFILE.path.replace(':uri', cleanUri),
         reloadUser: true
       }
 
@@ -99,7 +99,7 @@ export const PROFILE_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
     } else {
       const createProfileResponse = await ProfilesAPI.createProfile({
         name,
-        uri,
+        uri: cleanUri,
         bio,
         picture,
         links

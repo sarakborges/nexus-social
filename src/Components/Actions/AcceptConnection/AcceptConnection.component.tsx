@@ -1,4 +1,9 @@
 import { use, useState } from 'react'
+import { FaCheck } from 'react-icons/fa'
+
+import { ProfileType } from '@/Types/Profile.type'
+
+import { NOTIFICATION_TYPES } from '@/Consts/Notifications.const'
 
 import * as ConnectionsAPI from '@/Apis/Connections'
 
@@ -6,13 +11,21 @@ import { ConnectionsType } from '@/Types/Connections.type'
 
 import { ProfileContext } from '@/Contexts/Profile.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
+import { NotificationsContext } from '@/Contexts/Notifications.context'
 
 import { ButtonComponent } from '@/Components/System/Button'
 import { LoadingComponent } from '@/Components/System/Loading'
 
-export const AcceptConnectionComponent = () => {
-  const { profile, setProfile } = use(ProfileContext)
+export const AcceptConnectionComponent = ({
+  profile,
+  iconOnly
+}: {
+  profile: ProfileType
+  iconOnly?: boolean
+}) => {
+  const { setProfile } = use(ProfileContext)
   const { activeProfile } = use(ActiveProfileContext)
+  const { notifications, setNotifications } = use(NotificationsContext)
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -54,15 +67,26 @@ export const AcceptConnectionComponent = () => {
       connectionStatus: 'connected',
       connections: profileConnectionsList
     })
+
+    setNotifications([
+      ...notifications?.filter(
+        (notificationItem) =>
+          !(
+            notificationItem.type === NOTIFICATION_TYPES.CONNECTION_REQUEST &&
+            profile._id === notificationItem.otherProfile?._id
+          )
+      )
+    ])
   }
 
   return (
     <>
       {profile?.connectionStatus === 'requested' &&
         activeProfile?._id !== profile?.requestedBy && (
-          <ButtonComponent onClick={acceptConnection}>
+          <ButtonComponent square={isLoading} onClick={acceptConnection}>
             {!!isLoading && <LoadingComponent />}
-            {!isLoading && `Aceitar conexão`}
+            {!isLoading && !iconOnly && `Aceitar conexão`}
+            {!isLoading && !!iconOnly && <FaCheck />}
           </ButtonComponent>
         )}
     </>

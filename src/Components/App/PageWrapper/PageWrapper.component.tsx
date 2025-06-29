@@ -6,6 +6,7 @@ import { UserContext } from '@/Contexts/User.context'
 import { FeedContext } from '@/Contexts/Feed.context'
 import { SuggestionsContext } from '@/Contexts/Suggestions.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
+import { NotificationsContext } from '@/Contexts/Notifications.context'
 
 import { LoadingComponent } from '@/Components/System/Loading'
 
@@ -25,6 +26,7 @@ export const PageWrapperComponent = ({
   const { activeProfile, setActiveProfile } = use(ActiveProfileContext)
   const { setFeed } = use(FeedContext)
   const { setSuggestions } = use(SuggestionsContext)
+  const { setNotifications } = use(NotificationsContext)
   const [isLoading, setIsLoading] = useState(false)
 
   const getUser = async () => {
@@ -39,6 +41,7 @@ export const PageWrapperComponent = ({
     setUser(userRequest?.user)
     setFeed(userRequest?.feed)
     setSuggestions(userRequest?.suggestions)
+    setNotifications(userRequest?.notifications)
 
     if (
       userRequest?.user?.profiles.length < 1 ||

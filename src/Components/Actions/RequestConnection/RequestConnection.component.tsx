@@ -39,7 +39,7 @@ export const RequestConnectionComponent = () => {
   return (
     <>
       {profile?.connectionStatus === 'none' && (
-        <ButtonComponent onClick={requestConnection}>
+        <ButtonComponent square={isLoading} onClick={requestConnection}>
           {!!isLoading && <LoadingComponent />}
           {!isLoading && `Conectar-se`}
         </ButtonComponent>

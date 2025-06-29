@@ -35,12 +35,21 @@
     place-items: center;
 
     width: var(--size-notifications);
-    min-height: var(--size-notifications-height);
+
+    > .typography {
+      display: flex;
+      place-content: center;
+      place-items: center;
+
+      min-height: var(--size-notifications-height);
+    }
 
     .notifications-list {
       display: flex;
       flex-flow: column;
       gap: var(--size-lmd);
+
+      width: 100%;
     }
   }
 }

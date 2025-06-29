@@ -5,13 +5,20 @@
 
   background-color: var(--color-background);
 
-  .loader-wrapper {
+  > .loader-wrapper {
     display: flex;
     place-content: center;
     place-items: center;
 
     width: 100%;
     height: 100vh;
+
+    > .loading {
+      > svg {
+        width: var(--size-lg);
+        height: var(--size-lg);
+      }
+    }
   }
 
   > .page-content-wrapper {

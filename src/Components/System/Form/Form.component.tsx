@@ -7,6 +7,7 @@ import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 import { SuggestionsContext } from '@/Contexts/Suggestions.context'
 import { FeedContext } from '@/Contexts/Feed.context'
+import { NotificationsContext } from '@/Contexts/Notifications.context'
 
 import { FORM_ERROR_BUTTON, FORM_ERROR_TITLE } from '@/Consts/Form.const'
 import { FIELD_TYPE_FILE } from '@/Consts/FieldTypes.const'
@@ -38,6 +39,7 @@ export const FormComponent = ({
   const { feed, setFeed } = use(FeedContext)
   const { setSuggestions } = use(SuggestionsContext)
   const { setActiveProfile } = use(ActiveProfileContext)
+  const { setNotifications } = use(NotificationsContext)
 
   const { submitText, sections, extraSections, onSubmit, ...formProps } = rest
 
@@ -117,6 +119,7 @@ export const FormComponent = ({
 
     setUser(userRequest?.user)
     setFeed(userRequest?.feed)
+    setNotifications(userRequest?.notifications)
     setSuggestions(userRequest?.suggestions)
 
     if (

@@ -60,73 +60,71 @@ export const ProfileRoute = () => {
   }
 
   return (
-    <PageWrapperComponent>
-      {!!isLoading && (
-        <div className="no-profile">
-          <LoadingComponent />
-        </div>
-      )}
+    <div className="profile-route">
+      <PageWrapperComponent>
+        {!!isLoading && <LoadingComponent />}
 
-      {!isLoading && (
-        <div className="profile-route">
-          <main className="profile-main">
-            <ProfileHeaderComponent />
-            <ProfileTabsComponent />
-          </main>
+        {!isLoading && (
+          <div className="profile-wrapper">
+            <main className="profile-main">
+              <ProfileHeaderComponent />
+              <ProfileTabsComponent />
+            </main>
 
-          <section className="profile-lists">
-            <CardComponent className="suggestions">
-              <header>
-                <TypographyComponent>{'Conexões'}</TypographyComponent>
-                <LinkComponent to={''}>{'Ver todas'}</LinkComponent>
-              </header>
+            <section className="profile-lists">
+              <CardComponent className="suggestions">
+                <header>
+                  <TypographyComponent>{'Conexões'}</TypographyComponent>
+                  <LinkComponent to={''}>{'Ver todas'}</LinkComponent>
+                </header>
 
-              {!profile?.connections?.length && (
-                <TypographyComponent>
-                  {`${profile?.name} não possui conexões ainda.`}
-                </TypographyComponent>
-              )}
+                {!profile?.connections?.length && (
+                  <TypographyComponent>
+                    {`${profile?.name} não possui conexões ainda.`}
+                  </TypographyComponent>
+                )}
 
-              {!!profile?.connections?.length && (
-                <ul>
-                  {profile?.connections?.map((connectionItem) => (
-                    <SuggestionItemComponent
-                      suggestion={connectionItem?.otherProfile}
-                      type={'profile'}
-                      key={`profile-connections-${profile?._id}-${connectionItem?._id}`}
-                    />
-                  ))}
-                </ul>
-              )}
-            </CardComponent>
+                {!!profile?.connections?.length && (
+                  <ul>
+                    {profile?.connections?.map((connectionItem) => (
+                      <SuggestionItemComponent
+                        suggestion={connectionItem?.otherProfile}
+                        type={'profile'}
+                        key={`profile-connections-${profile?._id}-${connectionItem?._id}`}
+                      />
+                    ))}
+                  </ul>
+                )}
+              </CardComponent>
 
-            <CardComponent className="suggestions">
-              <header>
-                <TypographyComponent>{'Grupos'}</TypographyComponent>
-                <LinkComponent to={''}>{'Ver todos'}</LinkComponent>
-              </header>
+              <CardComponent className="suggestions">
+                <header>
+                  <TypographyComponent>{'Grupos'}</TypographyComponent>
+                  <LinkComponent to={''}>{'Ver todos'}</LinkComponent>
+                </header>
 
-              {!profile?.groups?.length && (
-                <TypographyComponent>
-                  {`${profile?.name} não participa de grupos ainda.`}
-                </TypographyComponent>
-              )}
+                {!profile?.groups?.length && (
+                  <TypographyComponent>
+                    {`${profile?.name} não participa de grupos ainda.`}
+                  </TypographyComponent>
+                )}
 
-              {!!profile?.groups?.length && (
-                <ul>
-                  {profile?.groups?.map((groupItem) => (
-                    <SuggestionItemComponent
-                      suggestion={groupItem}
-                      type={'group'}
-                      key={`profile-groups-${profile?._id}-${groupItem?._id}`}
-                    />
-                  ))}
-                </ul>
-              )}
-            </CardComponent>
-          </section>
-        </div>
-      )}
-    </PageWrapperComponent>
+                {!!profile?.groups?.length && (
+                  <ul>
+                    {profile?.groups?.map((groupItem) => (
+                      <SuggestionItemComponent
+                        suggestion={groupItem}
+                        type={'group'}
+                        key={`profile-groups-${profile?._id}-${groupItem?._id}`}
+                      />
+                    ))}
+                  </ul>
+                )}
+              </CardComponent>
+            </section>
+          </div>
+        )}
+      </PageWrapperComponent>
+    </div>
   )
 }

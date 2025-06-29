@@ -6,8 +6,8 @@
   color: var(--color-text);
 
   > svg {
-    width: var(--size-lg);
-    height: var(--size-lg);
+    width: var(--size-md);
+    height: var(--size-md);
 
     animation: spin-loader 0.75s normal infinite linear;
   }

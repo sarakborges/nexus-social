@@ -1,29 +1,31 @@
 .profile-route {
-  display: flex;
-  gap: var(--size-lmd);
-
-  .profile-main {
+  .profile-wrapper {
     display: flex;
-    flex-flow: column;
     gap: var(--size-lmd);
+
+    .profile-main {
+      display: flex;
+      flex-flow: column;
+      gap: var(--size-lmd);
+
+      flex: 1;
+    }
+
+    .profile-lists {
+      display: flex;
+      flex-flow: column;
+      gap: var(--size-lmd);
+
+      width: var(--size-profile-lists);
+    }
+  }
+
+  > .loading {
+    display: flex;
+    place-content: center;
+    place-items: center;
 
     flex: 1;
+    padding: var(--size-xl);
   }
-
-  .profile-lists {
-    display: flex;
-    flex-flow: column;
-    gap: var(--size-lmd);
-
-    width: var(--size-profile-lists);
-  }
-}
-
-.no-profile {
-  display: flex;
-  place-content: center;
-  place-items: center;
-
-  flex: 1;
-  padding: var(--size-xl);
 }

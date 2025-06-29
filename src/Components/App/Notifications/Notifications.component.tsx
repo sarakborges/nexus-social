@@ -58,7 +58,9 @@ export const NotificationsComponent = () => {
             <ul className="notifications-list">
               {notifications.map((notificationItem) => (
                 <NotificationItemComponent
-                  key={`notification-item-${notificationItem._id}`}
+                  key={`notification-item-${notificationItem.type}-${
+                    notificationItem.otherProfile!._id
+                  }`}
                   notification={notificationItem}
                 />
               ))}

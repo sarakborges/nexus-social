@@ -50,9 +50,9 @@ export const ProfileHeaderComponent = () => {
 
         {profile?._id !== activeProfile?._id && (
           <section className="profile-actions">
-            <AcceptConnectionComponent />
+            <AcceptConnectionComponent profile={profile} />
             <RequestConnectionComponent />
-            <DeleteConnectionComponent />
+            <DeleteConnectionComponent profile={profile} />
 
             <ButtonComponent square transparent>
               <MdMoreHoriz />

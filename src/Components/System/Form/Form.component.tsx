@@ -5,6 +5,7 @@ import * as UsersAPI from '@/Apis/Users'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
+import { SuggestionsContext } from '@/Contexts/Suggestions.context'
 import { FeedContext } from '@/Contexts/Feed.context'
 
 import { FORM_ERROR_BUTTON, FORM_ERROR_TITLE } from '@/Consts/Form.const'
@@ -20,7 +21,6 @@ import { TypographyComponent } from '@/Components/System/Typography'
 import { LoadingComponent } from '@/Components/System/Loading'
 
 import './Form.style.scss'
-import { request } from '@/Apis/Request.api'
 
 export const FormComponent = ({
   children,
@@ -36,6 +36,7 @@ export const FormComponent = ({
 
   const { setUser } = use(UserContext)
   const { feed, setFeed } = use(FeedContext)
+  const { setSuggestions } = use(SuggestionsContext)
   const { setActiveProfile } = use(ActiveProfileContext)
 
   const { submitText, sections, extraSections, onSubmit, ...formProps } = rest
@@ -114,15 +115,20 @@ export const FormComponent = ({
       return
     }
 
-    setUser(userRequest)
+    setUser(userRequest?.user)
+    setFeed(userRequest?.feed)
+    setSuggestions(userRequest?.suggestions)
 
-    if (userRequest.profiles.length < 1 || !userRequest.activeProfile) {
+    if (
+      userRequest?.user.profiles.length < 1 ||
+      !userRequest?.user.activeProfile
+    ) {
       return
     }
 
     setActiveProfile(
-      userRequest.profiles.find(
-        (profileItem) => profileItem._id === userRequest.activeProfile
+      userRequest?.user.profiles.find(
+        (profileItem) => profileItem._id === userRequest?.user.activeProfile
       )
     )
   }

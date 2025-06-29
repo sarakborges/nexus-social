@@ -3,6 +3,8 @@ import { use, useEffect, useState } from 'react'
 import * as UsersAPI from '@/Apis/Users'
 
 import { UserContext } from '@/Contexts/User.context'
+import { FeedContext } from '@/Contexts/Feed.context'
+import { SuggestionsContext } from '@/Contexts/Suggestions.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
 
 import { LoadingComponent } from '@/Components/System/Loading'
@@ -20,7 +22,9 @@ export const PageWrapperComponent = ({
   children
 }: PageWrapperComponentType) => {
   const { user, setUser } = use(UserContext)
-  const { setActiveProfile } = use(ActiveProfileContext)
+  const { activeProfile, setActiveProfile } = use(ActiveProfileContext)
+  const { setFeed } = use(FeedContext)
+  const { setSuggestions } = use(SuggestionsContext)
   const [isLoading, setIsLoading] = useState(false)
 
   const getUser = async () => {
@@ -28,26 +32,31 @@ export const PageWrapperComponent = ({
     const userRequest = await UsersAPI.getUser()
     setIsLoading(false)
 
-    if (!userRequest) {
+    if (!userRequest?.user?._id) {
       return
     }
 
-    setUser(userRequest)
+    setUser(userRequest?.user)
+    setFeed(userRequest?.feed)
+    setSuggestions(userRequest?.suggestions)
 
-    if (userRequest.profiles.length < 1 || !userRequest.activeProfile) {
+    if (
+      userRequest?.user?.profiles.length < 1 ||
+      !userRequest?.user?.activeProfile
+    ) {
       return
     }
 
     setActiveProfile(
-      userRequest.profiles.find(
-        (profileItem) => profileItem._id === userRequest.activeProfile
+      userRequest?.user?.profiles.find(
+        (profileItem) => profileItem._id === userRequest?.user?.activeProfile
       )
     )
   }
 
   useEffect(() => {
     getUser()
-  }, [user?._id])
+  }, [user?._id, activeProfile?._id])
 
   return (
     <main className="page-wrapper">

@@ -11,7 +11,7 @@ export const HomeSuggestionsComponent = () => {
 
   return (
     <section className="home-suggestions">
-      {suggestions.map((suggestionsList) => (
+      {suggestions?.map((suggestionsList) => (
         <SuggestionsComponent
           key={`${suggestionsList.type}-suggestions-list`}
           suggestions={suggestionsList.suggestions}

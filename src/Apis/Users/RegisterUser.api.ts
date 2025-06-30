@@ -11,7 +11,7 @@ export const registerUser = async (user: Partial<UserType>) => {
 
     const { status, data } = userRequest
 
-    if (status !== 201) {
+    if (status !== 200) {
       return
     }
 

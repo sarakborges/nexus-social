@@ -41,20 +41,20 @@ export const NotificationsComponent = () => {
       >
         <FaBell />
 
-        {!!notifications.length && (
+        {!!notifications?.length && (
           <span className="notifications-counter">{notifications.length}</span>
         )}
       </ButtonComponent>
 
       <DropdownComponent ref={topbarNotificationsDropdownRef}>
         <div className="notifications-dropdown">
-          {!notifications.length && (
+          {!notifications?.length && (
             <TypographyComponent renderAs="h2">
               {NO_NOTIFICATIONS}
             </TypographyComponent>
           )}
 
-          {!!notifications.length && (
+          {!!notifications?.length && (
             <ul className="notifications-list">
               {notifications.map((notificationItem) => (
                 <NotificationItemComponent

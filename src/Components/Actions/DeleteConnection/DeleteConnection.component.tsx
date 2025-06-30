@@ -16,10 +16,12 @@ import { LoadingComponent } from '@/Components/System/Loading'
 
 export const DeleteConnectionComponent = ({
   profile,
-  iconOnly
+  iconOnly,
+  notificationId
 }: {
   profile: ProfileType
   iconOnly?: boolean
+  notificationId?: string
 }) => {
   const { setProfile } = use(ProfileContext)
   const { activeProfile } = use(ActiveProfileContext)
@@ -51,13 +53,13 @@ export const DeleteConnectionComponent = ({
     })
 
     setNotifications([
-      ...notifications?.filter(
-        (notificationItem) =>
-          !(
-            notificationItem.type === NOTIFICATION_TYPES.CONNECTION_REQUEST &&
-            profile._id === notificationItem.otherProfile?._id
-          )
-      )
+      ...notifications?.filter((notificationItem) => {
+        return !(
+          [NOTIFICATION_TYPES.CONNECTION_REQUEST].includes(
+            notificationItem.type
+          ) && notificationItem?._id === notificationId
+        )
+      })
     ])
   }
 

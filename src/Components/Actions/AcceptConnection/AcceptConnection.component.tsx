@@ -18,10 +18,12 @@ import { LoadingComponent } from '@/Components/System/Loading'
 
 export const AcceptConnectionComponent = ({
   profile,
-  iconOnly
+  iconOnly,
+  notificationId
 }: {
   profile: ProfileType
   iconOnly?: boolean
+  notificationId?: string
 }) => {
   const { setProfile } = use(ProfileContext)
   const { activeProfile } = use(ActiveProfileContext)
@@ -72,8 +74,9 @@ export const AcceptConnectionComponent = ({
       ...notifications?.filter(
         (notificationItem) =>
           !(
-            notificationItem.type === NOTIFICATION_TYPES.CONNECTION_REQUEST &&
-            profile._id === notificationItem.otherProfile?._id
+            [NOTIFICATION_TYPES.CONNECTION_REQUEST].includes(
+              notificationItem.type
+            ) && notificationItem?._id === notificationId
           )
       )
     ])

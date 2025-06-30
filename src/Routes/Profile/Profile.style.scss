@@ -1,6 +1,7 @@
 .profile-route {
   .profile-wrapper {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--size-lmd);
 
     .profile-main {

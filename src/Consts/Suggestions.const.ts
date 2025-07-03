@@ -9,8 +9,8 @@ export const SUGGESTIONS_GROUPS_TEXT_SINGLE = `participa`
 export const SUGGESTIONS_GROUPS_TEXT_MULTIPLE = `participam`
 export const SUGGESTIONS_GROUPS_TEXT_COMMON = `de suas conexões`
 
-export const SUGGESTION_TYPE_PROFILE = `profile`
-export const SUGGESTION_TYPE_GROUP = `group`
+export const SUGGESTION_TYPE_PROFILE = `profiles`
+export const SUGGESTION_TYPE_GROUP = `groups`
 
 export const SUGGESTIONS_SEE_ALL = `Ver todas sugestões`
 export const SUGGESTIONS_NONE = `Nenhuma sugestão encontrada.`

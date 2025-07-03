@@ -89,7 +89,7 @@ export const ProfileRoute = () => {
                     {profile?.connections?.map((connectionItem) => (
                       <SuggestionItemComponent
                         suggestion={connectionItem?.otherProfile}
-                        type={'profile'}
+                        type={'profiles'}
                         key={`profile-connections-${profile?._id}-${connectionItem?._id}`}
                       />
                     ))}
@@ -114,7 +114,7 @@ export const ProfileRoute = () => {
                     {profile?.groups?.map((groupItem) => (
                       <SuggestionItemComponent
                         suggestion={groupItem}
-                        type={'group'}
+                        type={'groups'}
                         key={`profile-groups-${profile?._id}-${groupItem?._id}`}
                       />
                     ))}

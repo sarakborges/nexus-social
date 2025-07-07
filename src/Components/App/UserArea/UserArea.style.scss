@@ -53,5 +53,13 @@
         height: var(--size-md);
       }
     }
+
+    > .dropdown {
+      > .card {
+        max-height: calc(100vh - 120px);
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+    }
   }
 }

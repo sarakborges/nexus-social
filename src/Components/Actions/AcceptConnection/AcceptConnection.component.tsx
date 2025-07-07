@@ -2,12 +2,13 @@ import { use, useState } from 'react'
 import { FaCheck } from 'react-icons/fa'
 
 import { ProfileType } from '@/Types/Profile.type'
-
-import { NOTIFICATION_TYPES } from '@/Consts/Notifications.const'
+import { ConnectionsType } from '@/Types/Connections.type'
 
 import * as ConnectionsAPI from '@/Apis/Connections'
 
-import { ConnectionsType } from '@/Types/Connections.type'
+import { getTexts } from '@/Texts'
+
+import { NOTIFICATION_TYPES } from '@/Consts/Notifications.const'
 
 import { ProfileContext } from '@/Contexts/Profile.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
@@ -15,6 +16,7 @@ import { NotificationsContext } from '@/Contexts/Notifications.context'
 
 import { ButtonComponent } from '@/Components/System/Button'
 import { LoadingComponent } from '@/Components/System/Loading'
+import { CONNECTION_STATUS } from '@/Consts/Connections.const'
 
 export const AcceptConnectionComponent = ({
   profile,
@@ -48,7 +50,7 @@ export const AcceptConnectionComponent = ({
 
     const newConnection: ConnectionsType = {
       _id: connectionRequest?._id,
-      status: 'connected',
+      status: CONNECTION_STATUS.connected,
       between: [profile?._id, activeProfile?._id],
       requestedBy: profile?._id,
       otherProfileId: activeProfile?._id,
@@ -66,7 +68,7 @@ export const AcceptConnectionComponent = ({
 
     setProfile({
       ...profile,
-      connectionStatus: 'connected',
+      connectionStatus: CONNECTION_STATUS.connected,
       connections: profileConnectionsList
     })
 
@@ -84,11 +86,11 @@ export const AcceptConnectionComponent = ({
 
   return (
     <>
-      {profile?.connectionStatus === 'requested' &&
+      {profile?.connectionStatus === CONNECTION_STATUS.requested &&
         activeProfile?._id !== profile?.requestedBy && (
           <ButtonComponent square={isLoading} onClick={acceptConnection}>
             {!!isLoading && <LoadingComponent />}
-            {!isLoading && !iconOnly && `Aceitar conexão`}
+            {!isLoading && !iconOnly && getTexts('CONNECTIONS_ACCEPT')}
             {!isLoading && !!iconOnly && <FaCheck />}
           </ButtonComponent>
         )}

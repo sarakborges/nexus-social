@@ -3,7 +3,7 @@ import { FaTrash } from 'react-icons/fa'
 
 import * as ProfilesAPI from '@/Apis/Profiles'
 
-import { NAVBAR_USER_DELETE_PROFILE } from '@/Consts/Navbar.const'
+import { getTexts } from '@/Texts'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
@@ -60,7 +60,7 @@ export const DeleteProfileComponent = ({
 
           {!hideText && (
             <TypographyComponent smallText>
-              {NAVBAR_USER_DELETE_PROFILE}
+              {getTexts('PROFILE_DELETE')}
             </TypographyComponent>
           )}
         </>

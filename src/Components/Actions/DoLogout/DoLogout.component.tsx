@@ -2,11 +2,12 @@ import { use } from 'react'
 import { useNavigate } from 'react-router'
 import { BiSolidDoorOpen } from 'react-icons/bi'
 
-import { ROUTES } from '@/Consts/Routes.const'
-import { NAVBAR_USER_LOGOUT } from '@/Consts/Navbar.const'
+import { getTexts } from '@/Texts'
 
 import { UserContext } from '@/Contexts/User.context'
 import { ActiveProfileContext } from '@/Contexts/ActiveProfile.context'
+
+import { ROUTES } from '@/Consts/Routes.const'
 
 import { ButtonComponent } from '@/Components/System/Button'
 import { TypographyComponent } from '@/Components/System/Typography'
@@ -40,7 +41,9 @@ export const DoLogoutComponent = () => {
     <ButtonComponent onClick={doLogout}>
       <BiSolidDoorOpen />
 
-      <TypographyComponent smallText>{NAVBAR_USER_LOGOUT}</TypographyComponent>
+      <TypographyComponent smallText>
+        {getTexts('DO_LOGOUT')}
+      </TypographyComponent>
     </ButtonComponent>
   )
 }

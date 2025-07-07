@@ -10,8 +10,6 @@ export const NAVBAR_USER_SELECT_PROFILE_TO_START = `Selecione um perfil para com
 export const NAVBAR_USER_CREATE_PROFILE_TO_START = `Crie um perfil para começar a interagir!`
 export const NAVBAR_USER_EDIT_PROFILE = `Editar perfil`
 export const NAVBAR_USER_SELECT_PROFILE = `Selecionar perfil`
-export const NAVBAR_USER_DELETE_PROFILE = `Excluir perfil`
-export const NAVBAR_USER_LOGOUT = `Sair`
 
 export const NAVBAR = [
   {

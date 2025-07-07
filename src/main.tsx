@@ -6,7 +6,6 @@ import { createRoot } from 'react-dom/client'
 import { NotificationsProvider } from '@/Contexts/Notifications.context'
 import { ActiveProfileProvider } from '@/Contexts/ActiveProfile.context'
 import { UserProvider } from '@/Contexts/User.context'
-import { TopbarSearchProvider } from '@/Contexts/TopbarSearch.context'
 import { SuggestionsProvider } from '@/Contexts/Suggestions.context'
 import { ProfileProvider } from '@/Contexts/Profile.context'
 import { FeedProvider } from '@/Contexts/Feed.context'
@@ -22,7 +21,6 @@ const ContextProviders = ({ children }) => {
     FeedProvider,
     SuggestionsProvider,
     NotificationsProvider,
-    TopbarSearchProvider,
     ProfileProvider
   ]
 

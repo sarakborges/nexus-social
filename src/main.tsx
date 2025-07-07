@@ -9,6 +9,7 @@ import { UserProvider } from '@/Contexts/User.context'
 import { SuggestionsProvider } from '@/Contexts/Suggestions.context'
 import { ProfileProvider } from '@/Contexts/Profile.context'
 import { FeedProvider } from '@/Contexts/Feed.context'
+import { SettingsProvider } from '@/Contexts/Settings.context'
 
 import { ROUTER } from '@/Consts/Router.const'
 
@@ -16,6 +17,7 @@ import '@/Assets/main.css'
 
 const ContextProviders = ({ children }) => {
   const providersList = [
+    SettingsProvider,
     UserProvider,
     ActiveProfileProvider,
     FeedProvider,

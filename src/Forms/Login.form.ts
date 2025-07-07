@@ -2,18 +2,15 @@ import { FormHTMLAttributes } from 'react'
 
 import * as UsersAPI from '@/Apis/Users'
 
+import { getTexts } from '@/Texts'
+
 import { FormType } from '@/Types/Form.type'
 
 import { FIELD_TYPE_PASSWORD, FIELD_TYPE_TEXT } from '@/Consts/FieldTypes.const'
-import {
-  LOGIN_BUTTON,
-  LOGIN_EMAIL_PLACEHOLDER,
-  LOGIN_PASSWORD_PLACEHOLDER
-} from '@/Consts/Login.const'
 import { ROUTES } from '@/Consts/Routes.const'
 
 export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
-  submitText: LOGIN_BUTTON,
+  submitText: getTexts('LOGIN_BUTTON'),
 
   onSubmit: async (e) => {
     const formData = new FormData(e.target as HTMLFormElement)
@@ -65,15 +62,15 @@ export const LOGIN_FORM: FormType & FormHTMLAttributes<HTMLFormElement> = {
       fields: [
         {
           name: 'email',
-          label: LOGIN_EMAIL_PLACEHOLDER,
-          placeholder: LOGIN_EMAIL_PLACEHOLDER,
+          label: getTexts('LOGIN_EMAIL_PLACEHOLDER'),
+          placeholder: getTexts('LOGIN_EMAIL_PLACEHOLDER'),
           type: FIELD_TYPE_TEXT
         },
 
         {
           name: 'password',
-          label: LOGIN_PASSWORD_PLACEHOLDER,
-          placeholder: LOGIN_PASSWORD_PLACEHOLDER,
+          label: getTexts('LOGIN_PASSWORD_PLACEHOLDER'),
+          placeholder: getTexts('LOGIN_PASSWORD_PLACEHOLDER'),
           type: FIELD_TYPE_PASSWORD
         }
       ]

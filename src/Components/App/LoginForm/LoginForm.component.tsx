@@ -1,4 +1,4 @@
-import { LOGIN_NO_ACCOUNT, LOGIN_TITLE } from '@/Consts/Login.const'
+import { getTexts } from '@/Texts'
 
 import { LOGIN_FORM } from '@/Forms/Login.form'
 
@@ -16,14 +16,16 @@ export const LoginFormComponent = () => {
   return (
     <section className="login-form">
       <CardComponent>
-        <ImageComponent alt="Nexus" src="/logo.png" />
+        <ImageComponent alt={getTexts('APP_NAME')} src="/logo.png" />
 
-        <TypographyComponent renderAs="h1">{LOGIN_TITLE}</TypographyComponent>
+        <TypographyComponent renderAs="h1">
+          {getTexts('LOGIN_TITLE')}
+        </TypographyComponent>
         <FormComponent {...LOGIN_FORM} />
 
         <section className="login-navigation">
           <LinkComponent to={ROUTES.REGISTER.path}>
-            {LOGIN_NO_ACCOUNT}
+            {getTexts('LOGIN_NO_ACCOUNT')}
           </LinkComponent>
         </section>
       </CardComponent>
